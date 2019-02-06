@@ -14,7 +14,7 @@ class CanvasController: UIViewController, ColorDelegate {
     let varietiesViewController = VarietiesViewController()
     
     func onGetColor(color: UIColor) {
-        canvas.setColor(color: color)
+        canvas.setStrokeColor(color: color)
     }
     
     
@@ -23,7 +23,7 @@ class CanvasController: UIViewController, ColorDelegate {
     
     let undoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Undo", for: .normal)
+        button.setImage(UIImage(named: "btn_undo"), for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleUndo), for: .touchUpInside)
         return button
@@ -39,7 +39,7 @@ class CanvasController: UIViewController, ColorDelegate {
     
     let clearButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Clear", for: .normal)
+        button.setImage(UIImage(named: "btn_clear"), for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleClear), for: .touchUpInside)
         return button
@@ -57,14 +57,13 @@ class CanvasController: UIViewController, ColorDelegate {
     }
     
     fileprivate func setupLayout() {
-        view.addSubview(undoButton)
         canvas.changeColorAction = handleChangeColor
         
-        
-        undoButton.setAnchor(top: view.safeTopAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 50)
+        view.addSubview(undoButton)
+        undoButton.setAnchor(top: view.safeTopAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         
         view.addSubview(clearButton)
-        clearButton.setAnchor(top: view.safeTopAnchor, leading: nil, bottom: nil, trailing: view.safeTrailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 50)
+        clearButton.setAnchor(top: view.safeTopAnchor, leading: nil, bottom: nil, trailing: view.safeTrailingAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 40, height: 40)
     }
     
     func handleChangeColor() {

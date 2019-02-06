@@ -12,15 +12,34 @@ class CanvasView: UIView {
     
     var changeColorAction: (() -> Void)?
     
-    fileprivate var strokeColor = UIColor.blue
-    fileprivate var strokeWidth: CGFloat = 5
+    fileprivate var strokeColor = UIColor.orange
+    fileprivate var strokeWidth: CGFloat = 10
+    
+    
+    let widthSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 1
+        slider.maximumValue = 20
+        slider.setValue(10, animated: false)
+        slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
+       return slider
+    }()
     
     let colorButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor.red
-        button.layer.cornerRadius = 20
+        button.backgroundColor = UIColor.orange
+        button.layer.cornerRadius = 22
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
         button.addTarget(self, action: #selector(handleChangeColor), for: .touchUpInside)
         return button
+    }()
+    
+    let widthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "10"
+        label.font = UIFont(name: "LuckiestGuy-Regular", size: 20)
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -36,7 +55,13 @@ class CanvasView: UIView {
         backgroundColor = UIColor.white
         
         addSubview(colorButton)
-        colorButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 20, width: 40, height: 40)
+        colorButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 20, width: 44, height: 44)
+        
+        addSubview(widthSlider)
+        widthSlider.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: colorButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 44)
+        
+        addSubview(widthLabel)
+        widthLabel.setAnchor(top: nil, leading: leadingAnchor, bottom: widthSlider.topAnchor, trailing: colorButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
     }
     
     override func draw(_ rect: CGRect) {
@@ -82,6 +107,11 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
+    @objc fileprivate func handleSliderChange() {
+        strokeWidth = CGFloat(widthSlider.value)
+        widthLabel.text = "\(Int(widthSlider.value))"
+    }
+    
     @objc func handleChangeColor() {
         changeColorAction?()
     }
@@ -97,13 +127,13 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    func setColor(color: UIColor) {
+    func setStrokeColor(color: UIColor) {
         strokeColor = color
         colorButton.layer.backgroundColor = color.cgColor
     }
     
-    func setStrokeColor(color: UIColor) {
-        strokeColor = color
-        colorButton.layer.backgroundColor = color.cgColor
+    func setStrokeWidth(width: CGFloat) {
+        strokeWidth = width
+        widthLabel.text = "\(width)"
     }
 }

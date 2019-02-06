@@ -15,9 +15,35 @@ class VarietiesViewController: UIViewController , HSBColorPickerDelegate {
     var delegate:ColorDelegate?
     
     var pickColorButton:UIButton = {
-        let button = UIButton(title: "OK".localized)
+        let button = UIButton()
+        
+        button.layer.cornerRadius = Device.IS_IPHONE ? 30 : 60
+        button.setAnchor(width: 0, height: Device.IS_IPHONE ? 120 : 240)
+        
+        
         button.addTarget(self, action: #selector(pickColor), for: .touchUpInside)
-        button.backgroundColor = UIColor.green
+        button.layer.borderWidth = 2
+        button.backgroundColor = .clear
+        
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        button.layer.shadowRadius = 1.0
+        button.layer.shadowOpacity = 0.7
+        button.layer.masksToBounds = false
+        
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.white
+        shadow.shadowBlurRadius = 1
+
+        
+        let strokeTextAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : AppFonts.BTN_COLOR_FONT!,
+            NSAttributedString.Key.strokeColor : UIColor.black,
+            NSAttributedString.Key.strokeWidth : 1.0, .shadow : shadow]
+        
+        let attributedString = NSAttributedString(string: "OK", attributes: strokeTextAttributes)
+        button.setAttributedTitle(attributedString, for: .normal)
+        
+        
         return button
     }()
     
@@ -42,7 +68,7 @@ class VarietiesViewController: UIViewController , HSBColorPickerDelegate {
         // Add the color picker view
         self.view.addSubview(showCircleColorPicker())
         self.view.addSubview(pickColorButton)
-        pickColorButton.setAnchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 80)
+        pickColorButton.setAnchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 80)
         
         
     }
