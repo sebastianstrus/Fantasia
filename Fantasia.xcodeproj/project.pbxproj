@@ -27,10 +27,7 @@
 		7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABD72203805500E57FF3 /* AppDelegate.swift */; };
 		7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABDE2203805800E57FF3 /* Assets.xcassets */; };
 		7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */; };
-		7D92ABEA2203B4C200E57FF3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABE92203B4C200E57FF3 /* Extensions.swift */; };
 		7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56952208E213003AE323 /* ColorPicker.swift */; };
-		7DAE56982208E24B003AE323 /* RoundViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56972208E24B003AE323 /* RoundViewExtension.swift */; };
-		7DAE569A2208E281003AE323 /* BrightnessExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56992208E281003AE323 /* BrightnessExtension.swift */; };
 		7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
 		7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */; };
@@ -59,10 +56,7 @@
 		7D92ABDE2203805800E57FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D92ABE12203805800E57FF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D92ABE32203805800E57FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D92ABE92203B4C200E57FF3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7DAE56952208E213003AE323 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		7DAE56972208E24B003AE323 /* RoundViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViewExtension.swift; sourceTree = "<group>"; };
-		7DAE56992208E281003AE323 /* BrightnessExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessExtension.swift; sourceTree = "<group>"; };
 		7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarietiesViewController.swift; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaOutline-Regular.ttf"; sourceTree = "<group>"; };
@@ -110,7 +104,6 @@
 		7D2AFF0C2204FF4C00C13363 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7DAE56942208E1DB003AE323 /* Custom controls */,
 				7D2AFF0F2204FF7D00C13363 /* Images */,
 				7D2AFF0E2204FF7200C13363 /* Strings */,
 				7D2AFF0D2204FF6B00C13363 /* Fonts */,
@@ -185,16 +178,16 @@
 		7D92ABD62203805500E57FF3 /* Fantasia */ = {
 			isa = PBXGroup;
 			children = (
+				7D92ABD72203805500E57FF3 /* AppDelegate.swift */,
 				7D2AFF052204CE7000C13363 /* Model */,
 				7D2AFF062204CE7800C13363 /* View */,
 				7D2AFF072204CE8000C13363 /* Controller */,
 				7D2AFF0C2204FF4C00C13363 /* Resources */,
 				7D2AFF132205043000C13363 /* Suporting files */,
+				7DAE56942208E1DB003AE323 /* Custom controls */,
 				7D2AFF102205000D00C13363 /* Extensions */,
-				7D92ABD72203805500E57FF3 /* AppDelegate.swift */,
 				7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */,
 				7D92ABE32203805800E57FF3 /* Info.plist */,
-				7D92ABE92203B4C200E57FF3 /* Extensions.swift */,
 			);
 			path = Fantasia;
 			sourceTree = "<group>";
@@ -203,8 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				7DAE56952208E213003AE323 /* ColorPicker.swift */,
-				7DAE56972208E24B003AE323 /* RoundViewExtension.swift */,
-				7DAE56992208E281003AE323 /* BrightnessExtension.swift */,
 				7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */,
 			);
 			path = "Custom controls";
@@ -288,10 +279,7 @@
 				7D2AFF452206775600C13363 /* CanvasView.swift in Sources */,
 				7D2AFF1D22050E1800C13363 /* UIView+Extension.swift in Sources */,
 				7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */,
-				7D92ABEA2203B4C200E57FF3 /* Extensions.swift in Sources */,
 				7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */,
-				7DAE56982208E24B003AE323 /* RoundViewExtension.swift in Sources */,
-				7DAE569A2208E281003AE323 /* BrightnessExtension.swift in Sources */,
 				7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */,
 				7D2AFF192205056800C13363 /* UIColor+Extension.swift in Sources */,
 				7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */,

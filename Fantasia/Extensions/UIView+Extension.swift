@@ -109,4 +109,10 @@ extension UIView {
                   paddingBottom: 0,
                   paddingRight: 0)
     }
+    
+    // Circle view
+    func circleStyledView() {
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius  = round(self.frame.size.width/2.0)
+    }
 }

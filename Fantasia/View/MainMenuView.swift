@@ -33,7 +33,6 @@ class MainMenuView: UIView {
         return iv
     }()
     
-    
     let titleLabel: UILabel = {
         let label = UILabel()
         let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: Strings.APP_TITLE, attributes: [NSAttributedString.Key.font: AppFonts.TITLE_FONT!, .foregroundColor: UIColor.white]))
@@ -72,7 +71,6 @@ class MainMenuView: UIView {
     
     @objc func handleMyDrawings() {
         myCanvasesAction?()
-        
     }
     
     func setup() {
@@ -116,5 +114,4 @@ class MainMenuView: UIView {
         buttonsStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
-    
 }

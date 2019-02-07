@@ -8,19 +8,26 @@
 
 import UIKit
 
+
+let kStrokeInitialWidth: CGFloat = 10
+let kInitialColor = UIColor.orange
+let kSliderMinValue: Float = 1
+let kSliderMaxValue: Float = 20
+let kSliderInitialValue: Float = 10
+
 class CanvasView: UIView {
     
     var changeColorAction: (() -> Void)?
     
-    fileprivate var strokeColor = UIColor.orange
-    fileprivate var strokeWidth: CGFloat = 10
+    fileprivate var strokeColor = kInitialColor
+    fileprivate var strokeWidth = kStrokeInitialWidth
     
     
     let widthSlider: UISlider = {
         let slider = UISlider()
-        slider.minimumValue = 1
-        slider.maximumValue = 20
-        slider.setValue(10, animated: false)
+        slider.minimumValue = kSliderMinValue
+        slider.maximumValue = kSliderMaxValue
+        slider.setValue(kSliderInitialValue, animated: false)
         slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
        return slider
     }()
