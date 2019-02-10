@@ -34,6 +34,7 @@
 		7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C6221038E7009915A1 /* ImageController.swift */; };
 		7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C822103B3A009915A1 /* Fantasia.xcdatamodeld */; };
 		7D9A15ED22103E3F009915A1 /* CanvasObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */; };
+		7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15EE22107C3C009915A1 /* Date+Extension.swift */; };
 		7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56952208E213003AE323 /* ColorPicker.swift */; };
 		7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
@@ -70,6 +71,7 @@
 		7D9A15C6221038E7009915A1 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		7D9A15C922103B3A009915A1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectController.swift; sourceTree = "<group>"; };
+		7D9A15EE22107C3C009915A1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		7DAE56952208E213003AE323 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarietiesViewController.swift; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				7D2AFF1A22050DD300C13363 /* UIButton+Extension.swift */,
 				7D2AFF1C22050E1800C13363 /* UIView+Extension.swift */,
 				7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */,
+				7D9A15EE22107C3C009915A1 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */,
 				7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */,
 				7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */,
+				7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */,
 				7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */,
 				7DAE569E220903BE003AE323 /* Line.swift in Sources */,
 				7D2AFF432206631C00C13363 /* MyCollectionController.swift in Sources */,

@@ -23,8 +23,8 @@ class CanvasController: UIViewController, ColorDelegate {
     
     let undoButton: UIButton = {
         let button = UIButton(type: .system)
+        button.tintColor = UIColor.blue
         button.setImage(UIImage(named: "btn_undo"), for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleUndo), for: .touchUpInside)
         return button
     }()
@@ -40,8 +40,8 @@ class CanvasController: UIViewController, ColorDelegate {
     
     let clearButton: UIButton = {
         let button = UIButton(type: .system)
+        button.tintColor = UIColor.red
         button.setImage(UIImage(named: "btn_clear"), for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleClear), for: .touchUpInside)
         return button
     }()
