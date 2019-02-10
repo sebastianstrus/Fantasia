@@ -21,7 +21,7 @@ class MainMenuController: UIViewController {
     func setupView() {
         self.mainMenuView = MainMenuView(frame: self.view.frame)
         self.mainMenuView.newCanvasAction = handleNewCanvas
-        self.mainMenuView.myCanvasesAction = handleMyCanvases
+        self.mainMenuView.myCollectionAction = handleMyCollection
         self.view.addSubview(mainMenuView)
         mainMenuView.setAnchor(top: view.topAnchor,
                             leading: view.leadingAnchor,
@@ -40,9 +40,9 @@ class MainMenuController: UIViewController {
         present(canvasController, animated: true, completion: nil)
     }
     
-    func handleMyCanvases() {
-        let myCanvasesController = MyCanvasesController()
-        present(myCanvasesController, animated: true, completion: nil)
+    func handleMyCollection() {
+        let myCollectionController = MyCollectionController()
+        present(myCollectionController, animated: true, completion: nil)
     }
 }
 

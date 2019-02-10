@@ -15,7 +15,7 @@ let kStackViewMargin: CGFloat = Device.IS_IPHONE ? 120 : 300
 class MainMenuView: UIView {
     
     var newCanvasAction: (() -> Void)?
-    var myCanvasesAction: (() -> Void)?
+    var myCollectionAction: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,22 +55,22 @@ class MainMenuView: UIView {
     
     let newCanvasButton: UIButton = {
         let button = UIButton(title: "New canvas".localized)
-        button.addTarget(self, action: #selector(handleNewDrawing), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleNewCanvas), for: .touchUpInside)
         return button
     }()
     
-    let myCanvasesButton: UIButton = {
-        let button = UIButton(title: "My canvases".localized)
-        button.addTarget(self, action: #selector(handleMyDrawings), for: .touchUpInside)
+    let myCollectionButton: UIButton = {
+        let button = UIButton(title: "My collection".localized)
+        button.addTarget(self, action: #selector(handleMyCollection), for: .touchUpInside)
         return button
     }()
     
-    @objc func handleNewDrawing() {
+    @objc func handleNewCanvas() {
         newCanvasAction?()
     }
     
-    @objc func handleMyDrawings() {
-        myCanvasesAction?()
+    @objc func handleMyCollection() {
+        myCollectionAction?()
     }
     
     func setup() {
@@ -90,7 +90,7 @@ class MainMenuView: UIView {
                                   height: Device.IS_IPHONE ? 130 : 260)
         titlesStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        let buttonsStackView = createStackView(views: [newCanvasButton, myCanvasesButton], spacing: Device.IS_IPHONE ? 20 : 40)
+        let buttonsStackView = createStackView(views: [newCanvasButton, myCollectionButton], spacing: Device.IS_IPHONE ? 20 : 40)
         addSubview(buttonsStackView)
         backgroundImageView.setAnchor(top: self.topAnchor,
                                       leading: self.leadingAnchor,

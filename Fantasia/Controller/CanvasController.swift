@@ -34,6 +34,7 @@ class CanvasController: UIViewController, ColorDelegate {
     }
     
     @objc fileprivate func handleClear() {
+        CanvasObjectController.shared.saveCanvasObject(image: canvas.asImage2(), title: "Super image", date: Date())
         canvas.clear()
     }
     
