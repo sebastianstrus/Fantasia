@@ -57,7 +57,7 @@ class CanvasView: UIView {
     }
     
     @objc fileprivate func handleClear() {
-        //CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: "Super image", date: Date())
+        UIView.transition(from: correctCanvasView, to: correctCanvasView, duration: 0.5, options: [.transitionCurlUp, .showHideTransitionViews])
         correctCanvasView.clear()
     }
     
@@ -109,7 +109,7 @@ class CanvasView: UIView {
     }
     
     fileprivate func setup() {
-        backgroundColor = UIColor(r: 245, g: 245, b: 245)
+        backgroundColor = AppColors.WHITE_GRAY
         
         addSubview(undoButton)
         undoButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
@@ -138,6 +138,7 @@ class CanvasView: UIView {
     
     @objc fileprivate func handleSliderChange() {
         strokeWidth = CGFloat(widthSlider.value)
+        correctCanvasView.setStrokeWidth(width: strokeWidth)
         widthLabel.text = "\(Int(widthSlider.value))"
     }
     
@@ -157,9 +158,6 @@ class CanvasView: UIView {
         colorButton.layer.backgroundColor = color.cgColor
     }
     
-    public func setStrokeWidth(width: CGFloat){
-        correctCanvasView.setStrokeWidth(width: width)
-        widthLabel.text = "\(width)"    }
     
     public func saveCanvas(){
         CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: "Super image", date: Date())

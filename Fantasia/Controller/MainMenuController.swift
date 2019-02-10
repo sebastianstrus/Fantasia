@@ -23,14 +23,7 @@ class MainMenuController: UIViewController {
         self.mainMenuView.newCanvasAction = handleNewCanvas
         self.mainMenuView.myCollectionAction = handleMyCollection
         self.view.addSubview(mainMenuView)
-        mainMenuView.setAnchor(top: view.topAnchor,
-                            leading: view.leadingAnchor,
-                            bottom: view.bottomAnchor,
-                            trailing: view.trailingAnchor,
-                            paddingTop: 0,
-                            paddingLeft: 0,
-                            paddingBottom: 0,
-                            paddingRight: 0)
+        //mainMenuView.pinToEdges(view: view)
         
     }
     

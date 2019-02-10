@@ -12,14 +12,26 @@ class MyCollectionCell: UICollectionViewCell {
     
     
     let imageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "blur_background"))
+        let iv = UIImageView()
         return iv
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+                
         self.addSubview(imageView)
+        imageView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
         imageView.pinToEdges(view: self)
     }
     

@@ -66,20 +66,27 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MyCollectionCell
         cell.imageView.image = ImageController.shared.fetchImage(imageName: (canvases[indexPath.row].imageName!))
+        cell.titleLabel.text = canvases[indexPath.row].date?.formatedString()
+        cell.dateLabel.text = canvases[indexPath.row].date?.formatedString()
         return cell
     }
     
     // MARK: - UICollectionViewDelegate functions
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let mealController = MealController()
-        //mealController.meal = favoritesMeals[indexPath.row]
-        //navigationController?.pushViewController(mealController, animated: true)
+        let detailsController = DetailsController()
+        detailsController.canvas = canvases[indexPath.row]
+        print("indexPath.row: \(indexPath.row)")
+        present(detailsController, animated: true, completion: nil)
+        //self.show(detailsController, sender: nil)
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout functions
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let someImage: UIImage = ImageController.shared.fetchImage(imageName: (canvases[0].imageName!)) ?? UIImage(named: "blur_background")!
+        let height_by_width = someImage.size.height / someImage.size.width
+        
         let side = view.frame.width / 3 -  (Device.IS_IPHONE ? 12 : 24)
-        return CGSize(width: side, height: side * 2)
+        return CGSize(width: side, height: side * height_by_width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
