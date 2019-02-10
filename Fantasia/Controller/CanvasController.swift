@@ -13,41 +13,14 @@ class CanvasController: UIViewController, ColorDelegate {
     
     let varietiesViewController = VarietiesViewController()
     
+    var canvasActivityView = CanvasView()
+    
     func onGetColor(color: UIColor) {
-        canvas.setStrokeColor(color: color)
+        canvasActivityView.setColor(color: color)
     }
-    
-    
-    
-    var canvas = CanvasView()
-    
-    let undoButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.blue
-        button.setImage(UIImage(named: "btn_undo"), for: .normal)
-        button.addTarget(self, action: #selector(handleUndo), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc fileprivate func handleUndo() {
-        canvas.undo()
-    }
-    
-    @objc fileprivate func handleClear() {
-        CanvasObjectController.shared.saveCanvasObject(image: canvas.asImage2(), title: "Super image", date: Date())
-        canvas.clear()
-    }
-    
-    let clearButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.red
-        button.setImage(UIImage(named: "btn_clear"), for: .normal)
-        button.addTarget(self, action: #selector(handleClear), for: .touchUpInside)
-        return button
-    }()
     
     override func loadView() {
-        view = canvas
+        view = canvasActivityView
     }
     
     override func viewDidLoad() {
@@ -58,17 +31,16 @@ class CanvasController: UIViewController, ColorDelegate {
     }
     
     fileprivate func setupLayout() {
-        canvas.changeColorAction = handleChangeColor
-        
-        view.addSubview(undoButton)
-        undoButton.setAnchor(top: view.safeTopAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
-        
-        view.addSubview(clearButton)
-        clearButton.setAnchor(top: view.safeTopAnchor, leading: nil, bottom: nil, trailing: view.safeTrailingAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 40, height: 40)
+        canvasActivityView.changeColorAction = handleChangeColor
+        canvasActivityView.saveCanvasAction = handleSaveCanvas
     }
     
     func handleChangeColor() {
         present(varietiesViewController, animated: true, completion: nil)
+    }
+    
+    func handleSaveCanvas() {
+        canvasActivityView.saveCanvas()
     }
     
     func pickColor(color: UIColor) {

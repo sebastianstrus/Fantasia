@@ -10,7 +10,6 @@ import UIKit
 
 
 let kStrokeInitialWidth: CGFloat = 10
-let kInitialColor = UIColor.orange
 let kSliderMinValue: Float = 1
 let kSliderMaxValue: Float = 20
 let kSliderInitialValue: Float = 10
@@ -18,10 +17,56 @@ let kSliderInitialValue: Float = 10
 class CanvasView: UIView {
     
     var changeColorAction: (() -> Void)?
+    var saveCanvasAction: (() -> Void)?
     
-    fileprivate var strokeColor = kInitialColor
+    fileprivate var strokeColor = AppColors.ACCENT_BLUE
     fileprivate var strokeWidth = kStrokeInitialWidth
     
+    let undoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = AppColors.ACCENT_BLUE
+        button.setImage(UIImage(named: "btn_undo"), for: .normal)
+        button.addTarget(self, action: #selector(handleUndo), for: .touchUpInside)
+        return button
+    }()
+    
+    let titleTF: UITextField = {
+        let tf = UITextField()
+        tf.text = "Enter title"
+        tf.font = UIFont(name: "Oswald-Medium", size: 20)
+        tf.textAlignment = .center
+        return tf
+    }()
+    
+    let clearButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.red
+        button.setImage(UIImage(named: "btn_clear"), for: .normal)
+        button.addTarget(self, action: #selector(handleClear), for: .touchUpInside)
+        return button
+    }()
+    
+    let correctCanvasView: CorrectCanvasView = {
+        let view = CorrectCanvasView()
+        view.setShadow()
+        return view
+    }()
+    
+    @objc fileprivate func handleUndo() {
+        correctCanvasView.undo()
+    }
+    
+    @objc fileprivate func handleClear() {
+        //CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: "Super image", date: Date())
+        correctCanvasView.clear()
+    }
+    
+    let widthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "10"
+        label.font = UIFont(name: "LuckiestGuy-Regular", size: 20)
+        return label
+    }()
     
     let widthSlider: UISlider = {
         let slider = UISlider()
@@ -34,7 +79,7 @@ class CanvasView: UIView {
     
     let colorButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor.orange
+        button.backgroundColor = AppColors.ACCENT_BLUE
         button.layer.cornerRadius = 22
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
@@ -42,11 +87,16 @@ class CanvasView: UIView {
         return button
     }()
     
-    let widthLabel: UILabel = {
-        let label = UILabel()
-        label.text = "10"
-        label.font = UIFont(name: "LuckiestGuy-Regular", size: 20)
-        return label
+    let saveButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 22
+        button.layer.borderWidth = 1
+        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "Save canvas", attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.ACCENT_BLUE]))
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
+        button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -59,59 +109,31 @@ class CanvasView: UIView {
     }
     
     fileprivate func setup() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor(r: 245, g: 245, b: 245)
         
-        addSubview(colorButton)
-        colorButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 20, width: 44, height: 44)
+        addSubview(undoButton)
+        undoButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         
-        addSubview(widthSlider)
-        widthSlider.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: colorButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 44)
+        addSubview(clearButton)
+        clearButton.setAnchor(top: safeTopAnchor, leading: nil, bottom: nil, trailing: safeTrailingAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 40, height: 40)
+        
+        addSubview(titleTF)
+        titleTF.setAnchor(top: safeTopAnchor, leading: undoButton.trailingAnchor, bottom: undoButton.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        
+        addSubview(saveButton)
+        saveButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 44, height: 44)
         
         addSubview(widthLabel)
-        widthLabel.setAnchor(top: nil, leading: leadingAnchor, bottom: widthSlider.topAnchor, trailing: colorButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
-    }
-    
-    override func draw(_ rect: CGRect) {
-        //custom drawing
+        widthLabel.setAnchor(top: nil, leading: leadingAnchor, bottom: saveButton.topAnchor, trailing: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 10, paddingRight: 0, width: 44, height: 44)
         
-        super.draw(rect)
+        addSubview(colorButton)
+        colorButton.setAnchor(top: nil, leading: nil, bottom: saveButton.topAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 20, width: 44, height: 44)
         
-        guard let context = UIGraphicsGetCurrentContext() else { return }
+        addSubview(widthSlider)
+        widthSlider.setAnchor(top: widthLabel.topAnchor, leading: widthLabel.trailingAnchor, bottom: saveButton.topAnchor, trailing: colorButton.leadingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 20)
         
-        context.setLineCap(.butt)
-        
-        
-        lines.forEach { (line) in
-            context.setStrokeColor(line.color.cgColor)
-            context.setLineWidth(line.width)
-            for (i,p) in line.points.enumerated() {
-                if i == 0 {
-                    context.move(to: p)
-                }
-                else {
-                    context.addLine(to: p)
-                }
-            }
-            context.strokePath()
-        }
-    }
-    
-    fileprivate var lines = [Line]()
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        lines.append(Line.init(color: strokeColor, width: strokeWidth, points: []))
-    }
-    
-    // handle screen touching
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point = touches.first?.location(in: nil) else { return }
-        
-        guard var lastLine = lines.popLast() else { return }
-        lastLine.points.append(point)
-        
-        lines.append(lastLine)
-        
-        setNeedsDisplay()
+        addSubview(correctCanvasView)
+        correctCanvasView.setAnchor(top: titleTF.bottomAnchor, leading: leadingAnchor, bottom: widthSlider.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
     }
     
     @objc fileprivate func handleSliderChange() {
@@ -119,28 +141,27 @@ class CanvasView: UIView {
         widthLabel.text = "\(Int(widthSlider.value))"
     }
     
-    @objc func handleChangeColor() {
+    @objc fileprivate func handleChangeColor() {
         changeColorAction?()
     }
     
-    // public functions
-    func undo() {
-        _ = lines.popLast()
-        setNeedsDisplay()
+    @objc fileprivate func handleSaveCanvas() {
+        saveCanvasAction?()
     }
     
-    func clear() {
-        lines.removeAll()
-        setNeedsDisplay()
-    }
     
-    func setStrokeColor(color: UIColor) {
-        strokeColor = color
+    
+    //public functions
+    public func setColor(color: UIColor){
+        correctCanvasView.setStrokeColor(color: color)
         colorButton.layer.backgroundColor = color.cgColor
     }
     
-    func setStrokeWidth(width: CGFloat) {
-        strokeWidth = width
-        widthLabel.text = "\(width)"
+    public func setStrokeWidth(width: CGFloat){
+        correctCanvasView.setStrokeWidth(width: width)
+        widthLabel.text = "\(width)"    }
+    
+    public func saveCanvas(){
+        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: "Super image", date: Date())
     }
 }

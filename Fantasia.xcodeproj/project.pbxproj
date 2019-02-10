@@ -35,6 +35,7 @@
 		7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C822103B3A009915A1 /* Fantasia.xcdatamodeld */; };
 		7D9A15ED22103E3F009915A1 /* CanvasObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */; };
 		7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15EE22107C3C009915A1 /* Date+Extension.swift */; };
+		7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */; };
 		7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56952208E213003AE323 /* ColorPicker.swift */; };
 		7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
@@ -72,6 +73,7 @@
 		7D9A15C922103B3A009915A1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectController.swift; sourceTree = "<group>"; };
 		7D9A15EE22107C3C009915A1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectCanvasView.swift; sourceTree = "<group>"; };
 		7DAE56952208E213003AE323 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarietiesViewController.swift; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				7D2AFF082204FAD600C13363 /* MainMenuView.swift */,
 				7D2AFF442206775600C13363 /* CanvasView.swift */,
 				7D2AFF402206630900C13363 /* MyCollectionView.swift */,
+				7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */,
 				7D9A15BE220F28D9009915A1 /* Cells */,
 			);
 			path = View;
@@ -325,6 +328,7 @@
 			files = (
 				7D2AFF2122051AD900C13363 /* AppFonts.swift in Sources */,
 				7D9A15C0220F28F7009915A1 /* MyCollectionCell.swift in Sources */,
+				7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */,
 				7D2AFF452206775600C13363 /* CanvasView.swift in Sources */,
 				7D2AFF1D22050E1800C13363 /* UIView+Extension.swift in Sources */,
 				7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */,
