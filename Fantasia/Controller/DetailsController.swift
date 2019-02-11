@@ -21,23 +21,21 @@ class DetailsController: UIViewController {
     }
     
     fileprivate func setupLayout() {
-        print("test")
         detailsView = DetailsView(frame: view.frame)
         view.addSubview(detailsView)
+        
         detailsView.backAction = handleBack
-        detailsView.pinToEdges(view: view)
+        detailsView.editAction = handleEdit
         
-        let image = ImageController.shared.fetchImage(imageName: (canvas?.imageName)!)
-        detailsView.imageView.image = ImageController.shared.fetchImage(imageName: (canvas?.imageName)!)
-        detailsView.titleLabel.text = canvas?.title
-        detailsView.dateLabel.text = canvas?.date?.formatedString()
-        
-        let height_by_width = image!.size.height / image!.size.width
-        detailsView.setImageHeight(image_height_by_width: Int(height_by_width))
+        detailsView.setCanvas(canvas: canvas!)
     }
     
     fileprivate func handleBack() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func handleEdit() {
+        print("Edit soon")
     }
 }
 

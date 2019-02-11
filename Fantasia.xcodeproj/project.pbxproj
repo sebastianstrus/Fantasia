@@ -38,6 +38,8 @@
 		7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */; };
 		7D9A15F32210CAB9009915A1 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F22210CAB9009915A1 /* DetailsController.swift */; };
 		7D9A15F52210CB26009915A1 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F42210CB26009915A1 /* DetailsView.swift */; };
+		7D9A15F72211F6C3009915A1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */; };
+		7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D9A15F922122F21009915A1 /* page_flip.mp3 */; };
 		7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56952208E213003AE323 /* ColorPicker.swift */; };
 		7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
@@ -78,6 +80,8 @@
 		7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectCanvasView.swift; sourceTree = "<group>"; };
 		7D9A15F22210CAB9009915A1 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
 		7D9A15F42210CB26009915A1 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		7D9A15F922122F21009915A1 /* page_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = page_flip.mp3; sourceTree = "<group>"; };
 		7DAE56952208E213003AE323 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarietiesViewController.swift; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -111,8 +115,8 @@
 				7D2AFF442206775600C13363 /* CanvasView.swift */,
 				7D2AFF402206630900C13363 /* MyCollectionView.swift */,
 				7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */,
-				7D9A15BE220F28D9009915A1 /* Cells */,
 				7D9A15F42210CB26009915A1 /* DetailsView.swift */,
+				7D9A15BE220F28D9009915A1 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,6 +137,7 @@
 		7D2AFF0C2204FF4C00C13363 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D9A15F822122F0D009915A1 /* Sounds */,
 				7D2AFF0F2204FF7D00C13363 /* Images */,
 				7D2AFF0E2204FF7200C13363 /* Strings */,
 				7D2AFF0D2204FF6B00C13363 /* Fonts */,
@@ -178,6 +183,7 @@
 				7D2AFF1C22050E1800C13363 /* UIView+Extension.swift */,
 				7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */,
 				7D9A15EE22107C3C009915A1 /* Date+Extension.swift */,
+				7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +245,14 @@
 				7D9A15C2220F3A9E009915A1 /* CoreDataHandler.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7D9A15F822122F0D009915A1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7D9A15F922122F21009915A1 /* page_flip.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		7DAE56942208E1DB003AE323 /* Custom controls */ = {
@@ -317,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */,
+				7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */,
 				7D2AFF3722052D5500C13363 /* SeymourOne-Regular.ttf in Resources */,
 				7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */,
 				7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */,
@@ -350,6 +365,7 @@
 				7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */,
 				7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */,
 				7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */,
+				7D9A15F72211F6C3009915A1 /* UIViewController+Extension.swift in Sources */,
 				7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */,
 				7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */,
 				7DAE569E220903BE003AE323 /* Line.swift in Sources */,

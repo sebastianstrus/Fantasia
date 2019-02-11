@@ -45,11 +45,6 @@ class CanvasObjectController {
                 guard savedCanvasObject.date != nil else { return }
                 canvases.append(savedCanvasObject)
                 
-                /*let storedImage = ImageController.shared.fetchImage(imageName: savedCanvasObject.imageName!)
-                
-                if let storedImage = storedImage {
-                    fetchedCanvases.append(storedImage)
-                }*/
             }
         } catch let error as NSError {
             print("Could not return image objects: \(error)")

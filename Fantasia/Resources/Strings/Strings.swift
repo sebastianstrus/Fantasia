@@ -8,5 +8,5 @@
 
 struct Strings {
     static let APP_TITLE = "Fantasia"
-    static let APP_SUBTITLE = "Free your mind"
+    static let APP_SUBTITLE = "Draw and save"
 }

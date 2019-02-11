@@ -69,7 +69,7 @@ class CorrectCanvasView: UIView {
     
     // handle screen touching
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let point = touches.first?.location(in: nil) else { return }
+        guard let point = touches.first?.location(in: self) else { return }
         
         guard var lastLine = lines.popLast() else { return }
         lastLine.points.append(point)
@@ -79,14 +79,6 @@ class CorrectCanvasView: UIView {
         setNeedsDisplay()
     }
     
-//    @objc fileprivate func handleSliderChange() {
-//        strokeWidth = CGFloat(widthSlider.value)
-//        widthLabel.text = "\(Int(widthSlider.value))"
-//    }
-//
-//    @objc func handleChangeColor() {
-//        changeColorAction?()
-//    }
     
     // public functions
     func undo() {

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CanvasController: UIViewController, ColorDelegate {
+    
     
     
     let varietiesViewController = VarietiesViewController()
@@ -26,12 +28,16 @@ class CanvasController: UIViewController, ColorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         setupLayout()
         varietiesViewController.delegate = self
+        
     }
     
     fileprivate func setupLayout() {
         canvasActivityView.changeColorAction = handleChangeColor
+        canvasActivityView.menuAction = handleMenu
         canvasActivityView.saveCanvasAction = handleSaveCanvas
     }
     
@@ -39,15 +45,17 @@ class CanvasController: UIViewController, ColorDelegate {
         present(varietiesViewController, animated: true, completion: nil)
     }
     
-    func handleSaveCanvas() {
-        canvasActivityView.saveCanvas()
+    func handleMenu() {
+        dismiss(animated: true, completion: nil)
     }
     
-    func pickColor(color: UIColor) {
-//        print("Print 2:")
-//        print(color)
-//        canvas.setColor(color: color)
+    func handleSaveCanvas() {
+        canvasActivityView.saveCanvas()
+        dismiss(animated: true, completion: nil)
     }
+    
+
+    
 
 }
 

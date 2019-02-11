@@ -19,39 +19,30 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         
         setupView()
-        
-        canvases = CanvasObjectController.shared.canvases
-        self.myCollectionView.reload()
-        
-        
-        /*CoreDataHandler.getCanvases() { (canvases) in
-            self.canvases = canvases
-            self.myCollectionView.reload()
-        }*/
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        print("viewDidAppear")
+        CanvasObjectController.shared.fetchCanvasObjects()
         canvases = CanvasObjectController.shared.canvases
         self.myCollectionView.reload()
-        
-        /*CoreDataHandler.getCanvases() { (canvases) in
-            self.canvases = canvases
-            self.myCollectionView.reload()
-        }*/
     }
     
+    
     private func setupView() {
-        let myCV = MyCollectionView()
+        let myCV = MyCollectionView(frame: view.frame)
         self.myCollectionView = myCV
-        view.addSubview(myCollectionView)
-        myCollectionView.pinToEdges(view: view)
         
+        view.addSubview(myCollectionView)
+        myCollectionView.backAction = handleBack
         myCollectionView.setDelegate(d: self)
         myCollectionView.setDataSource(ds: self)
         myCollectionView.registerCell(className: MyCollectionCell.self, id: cellId)
+    }
+    
+    func handleBack() {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - UICollectionViewDataSource functions
@@ -65,9 +56,7 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MyCollectionCell
-        cell.imageView.image = ImageController.shared.fetchImage(imageName: (canvases[indexPath.row].imageName!))
-        cell.titleLabel.text = canvases[indexPath.row].date?.formatedString()
-        cell.dateLabel.text = canvases[indexPath.row].date?.formatedString()
+        cell.canvas = canvases[indexPath.row]
         return cell
     }
     
@@ -75,9 +64,7 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsController = DetailsController()
         detailsController.canvas = canvases[indexPath.row]
-        print("indexPath.row: \(indexPath.row)")
         present(detailsController, animated: true, completion: nil)
-        //self.show(detailsController, sender: nil)
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout functions

@@ -11,31 +11,41 @@ import UIKit
 class MyCollectionCell: UICollectionViewCell {
     
     
+    var canvas : CanvasObject? {
+        didSet {
+            setCanvas(canvas: canvas!)
+        }
+    }
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         return iv
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-                
-        self.addSubview(imageView)
-        imageView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        imageView.pinToEdges(view: self)
+        setupLayout()
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //public functions
+    func setCanvas(canvas: CanvasObject) {
+        imageView.image = ImageController.shared.fetchImage(imageName: canvas.imageName!)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.setupLayout()
+    }
+    
+    func setupLayout() {
+        self.addSubview(imageView)
+        imageView.pinToEdges(view: self)
+        setShadow()
     }
 }

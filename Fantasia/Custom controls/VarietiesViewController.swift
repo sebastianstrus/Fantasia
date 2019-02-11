@@ -102,7 +102,6 @@ class VarietiesViewController: UIViewController , HSBColorPickerDelegate {
     
     
     @objc func pickColor() {
-        self.canvasController?.pickColor(color: self.view.backgroundColor!)
         print("Print 1:")
         print(self.view.backgroundColor!)
         

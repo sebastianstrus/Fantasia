@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import AVFoundation
 
 
-let kStrokeInitialWidth: CGFloat = 10
-let kSliderMinValue: Float = 1
-let kSliderMaxValue: Float = 20
-let kSliderInitialValue: Float = 10
+fileprivate let kStrokeInitialWidth: CGFloat = 10
+fileprivate let kSliderMinValue: Float = 1
+fileprivate let kSliderMaxValue: Float = 20
+fileprivate let kSliderInitialValue: Float = 10
 
 class CanvasView: UIView {
     
     var changeColorAction: (() -> Void)?
+    var menuAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
+    
+    //temp:
+    var audioPlayer: AVAudioPlayer?
     
     fileprivate var strokeColor = AppColors.ACCENT_BLUE
     fileprivate var strokeWidth = kStrokeInitialWidth
@@ -32,7 +37,7 @@ class CanvasView: UIView {
     
     let titleTF: UITextField = {
         let tf = UITextField()
-        tf.text = "Enter title"
+        tf.placeholder = "Enter title".localized
         tf.font = UIFont(name: "Oswald-Medium", size: 20)
         tf.textAlignment = .center
         return tf
@@ -57,6 +62,7 @@ class CanvasView: UIView {
     }
     
     @objc fileprivate func handleClear() {
+        playSound()
         UIView.transition(from: correctCanvasView, to: correctCanvasView, duration: 0.5, options: [.transitionCurlUp, .showHideTransitionViews])
         correctCanvasView.clear()
     }
@@ -87,12 +93,24 @@ class CanvasView: UIView {
         return button
     }()
     
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 22
+        button.layer.borderWidth = 1
+        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "Menu", attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.ACCENT_BLUE]))
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
+        button.addTarget(self, action: #selector(handleMenu), for: .touchUpInside)
+        return button
+    }()
+    
     let saveButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 22
         button.layer.borderWidth = 1
-        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "Save canvas", attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.ACCENT_BLUE]))
+        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "Save", attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.ACCENT_BLUE]))
         button.setAttributedTitle(attributedString, for: .normal)
         button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
         button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
@@ -118,10 +136,13 @@ class CanvasView: UIView {
         clearButton.setAnchor(top: safeTopAnchor, leading: nil, bottom: nil, trailing: safeTrailingAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 40, height: 40)
         
         addSubview(titleTF)
-        titleTF.setAnchor(top: safeTopAnchor, leading: undoButton.trailingAnchor, bottom: undoButton.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        titleTF.setAnchor(top: safeTopAnchor, leading: undoButton.trailingAnchor, bottom: undoButton.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        
+        addSubview(backButton)
+        backButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 30, paddingRight: 10, width: CGFloat(Device.SCREEN_WIDTH - 60) / 2, height: 44)
         
         addSubview(saveButton)
-        saveButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 44, height: 44)
+        saveButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 30, paddingRight: 20, width: CGFloat(Device.SCREEN_WIDTH - 60) / 2, height: 44)
         
         addSubview(widthLabel)
         widthLabel.setAnchor(top: nil, leading: leadingAnchor, bottom: saveButton.topAnchor, trailing: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 10, paddingRight: 0, width: 44, height: 44)
@@ -146,6 +167,10 @@ class CanvasView: UIView {
         changeColorAction?()
     }
     
+    @objc fileprivate func handleMenu() {
+        menuAction?()
+    }
+    
     @objc fileprivate func handleSaveCanvas() {
         saveCanvasAction?()
     }
@@ -160,6 +185,21 @@ class CanvasView: UIView {
     
     
     public func saveCanvas(){
-        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: "Super image", date: Date())
+        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: titleTF.text ?? "No title", date: Date())
+    }
+    
+    func playSound() {
+        if let audioPlayer = audioPlayer, audioPlayer.isPlaying { audioPlayer.stop() }
+        
+        guard let soundURL = Bundle.main.url(forResource: "page_flip", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch let error {
+            print(error)
+        }
     }
 }
