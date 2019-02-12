@@ -35,6 +35,7 @@ class CanvasObjectController {
         do {
             savedCanvasObjects = try managedContext.fetch(canvasObjectRequest)
             
+            canvases.removeAll()
             images.removeAll()
             
             for canvasObject in savedCanvasObjects {
