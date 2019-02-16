@@ -9,7 +9,7 @@
 
 import UIKit
 
-let kButtonsStackViewHeight: CGFloat = Device.IS_IPHONE ? 140 : 280
+let kButtonsStackViewHeight: CGFloat = Device.IS_IPHONE ? 90 : 170
 let kStackViewMargin: CGFloat = Device.IS_IPHONE ? 120 : 300
 
 class MainMenuView: UIView {
@@ -31,6 +31,16 @@ class MainMenuView: UIView {
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFill
         return iv
+    }()
+    
+    var topContainer: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    var bottomContainer: UIView = {
+        let view = UIView()
+        return view
     }()
     
     let titleLabel: UILabel = {
@@ -74,44 +84,39 @@ class MainMenuView: UIView {
     }
     
     func setup() {
+        
         addSubview(backgroundImageView)
+        backgroundImageView.pinToEdges(view: self, safe: false)
+        
+        addSubview(topContainer)
+        topContainer.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: CGFloat(Device.SCREEN_WIDTH), height: CGFloat(Device.SCREEN_HEIGHT/2))
         
         let titlesStackView = createStackView(views: [titleLabel, subtitleLabel], spacing: 0)
-        addSubview(titlesStackView)
-        titlesStackView.setAnchor(top: topAnchor,
-                                  leading: nil,
-                                  bottom: nil,
-                                  trailing: nil,
-                                  paddingTop: Device.IS_IPHONE ? 180 : 360,
-                                  paddingLeft: 0,
-                                  paddingBottom: 0,
-                                  paddingRight: 0,
-                                  width: self.frame.width,
-                                  height: Device.IS_IPHONE ? 130 : 260)
+        topContainer.addSubview(titlesStackView)
+        titlesStackView.setAnchor(width: self.frame.width, height: Device.IS_IPHONE ? 130 : 260)
         titlesStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        titlesStackView.centerYAnchor.constraint(equalTo: topContainer.centerYAnchor).isActive = true
         
-        let buttonsStackView = createStackView(views: [newCanvasButton, myCollectionButton], spacing: Device.IS_IPHONE ? 20 : 40)
-        addSubview(buttonsStackView)
-        backgroundImageView.setAnchor(top: self.topAnchor,
-                                      leading: self.leadingAnchor,
-                                      bottom: self.bottomAnchor,
-                                      trailing: self.trailingAnchor,
-                                      paddingTop: 0,
-                                      paddingLeft: 0,
-                                      paddingBottom: 0,
-                                      paddingRight: 0)
         
-        buttonsStackView.setAnchor(top: nil,
-                            leading: nil,
-                            bottom: nil,
-                            trailing: nil,
-                            paddingTop: 0,
-                            paddingLeft: 0,
-                            paddingBottom: 0,
-                            paddingRight: 0,
-                            width: self.frame.width - kStackViewMargin,
-                            height: kButtonsStackViewHeight)
-        buttonsStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        addSubview(bottomContainer)
+        bottomContainer.setAnchor(top: topContainer.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: CGFloat(Device.SCREEN_WIDTH), height: 0)
+        
+        //
+        
+        let titles2StackView = createStackView(views: [newCanvasButton, myCollectionButton], spacing: 0)
+        bottomContainer.addSubview(titles2StackView)
+        titles2StackView.setAnchor(width: self.frame.width, height: Device.IS_IPHONE ? 130 : 260)
+        titles2StackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        titles2StackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
+        
+        //
+        
+        let buttonsStackView = createStackView(views: [newCanvasButton, myCollectionButton], spacing: Device.IS_IPHONE ? 10 : 40)
+        bottomContainer.addSubview(buttonsStackView)
+        buttonsStackView.backgroundColor = UIColor.lightGray
+        
+        buttonsStackView.setAnchor(width: self.frame.width - kStackViewMargin, height: kButtonsStackViewHeight)
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        buttonsStackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
     }
 }

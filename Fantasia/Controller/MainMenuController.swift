@@ -13,16 +13,18 @@ class MainMenuController: UIViewController {
     
     var mainMenuView: MainMenuView!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
     func setupView() {
-        self.mainMenuView = MainMenuView(frame: view.frame)
+        self.mainMenuView = MainMenuView()
         self.mainMenuView.newCanvasAction = handleNewCanvas
         self.mainMenuView.myCollectionAction = handleMyCollection
-        self.view.addSubview(mainMenuView)        
+        self.view.addSubview(mainMenuView)
+        mainMenuView.pinToEdges(view: view, safe: false)
     }
     
     // MARK: - Events

@@ -23,7 +23,6 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewDidAppear")
         CanvasObjectController.shared.fetchCanvasObjects()
         canvases = CanvasObjectController.shared.canvases
         self.myCollectionView.reload()

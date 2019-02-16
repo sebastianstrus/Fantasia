@@ -45,7 +45,7 @@ class MyCollectionCell: UICollectionViewCell {
     
     func setupLayout() {
         self.addSubview(imageView)
-        imageView.pinToEdges(view: self)
+        imageView.pinToEdges(view: self, safe: false)
         setShadow()
     }
 }

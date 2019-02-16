@@ -14,9 +14,9 @@ extension UIButton {
         self.init()
         let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.BUTTON_TITLE]))
         self.setAttributedTitle(attributedString, for: .normal)
-        self.layer.cornerRadius = Device.IS_IPHONE ? 30 : 60
+        self.layer.cornerRadius = Device.IS_IPHONE ? 20 : 30
         self.backgroundColor = AppColors.BUTTON_BACKGROUND
-        self.setAnchor(width: 0, height: Device.IS_IPHONE ? 60 : 120)
+        self.setAnchor(width: CGFloat(Device.SCREEN_WIDTH * 2/3), height: Device.IS_IPHONE ? 40 : 80)
     }
 
 }

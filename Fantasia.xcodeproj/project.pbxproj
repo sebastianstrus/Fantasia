@@ -27,9 +27,7 @@
 		7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABD72203805500E57FF3 /* AppDelegate.swift */; };
 		7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABDE2203805800E57FF3 /* Assets.xcassets */; };
 		7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */; };
-		7D9A15BD220F2176009915A1 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15BC220F2176009915A1 /* Canvas.swift */; };
 		7D9A15C0220F28F7009915A1 /* MyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15BF220F28F7009915A1 /* MyCollectionCell.swift */; };
-		7D9A15C3220F3A9E009915A1 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C2220F3A9E009915A1 /* CoreDataHandler.swift */; };
 		7D9A15C5221037BF009915A1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */; };
 		7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C6221038E7009915A1 /* ImageController.swift */; };
 		7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C822103B3A009915A1 /* Fantasia.xcdatamodeld */; };
@@ -69,9 +67,7 @@
 		7D92ABDE2203805800E57FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D92ABE12203805800E57FF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D92ABE32203805800E57FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D9A15BC220F2176009915A1 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		7D9A15BF220F28F7009915A1 /* MyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionCell.swift; sourceTree = "<group>"; };
-		7D9A15C2220F3A9E009915A1 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		7D9A15C6221038E7009915A1 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		7D9A15C922103B3A009915A1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -102,8 +98,8 @@
 		7D2AFF052204CE7000C13363 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7D9A15C822103B3A009915A1 /* Fantasia.xcdatamodeld */,
 				7DAE569D220903BE003AE323 /* Line.swift */,
-				7D9A15BC220F2176009915A1 /* Canvas.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,9 +211,7 @@
 		7D92ABD62203805500E57FF3 /* Fantasia */ = {
 			isa = PBXGroup;
 			children = (
-				7D9A15C1220F3A89009915A1 /* CoreData */,
 				7D92ABD72203805500E57FF3 /* AppDelegate.swift */,
-				7D9A15C822103B3A009915A1 /* Fantasia.xcdatamodeld */,
 				7D2AFF052204CE7000C13363 /* Model */,
 				7D2AFF062204CE7800C13363 /* View */,
 				7D2AFF072204CE8000C13363 /* Controller */,
@@ -237,14 +231,6 @@
 				7D9A15BF220F28F7009915A1 /* MyCollectionCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		7D9A15C1220F3A89009915A1 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				7D9A15C2220F3A9E009915A1 /* CoreDataHandler.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		7D9A15F822122F0D009915A1 /* Sounds */ = {
@@ -357,10 +343,8 @@
 				7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */,
 				7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */,
 				7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */,
-				7D9A15C3220F3A9E009915A1 /* CoreDataHandler.swift in Sources */,
 				7D2AFF192205056800C13363 /* UIColor+Extension.swift in Sources */,
 				7D9A15C5221037BF009915A1 /* UIImage+Extension.swift in Sources */,
-				7D9A15BD220F2176009915A1 /* Canvas.swift in Sources */,
 				7D9A15ED22103E3F009915A1 /* CanvasObjectController.swift in Sources */,
 				7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */,
 				7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */,

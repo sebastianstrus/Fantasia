@@ -43,8 +43,7 @@ class CorrectCanvasView: UIView {
         
         guard let context = UIGraphicsGetCurrentContext() else { return }
         
-        context.setLineCap(.butt)
-        
+        context.setLineCap(CGLineCap.round)        
         
         lines.forEach { (line) in
             context.setStrokeColor(line.color.cgColor)

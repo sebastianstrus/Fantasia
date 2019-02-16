@@ -101,10 +101,7 @@ class VarietiesViewController: UIViewController , HSBColorPickerDelegate {
     }
     
     
-    @objc func pickColor() {
-        print("Print 1:")
-        print(self.view.backgroundColor!)
-        
+    @objc func pickColor() {        
         delegate?.onGetColor(color: self.view.backgroundColor!)
         self.dismiss(animated: false, completion: nil)
     }

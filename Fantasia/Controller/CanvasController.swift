@@ -11,18 +11,12 @@ import AVFoundation
 
 class CanvasController: UIViewController, ColorDelegate {
     
-    
-    
     let varietiesViewController = VarietiesViewController()
     
-    var canvasActivityView = CanvasView()
+    var canvasActivityView: CanvasView!
     
     func onGetColor(color: UIColor) {
         canvasActivityView.setColor(color: color)
-    }
-    
-    override func loadView() {
-        view = canvasActivityView
     }
     
     override func viewDidLoad() {
@@ -36,8 +30,13 @@ class CanvasController: UIViewController, ColorDelegate {
     }
     
     fileprivate func setupLayout() {
+        view.backgroundColor = AppColors.WHITE_GRAY
+        canvasActivityView = CanvasView()
+        view.addSubview(canvasActivityView)
+        canvasActivityView.pinToEdges(view: view, safe: true)
+        
         canvasActivityView.changeColorAction = handleChangeColor
-        canvasActivityView.menuAction = handleMenu
+        canvasActivityView.backAction = handleBack
         canvasActivityView.saveCanvasAction = handleSaveCanvas
     }
     
@@ -45,7 +44,7 @@ class CanvasController: UIViewController, ColorDelegate {
         present(varietiesViewController, animated: true, completion: nil)
     }
     
-    func handleMenu() {
+    func handleBack() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -53,12 +52,7 @@ class CanvasController: UIViewController, ColorDelegate {
         canvasActivityView.saveCanvas()
         dismiss(animated: true, completion: nil)
     }
-    
-
-    
-
 }
-
 
 protocol ColorDelegate
 {

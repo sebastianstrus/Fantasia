@@ -99,10 +99,20 @@ extension UIView {
         self.layer.cornerRadius = 4
     }
     
-    func pinToEdges(view: UIView) {
-        setAnchor(top: view.topAnchor,
+    func setLightShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 1.0
+        self.layer.masksToBounds = false
+        self.clipsToBounds = false
+        self.layer.cornerRadius = 1
+    }
+    
+    func pinToEdges(view: UIView, safe: Bool) {
+        setAnchor(top: safe ? view.safeTopAnchor : view.topAnchor,
                   leading: view.leadingAnchor,
-                  bottom: view.safeBottomAnchor,
+                  bottom: safe ? view.safeBottomAnchor : view.bottomAnchor,
                   trailing: view.trailingAnchor,
                   paddingTop: 0,
                   paddingLeft: 0,

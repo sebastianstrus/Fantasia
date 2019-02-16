@@ -31,7 +31,7 @@ class MyCollectionView: UIView {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 15
         button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
@@ -48,13 +48,13 @@ class MyCollectionView: UIView {
     
     func setup() {
         addSubview(backgroundIV)
-        backgroundIV.pinToEdges(view: self)
+        backgroundIV.pinToEdges(view: self, safe: false)
         
         addSubview(collectionView)
-        collectionView.pinToEdges(view: self)
+        collectionView.pinToEdges(view: self, safe: true)
         
         addSubview(backButton)
-        backButton.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 60, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
+        backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
     }
     
     @objc func handleBack() {

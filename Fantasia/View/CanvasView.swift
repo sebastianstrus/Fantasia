@@ -18,7 +18,7 @@ fileprivate let kSliderInitialValue: Float = 10
 class CanvasView: UIView {
     
     var changeColorAction: (() -> Void)?
-    var menuAction: (() -> Void)?
+    var backAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
     
     //temp:
@@ -51,7 +51,7 @@ class CanvasView: UIView {
         return button
     }()
     
-    let correctCanvasView: CorrectCanvasView = {
+    var correctCanvasView: CorrectCanvasView = {
         let view = CorrectCanvasView()
         view.setShadow()
         return view
@@ -62,17 +62,15 @@ class CanvasView: UIView {
     }
     
     @objc fileprivate func handleClear() {
-        playSound()
-        UIView.transition(from: correctCanvasView, to: correctCanvasView, duration: 0.5, options: [.transitionCurlUp, .showHideTransitionViews])
+
+        UIView.transition(with:correctCanvasView,
+                          duration:0.8,
+                          options: .transitionCurlUp,
+                          animations: { self.correctCanvasView = self.correctCanvasView },
+                          completion: nil)
         correctCanvasView.clear()
+        playSound()
     }
-    
-    let widthLabel: UILabel = {
-        let label = UILabel()
-        label.text = "10"
-        label.font = UIFont(name: "LuckiestGuy-Regular", size: 20)
-        return label
-    }()
     
     let widthSlider: UISlider = {
         let slider = UISlider()
@@ -86,33 +84,31 @@ class CanvasView: UIView {
     let colorButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = AppColors.ACCENT_BLUE
-        button.layer.cornerRadius = 22
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = UIColor.black.cgColor
         button.addTarget(self, action: #selector(handleChangeColor), for: .touchUpInside)
         return button
     }()
     
     let backButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = 22
-        button.layer.borderWidth = 1
-        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "Menu", attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.ACCENT_BLUE]))
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
-        button.addTarget(self, action: #selector(handleMenu), for: .touchUpInside)
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.white
+        button.setImage(UIImage(named: "back_arrow"), for: .normal)
+        button.layer.cornerRadius = 15
+        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         return button
     }()
     
     let saveButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = 22
-        button.layer.borderWidth = 1
-        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "Save", attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.ACCENT_BLUE]))
-        button.setAttributedTitle(attributedString, for: .normal)
-        button.layer.borderColor = UIColor(r: 0, g: 122, b: 255).cgColor
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.white
+        button.setImage(UIImage(named: "button_save"), for: .normal)
+        button.layer.cornerRadius = 15
+        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
         return button
     }()
@@ -129,46 +125,80 @@ class CanvasView: UIView {
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
-        addSubview(undoButton)
-        undoButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 5, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
-        
-        addSubview(clearButton)
-        clearButton.setAnchor(top: safeTopAnchor, leading: nil, bottom: nil, trailing: safeTrailingAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 40, height: 40)
-        
-        addSubview(titleTF)
-        titleTF.setAnchor(top: safeTopAnchor, leading: undoButton.trailingAnchor, bottom: undoButton.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
-        
         addSubview(backButton)
-        backButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 30, paddingRight: 10, width: CGFloat(Device.SCREEN_WIDTH - 60) / 2, height: 44)
+        backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 8, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         
         addSubview(saveButton)
-        saveButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 30, paddingRight: 20, width: CGFloat(Device.SCREEN_WIDTH - 60) / 2, height: 44)
+        saveButton.setAnchor(top: safeTopAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 30, height: 30)
         
-        addSubview(widthLabel)
-        widthLabel.setAnchor(top: nil, leading: leadingAnchor, bottom: saveButton.topAnchor, trailing: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 10, paddingRight: 0, width: 44, height: 44)
+        addSubview(titleTF)
+        titleTF.setAnchor(top: safeTopAnchor, leading: backButton.trailingAnchor, bottom: backButton.bottomAnchor, trailing: saveButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        
+        addSubview(undoButton)
+        undoButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
+        
+        addSubview(clearButton)
+        clearButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 10, width: 30, height: 30)
         
         addSubview(colorButton)
-        colorButton.setAnchor(top: nil, leading: nil, bottom: saveButton.topAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 20, width: 44, height: 44)
+        colorButton.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
+        
         
         addSubview(widthSlider)
-        widthSlider.setAnchor(top: widthLabel.topAnchor, leading: widthLabel.trailingAnchor, bottom: saveButton.topAnchor, trailing: colorButton.leadingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 20)
+        widthSlider.setAnchor(top: nil, leading: colorButton.trailingAnchor, bottom: bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 10, paddingRight: 10)
         
         addSubview(correctCanvasView)
         correctCanvasView.setAnchor(top: titleTF.bottomAnchor, leading: leadingAnchor, bottom: widthSlider.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
     }
     
+    let minColor : UIImage = {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(UIColor.red.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }()
+    
+    func progressImage(with progress : Float) -> UIImage {
+        let layer = CALayer()
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        layer.cornerRadius = 15
+        
+        let label = UILabel(frame: layer.frame)
+        label.text = "\(Int(progress))"
+        layer.addSublayer(label.layer)
+        label.textAlignment = .center
+        label.tag = 100
+        
+        UIGraphicsBeginImageContext(layer.frame.size)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+    
+    
+    
     @objc fileprivate func handleSliderChange() {
         strokeWidth = CGFloat(widthSlider.value)
         correctCanvasView.setStrokeWidth(width: strokeWidth)
-        widthLabel.text = "\(Int(widthSlider.value))"
+        
+        self.widthSlider.setThumbImage(self.progressImage(with: self.widthSlider.value), for: UIControl.State.normal)
+        self.widthSlider.setThumbImage(self.progressImage(with: self.widthSlider.value), for: UIControl.State.selected)
+        widthSlider.setLightShadow()
     }
     
     @objc fileprivate func handleChangeColor() {
         changeColorAction?()
     }
     
-    @objc fileprivate func handleMenu() {
-        menuAction?()
+    @objc fileprivate func handleBack() {
+        backAction?()
     }
     
     @objc fileprivate func handleSaveCanvas() {
