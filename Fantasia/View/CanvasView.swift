@@ -149,6 +149,10 @@ class CanvasView: UIView {
         
         addSubview(correctCanvasView)
         correctCanvasView.setAnchor(top: titleTF.bottomAnchor, leading: leadingAnchor, bottom: widthSlider.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
+        
+        self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
+        self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)
+        widthSlider.setLightShadow()
     }
     
     let minColor : UIImage = {
@@ -190,7 +194,6 @@ class CanvasView: UIView {
         
         self.widthSlider.setThumbImage(self.progressImage(with: self.widthSlider.value), for: UIControl.State.normal)
         self.widthSlider.setThumbImage(self.progressImage(with: self.widthSlider.value), for: UIControl.State.selected)
-        widthSlider.setLightShadow()
     }
     
     @objc fileprivate func handleChangeColor() {
