@@ -70,7 +70,7 @@ class MainMenuView: UIView {
     }()
     
     let myCollectionButton: UIButton = {
-        let button = UIButton(title: "My collection".localized)
+        let button = UIButton(title: "Collection".localized)
         button.addTarget(self, action: #selector(handleMyCollection), for: .touchUpInside)
         return button
     }()

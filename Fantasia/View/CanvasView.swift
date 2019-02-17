@@ -27,9 +27,45 @@ class CanvasView: UIView {
     fileprivate var strokeColor = AppColors.ACCENT_BLUE
     fileprivate var strokeWidth = kStrokeInitialWidth
     
+    
+    let safeAreaBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
+    let navBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
+    let toolBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.white
+        button.setImage(UIImage(named: "back_arrow"), for: .normal)
+        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        return button
+    }()
+    
+    let saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.white
+        button.setImage(UIImage(named: "button_save"), for: .normal)
+        button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
+        return button
+    }()
+    
+    
     let undoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = AppColors.ACCENT_BLUE
+        button.tintColor = AppColors.WHITE_GRAY
         button.setImage(UIImage(named: "btn_undo"), for: .normal)
         button.addTarget(self, action: #selector(handleUndo), for: .touchUpInside)
         return button
@@ -37,15 +73,16 @@ class CanvasView: UIView {
     
     let titleTF: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Enter title".localized
         tf.font = UIFont(name: "Oswald-Medium", size: 20)
         tf.textAlignment = .center
+        tf.textColor = AppColors.WHITE_GRAY
+        tf.attributedPlaceholder = NSAttributedString(string: "Enter title".localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.WHITE_GRAY])
         return tf
     }()
     
     let clearButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = UIColor.red
+        button.tintColor = AppColors.CRIMSON_RED
         button.setImage(UIImage(named: "btn_clear"), for: .normal)
         button.addTarget(self, action: #selector(handleClear), for: .touchUpInside)
         return button
@@ -74,6 +111,7 @@ class CanvasView: UIView {
     
     let widthSlider: UISlider = {
         let slider = UISlider()
+        slider.tintColor = AppColors.WHITE_GRAY
         slider.minimumValue = kSliderMinValue
         slider.maximumValue = kSliderMaxValue
         slider.setValue(kSliderInitialValue, animated: false)
@@ -91,27 +129,6 @@ class CanvasView: UIView {
         return button
     }()
     
-    let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.white
-        button.setImage(UIImage(named: "back_arrow"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
-        return button
-    }()
-    
-    let saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.white
-        button.setImage(UIImage(named: "button_save"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
-        return button
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -125,30 +142,43 @@ class CanvasView: UIView {
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
-        addSubview(backButton)
-        backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 8, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        addSubview(safeAreaBackground)
+        safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
         
-        addSubview(saveButton)
-        saveButton.setAnchor(top: safeTopAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 30, height: 30)
+        addSubview(navBarView)
+        navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
         
-        addSubview(titleTF)
-        titleTF.setAnchor(top: safeTopAnchor, leading: backButton.trailingAnchor, bottom: backButton.bottomAnchor, trailing: saveButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        navBarView.addSubview(backButton)
+        backButton.setAnchor(top: nil, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 32, height: 32)
+        backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
-        addSubview(undoButton)
+        navBarView.addSubview(saveButton)
+        saveButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)
+        saveButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+
+        
+        navBarView.addSubview(titleTF)
+        titleTF.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: saveButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        
+        
+        addSubview(toolBarView)
+        toolBarView.setAnchor(top: nil, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        
+        toolBarView.addSubview(undoButton)
         undoButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
         
-        addSubview(clearButton)
+        toolBarView.addSubview(clearButton)
         clearButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 10, width: 30, height: 30)
         
-        addSubview(colorButton)
+        toolBarView.addSubview(colorButton)
         colorButton.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
         
         
-        addSubview(widthSlider)
+        toolBarView.addSubview(widthSlider)
         widthSlider.setAnchor(top: nil, leading: colorButton.trailingAnchor, bottom: bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 10, paddingRight: 10)
         
         addSubview(correctCanvasView)
-        correctCanvasView.setAnchor(top: titleTF.bottomAnchor, leading: leadingAnchor, bottom: widthSlider.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
+        correctCanvasView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: toolBarView.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
         
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)

@@ -12,6 +12,33 @@ class MyCollectionView: UIView {
     
     var backAction: (() -> Void)?
     
+    let safeAreaBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
+    let navBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
+    @objc func edit() {
+        print("edit")
+    }
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Collection"
+        label.textAlignment = .center
+        label.textColor = AppColors.WHITE_GRAY
+        label.font = UIFont(name: "Oswald-Medium", size: 20)
+        return label
+    }()
+
+    
+    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 16
@@ -21,20 +48,33 @@ class MyCollectionView: UIView {
         return cv
     }()
     
-    let backgroundIV: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "blur_background"))//UIImageView(image: #imageLiteral(resourceName: "restaurant"))
-        iv.contentMode = .scaleAspectFill
-        return iv
+    let infoLabel: UILabel = {
+        let label = UILabel()
+        let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "No canvas to show.", attributes: [NSAttributedString.Key.font: AppFonts.INFO_FONT!, .foregroundColor: UIColor.darkGray]))
+        label.attributedText = attributedString
+        label.textAlignment = NSTextAlignment.center
+        return label
     }()
+    
+//    let backgroundIV: UIImageView = {
+//        let iv = UIImageView(image: UIImage(named: "blur_background"))
+//        iv.contentMode = .scaleAspectFill
+//        return iv
+//    }()
     
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
-        button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        return button
+    }()
+    
+    let editButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.white
+        button.setImage(UIImage(named: "edit_list_button"), for: .normal)
+        button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
         return button
     }()
     
@@ -47,21 +87,54 @@ class MyCollectionView: UIView {
     }
     
     func setup() {
-        addSubview(backgroundIV)
-        backgroundIV.pinToEdges(view: self, safe: false)
+        backgroundColor = AppColors.WHITE_GRAY
+//        addSubview(backgroundIV)
+//        backgroundIV.pinToEdges(view: self, safe: false)
+        
+        addSubview(safeAreaBackground)
+        safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        
+        addSubview(navBarView)
+        navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        
+        navBarView.addSubview(backButton)
+        backButton.setAnchor(top: nil, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 32, height: 32)
+        backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        
+        navBarView.addSubview(editButton)
+        editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)
+        editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        
+        navBarView.addSubview(titleLabel)
+        titleLabel.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: editButton.leadingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 0, height: 32)
+        titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        
+        
+        
         
         addSubview(collectionView)
-        collectionView.pinToEdges(view: self, safe: true)
+        collectionView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
-        addSubview(backButton)
-        backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        collectionView.addSubview(infoLabel)
+        infoLabel.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        
+//        addSubview(collectionView)
+//        collectionView.pinToEdges(view: self, safe: true)
+        
+        //addSubview(backButton)
+        //backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
     }
     
     @objc func handleBack() {
         backAction?()
     }
     
-    func reload() {
+    @objc func handleEdit() {
+        backAction?()
+    }
+    
+    func reload(isEmpty: Bool) {
+        infoLabel.alpha = isEmpty ? 1.0 : 0.0
         collectionView.reloadData()
     }
     

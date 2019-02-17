@@ -27,6 +27,18 @@ class DetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let safeAreaBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
+    let navBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
     var imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .white
@@ -36,8 +48,9 @@ class DetailsView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = AppFonts.DESCRIPTION_FONT
-        label.textAlignment = NSTextAlignment.center
+        label.textAlignment = .center
+        label.textColor = AppColors.WHITE_GRAY
+        label.font = UIFont(name: "Oswald-Medium", size: 20)
         return label
     }()
     
@@ -53,22 +66,16 @@ class DetailsView: UIView {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
-        button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         return button
     }()
     
     let editButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.white
-        button.setImage(UIImage(named: "button_edit"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor(r: 0, g: 0, b: 0, a: 0.3)
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
-        return button
+    let button = UIButton(type: .system)
+    button.tintColor = UIColor.white
+    button.setImage(UIImage(named: "button_edit"), for: .normal)
+    button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
+    return button
     }()
     
     @objc func handleBack() {
@@ -82,20 +89,30 @@ class DetailsView: UIView {
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
+        addSubview(safeAreaBackground)
+        safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        
+        addSubview(navBarView)
+        navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        
+        navBarView.addSubview(backButton)
+        backButton.setAnchor(top: nil, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 32, height: 32)
+        backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        
+        navBarView.addSubview(editButton)
+        editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)
+        editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        
+        navBarView.addSubview(titleLabel)
+        titleLabel.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: editButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        
+        
         addSubview(imageView)
         imageView.setShadow()
         
         addSubview(dateLabel)
         dateLabel.setAnchor(top: imageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30)
         
-        addSubview(backButton)
-        backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
-        
-        addSubview(editButton)
-        editButton.setAnchor(top: safeTopAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 30, height: 30)
-        
-        addSubview(titleLabel)
-        titleLabel.setAnchor(top: safeTopAnchor, leading: backButton.trailingAnchor, bottom: nil, trailing: editButton.leadingAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30)
         
     }
     

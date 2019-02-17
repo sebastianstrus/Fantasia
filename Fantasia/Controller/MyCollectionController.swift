@@ -20,12 +20,15 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         setupView()
     }
+
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         CanvasObjectController.shared.fetchCanvasObjects()
         canvases = CanvasObjectController.shared.canvases
-        self.myCollectionView.reload()
+        self.myCollectionView.reload(isEmpty: canvases.isEmpty)
     }
     
     
@@ -79,4 +82,6 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         let space: CGFloat = Device.IS_IPHONE ? 8 : 16
         return UIEdgeInsets(top: space, left: space, bottom: space, right: space)
     }
+    
+
 }

@@ -33,7 +33,7 @@ class CanvasController: UIViewController, ColorDelegate {
         view.backgroundColor = AppColors.WHITE_GRAY
         canvasActivityView = CanvasView()
         view.addSubview(canvasActivityView)
-        canvasActivityView.pinToEdges(view: view, safe: true)
+        canvasActivityView.pinToEdges(view: view, safe: false)
         
         canvasActivityView.changeColorAction = handleChangeColor
         canvasActivityView.backAction = handleBack
