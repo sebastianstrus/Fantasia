@@ -45,6 +45,7 @@ class CanvasObjectController {
                 guard savedCanvasObject.title != nil else { return }
                 guard savedCanvasObject.date != nil else { return }
                 canvases.append(savedCanvasObject)
+                images.append(ImageController.shared.fetchImage(imageName: savedCanvasObject.imageName!)!)
                 
             }
         } catch let error as NSError {
@@ -76,7 +77,20 @@ class CanvasObjectController {
     }
     
     func deleteCanvasObject(imageIndex: Int) {
-        guard images.indices.contains(imageIndex) && savedCanvasObjects.indices.contains(imageIndex) else { return }
+        print("imageIndex: \(imageIndex)")
+        
+        if (images.indices.contains(imageIndex)) {
+            print("first ok")
+        }
+        
+        if (savedCanvasObjects.indices.contains(imageIndex)) {
+            print("second ok")
+        }
+        guard images.indices.contains(imageIndex) && savedCanvasObjects.indices.contains(imageIndex) else {
+            print("return")
+            return
+            
+        }
         
         let imageObjectToDelete = savedCanvasObjects[imageIndex] as! CanvasObject
         let imageName = imageObjectToDelete.imageName

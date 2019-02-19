@@ -7,13 +7,13 @@
 //
 import UIKit
 
-class MyCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class MyCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, MyCollectionCellDelegate {
+    
     
     fileprivate var myCollectionView: MyCollectionView!
     fileprivate let cellId = "cellId"
     
     private var canvases: [CanvasObject]  = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         
         view.addSubview(myCollectionView)
         myCollectionView.backAction = handleBack
+        myCollectionView.editAction = handleEdit
         myCollectionView.setDelegate(d: self)
         myCollectionView.setDataSource(ds: self)
         myCollectionView.registerCell(className: MyCollectionCell.self, id: cellId)
@@ -45,6 +46,10 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     
     func handleBack() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func handleEdit() {
+        setEditing(!isEditing, animated: true)
     }
     
     // MARK: - UICollectionViewDataSource functions
@@ -59,6 +64,7 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MyCollectionCell
         cell.canvas = canvases[indexPath.row]
+        cell.delegate = self as? MyCollectionCellDelegate
         return cell
     }
     
@@ -67,6 +73,19 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         let detailsController = DetailsController()
         detailsController.canvas = canvases[indexPath.row]
         present(detailsController, animated: true, completion: nil)
+    }
+    
+    // Mark: - Delete items
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        myCollectionView.toggleEditButton(isEditing: editing)
+        let indexPaths = myCollectionView.collectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            if let cell = myCollectionView.collectionView.cellForItem(at: indexPath) as? MyCollectionCell {
+                cell.isEditing = editing
+            }
+        }
+        
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout functions
@@ -81,6 +100,15 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let space: CGFloat = Device.IS_IPHONE ? 8 : 16
         return UIEdgeInsets(top: space, left: space, bottom: space, right: space)
+    }
+    
+    // MARK: - MyCollectionCellDelegate functions
+    func delete(cell: MyCollectionCell) {
+        if let indexPath = myCollectionView.collectionView.indexPath(for: cell) {
+            canvases.remove(at: indexPath.row)
+            myCollectionView.collectionView.deleteItems(at: [indexPath])
+            CanvasObjectController.shared.deleteCanvasObject(imageIndex: indexPath.row)
+        }
     }
     
 

@@ -11,6 +11,7 @@ import UIKit
 class MyCollectionView: UIView {
     
     var backAction: (() -> Void)?
+    var editAction: (() -> Void)?
     
     let safeAreaBackground: UIView = {
         let view = UIView()
@@ -24,10 +25,6 @@ class MyCollectionView: UIView {
         return view
     }()
     
-    @objc func edit() {
-        print("edit")
-    }
-    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Collection"
@@ -38,6 +35,11 @@ class MyCollectionView: UIView {
     }()
 
     
+    let backgroundImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "background1")
+        return iv
+    }()
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,12 +58,6 @@ class MyCollectionView: UIView {
         return label
     }()
     
-//    let backgroundIV: UIImageView = {
-//        let iv = UIImageView(image: UIImage(named: "blur_background"))
-//        iv.contentMode = .scaleAspectFill
-//        return iv
-//    }()
-    
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
@@ -73,7 +69,12 @@ class MyCollectionView: UIView {
     let editButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
-        button.setImage(UIImage(named: "edit_list_button"), for: .normal)
+        button.setTitle("Edit", for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.textColor = AppColors.WHITE_GRAY
+        button.titleLabel?.font = .systemFont(ofSize: 18)
+        
+        
         button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
         return button
     }()
@@ -88,6 +89,8 @@ class MyCollectionView: UIView {
     
     func setup() {
         backgroundColor = AppColors.WHITE_GRAY
+        addSubview(backgroundImageView)
+        backgroundImageView.pinToEdges(view: self, safe: false)
 //        addSubview(backgroundIV)
 //        backgroundIV.pinToEdges(view: self, safe: false)
         
@@ -102,11 +105,11 @@ class MyCollectionView: UIView {
         backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(editButton)
-        editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)
+        editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 50, height: 32)
         editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(titleLabel)
-        titleLabel.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: editButton.leadingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 0, height: 32)
+        titleLabel.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: navBarView.bottomAnchor, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 32)
         titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         
@@ -130,7 +133,7 @@ class MyCollectionView: UIView {
     }
     
     @objc func handleEdit() {
-        backAction?()
+        editAction?()
     }
     
     func reload(isEmpty: Bool) {
@@ -148,6 +151,10 @@ class MyCollectionView: UIView {
     
     func registerCell(className: AnyClass, id: String) {
         collectionView.register(className, forCellWithReuseIdentifier: id)
+    }
+    
+    func toggleEditButton(isEditing: Bool) {
+        editButton.setTitle(isEditing ? "Done" : "Edit", for: .normal)
     }
 }
 
