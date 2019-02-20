@@ -78,7 +78,6 @@ class CorrectCanvasView: UIView {
         setNeedsDisplay()
     }
     
-    
     // public functions
     func undo() {
         _ = lines.popLast()
