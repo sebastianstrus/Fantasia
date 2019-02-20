@@ -13,7 +13,11 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     fileprivate var myCollectionView: MyCollectionView!
     fileprivate let cellId = "cellId"
     
-    private var canvases: [CanvasObject]  = []
+    private var canvases: [CanvasObject]  = [] {
+        didSet {
+            myCollectionView.toggleInfoLabel(isEmpty: canvases.isEmpty)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

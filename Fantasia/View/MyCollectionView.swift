@@ -137,7 +137,7 @@ class MyCollectionView: UIView {
     }
     
     func reload(isEmpty: Bool) {
-        infoLabel.alpha = isEmpty ? 1.0 : 0.0
+        infoLabel.isHidden = !isEmpty
         collectionView.reloadData()
     }
     
@@ -155,6 +155,10 @@ class MyCollectionView: UIView {
     
     func toggleEditButton(isEditing: Bool) {
         editButton.setTitle(isEditing ? "Done" : "Edit", for: .normal)
+    }
+    
+    public func toggleInfoLabel(isEmpty: Bool) {
+        infoLabel.isHidden = !isEmpty
     }
 }
 
