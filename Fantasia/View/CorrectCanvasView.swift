@@ -11,7 +11,7 @@ import UIKit
 
 
 let kCorrectStrokeInitialWidth: CGFloat = 10
-let kCorrectInitialColor = AppColors.ACCENT_BLUE
+let kCorrectInitialColor = UIColor.black
 let kCorrectSliderMinValue: Float = 1
 let kCorrectSliderMaxValue: Float = 20
 let kCorrectSliderInitialValue: Float = 10
@@ -96,9 +96,5 @@ class CorrectCanvasView: UIView {
     
     func setStrokeWidth(width: CGFloat) {
         strokeWidth = width
-    }
-    
-    func saveCanvas() {
-        
     }
 }

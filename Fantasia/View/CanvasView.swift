@@ -126,7 +126,7 @@ class CanvasView: UIView {
     
     let colorButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = AppColors.ACCENT_BLUE
+        button.backgroundColor = UIColor.black
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
