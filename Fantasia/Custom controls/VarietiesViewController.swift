@@ -23,7 +23,7 @@ class VarietiesViewController: UIViewController , HSBColorPickerDelegate {
         
         button.addTarget(self, action: #selector(pickColor), for: .touchUpInside)
         button.layer.borderWidth = 2
-        button.backgroundColor = .clear
+        button.backgroundColor = UIColor(r: 254, g: 254, b: 254, a: 0.01)
         
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -101,8 +101,9 @@ class VarietiesViewController: UIViewController , HSBColorPickerDelegate {
     }
     
     
-    @objc func pickColor() {        
-        delegate?.onGetColor(color: self.view.backgroundColor!)
+    @objc func pickColor() {
+        print("pickColor")
+        delegate?.onGetColor(color: self.view.backgroundColor ?? UIColor.black)
         self.dismiss(animated: false, completion: nil)
     }
     

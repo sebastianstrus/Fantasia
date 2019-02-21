@@ -77,11 +77,11 @@ class DetailsView: UIView {
     }()
     
     let editButton: UIButton = {
-    let button = UIButton(type: .system)
-    button.tintColor = UIColor.white
-    button.setImage(UIImage(named: "button_edit"), for: .normal)
-    button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
-    return button
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.white
+        button.setImage(UIImage(named: "button_edit"), for: .normal)
+        button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
+        return button
     }()
     
     @objc func handleBack() {
@@ -105,8 +105,7 @@ class DetailsView: UIView {
         navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
         
         navBarView.addSubview(backButton)
-        backButton.setAnchor(top: nil, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 32, height: 32)
-        backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        backButton.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
         
         navBarView.addSubview(editButton)
         editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)

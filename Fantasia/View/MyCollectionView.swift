@@ -72,9 +72,7 @@ class MyCollectionView: UIView {
         button.setTitle("Edit", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.textColor = AppColors.WHITE_GRAY
-        button.titleLabel?.font = .systemFont(ofSize: 18)
-        
-        
+        button.titleLabel?.font = .systemFont(ofSize: 22)
         button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
         return button
     }()
@@ -101,19 +99,15 @@ class MyCollectionView: UIView {
         navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
         
         navBarView.addSubview(backButton)
-        backButton.setAnchor(top: nil, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 32, height: 32)
-        backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        backButton.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
         
         navBarView.addSubview(editButton)
-        editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 50, height: 32)
+        editButton.setAnchor(top: navBarView.topAnchor, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 60, height: 44)
         editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(titleLabel)
         titleLabel.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: navBarView.bottomAnchor, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 32)
         titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
-        
-        
-        
         
         addSubview(collectionView)
         collectionView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)

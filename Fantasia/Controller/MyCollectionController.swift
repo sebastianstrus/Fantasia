@@ -68,7 +68,7 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MyCollectionCell
         cell.canvas = canvases[indexPath.row]
-        cell.delegate = self as? MyCollectionCellDelegate
+        cell.delegate = self
         return cell
     }
     

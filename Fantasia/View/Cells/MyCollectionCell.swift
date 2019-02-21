@@ -39,7 +39,7 @@ class MyCollectionCell: UICollectionViewCell {
     let blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .extraLight)
         var view = UIVisualEffectView(effect: blurEffect)
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = 18
         view.clipsToBounds = true
         return view
     }()
@@ -52,7 +52,6 @@ class MyCollectionCell: UICollectionViewCell {
     }()
     
     @objc func handleDelete() {
-        print("handleDelete")
         delegate?.delete(cell: self)
     }
     
@@ -84,10 +83,10 @@ class MyCollectionCell: UICollectionViewCell {
         imageView.pinToEdges(view: self, safe: false)
         
         addSubview(blurEffectView)
-        blurEffectView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 6, paddingLeft: 6, paddingBottom: 0, paddingRight: 0, width: 24, height: 24)
+        blurEffectView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 6, paddingLeft: 6, paddingBottom: 0, paddingRight: 0, width: 36, height: 36)
         
         blurEffectView.contentView.addSubview(xButton)
-        xButton.setAnchor(top: blurEffectView.contentView.topAnchor, leading: blurEffectView.contentView.leadingAnchor, bottom: blurEffectView.contentView.bottomAnchor, trailing: blurEffectView.contentView.trailingAnchor, paddingTop: 4, paddingLeft: 4, paddingBottom: 4, paddingRight: 4)
+        xButton.setAnchor(top: blurEffectView.contentView.topAnchor, leading: blurEffectView.contentView.leadingAnchor, bottom: blurEffectView.contentView.bottomAnchor, trailing: blurEffectView.contentView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         xButton.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         
         
