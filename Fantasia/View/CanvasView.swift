@@ -45,6 +45,12 @@ class CanvasView: UIView {
         return view
     }()
     
+    let bottomSafeAreaBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.DODGERBLUE
+        return view
+    }()
+    
     let toolBarView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
@@ -167,22 +173,24 @@ class CanvasView: UIView {
         navBarView.addSubview(titleTF)
         titleTF.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: saveButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
         
+        addSubview(bottomSafeAreaBackground)
+        bottomSafeAreaBackground.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         addSubview(toolBarView)
         toolBarView.setAnchor(top: nil, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         toolBarView.addSubview(undoButton)
-        undoButton.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
+        undoButton.setAnchor(top: nil, leading: toolBarView.leadingAnchor, bottom: toolBarView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
         
         toolBarView.addSubview(clearButton)
-        clearButton.setAnchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 16, width: 30, height: 30)
+        clearButton.setAnchor(top: nil, leading: nil, bottom: toolBarView.bottomAnchor, trailing: toolBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 16, width: 30, height: 30)
         
         toolBarView.addSubview(colorButton)
-        colorButton.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
+        colorButton.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: toolBarView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
         
         
         toolBarView.addSubview(widthSlider)
-        widthSlider.setAnchor(top: nil, leading: colorButton.trailingAnchor, bottom: bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 16)
+        widthSlider.setAnchor(top: nil, leading: colorButton.trailingAnchor, bottom: toolBarView.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 16)
         
         addSubview(correctCanvasView)
         correctCanvasView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: toolBarView.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
