@@ -1,5 +1,5 @@
 //
-//  MyCollectionView.swift
+//  GalleryView.swift
 //  Fantasia
 //
 //  Created by Sebastian Strus on 2019-02-03.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyCollectionView: UIView {
+class GalleryView: UIView {
     
     var backAction: (() -> Void)?
     var editAction: (() -> Void)?
@@ -27,7 +27,7 @@ class MyCollectionView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Collection"
+        label.text = "Gallery"
         label.textAlignment = .center
         label.textColor = AppColors.WHITE_GRAY
         label.font = UIFont(name: "Oswald-Medium", size: 20)
@@ -114,12 +114,6 @@ class MyCollectionView: UIView {
         
         collectionView.addSubview(infoLabel)
         infoLabel.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-        
-//        addSubview(collectionView)
-//        collectionView.pinToEdges(view: self, safe: true)
-        
-        //addSubview(backButton)
-        //backButton.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
     }
     
     @objc func handleBack() {

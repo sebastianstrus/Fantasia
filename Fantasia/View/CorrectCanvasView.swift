@@ -11,7 +11,7 @@ import UIKit
 
 
 let kCorrectStrokeInitialWidth: CGFloat = 10
-let kCorrectInitialColor = UIColor.black
+let kCorrectInitialColor = UIColor.red
 let kCorrectSliderMinValue: Float = 1
 let kCorrectSliderMaxValue: Float = 20
 let kCorrectSliderInitialValue: Float = 10

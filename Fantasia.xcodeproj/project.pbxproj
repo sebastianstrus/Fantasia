@@ -21,13 +21,14 @@
 		7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */; };
 		7D2AFF3B22064DBA00C13363 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3A22064DBA00C13363 /* Strings.swift */; };
 		7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3E2206591400C13363 /* CanvasController.swift */; };
-		7D2AFF412206630900C13363 /* MyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF402206630900C13363 /* MyCollectionView.swift */; };
-		7D2AFF432206631C00C13363 /* MyCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF422206631C00C13363 /* MyCollectionController.swift */; };
+		7D2AFF412206630900C13363 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF402206630900C13363 /* GalleryView.swift */; };
+		7D2AFF432206631C00C13363 /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF422206631C00C13363 /* GalleryController.swift */; };
 		7D2AFF452206775600C13363 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF442206775600C13363 /* CanvasView.swift */; };
+		7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */; };
 		7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABD72203805500E57FF3 /* AppDelegate.swift */; };
 		7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABDE2203805800E57FF3 /* Assets.xcassets */; };
 		7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */; };
-		7D9A15C0220F28F7009915A1 /* MyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15BF220F28F7009915A1 /* MyCollectionCell.swift */; };
+		7D9A15C0220F28F7009915A1 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15BF220F28F7009915A1 /* GalleryCell.swift */; };
 		7D9A15C5221037BF009915A1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */; };
 		7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C6221038E7009915A1 /* ImageController.swift */; };
 		7D9A15CA22103B3A009915A1 /* Fantasia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C822103B3A009915A1 /* Fantasia.xcdatamodeld */; };
@@ -42,9 +43,11 @@
 		7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
 		7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */; };
+		E46D3663AB0E493426649E3D /* Pods_Fantasia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7106946E9C63DF77A55B572E /* Pods-Fantasia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.debug.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2AFF082204FAD600C13363 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		7D2AFF112205003700C13363 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -59,15 +62,16 @@
 		7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
 		7D2AFF3A22064DBA00C13363 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		7D2AFF3E2206591400C13363 /* CanvasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasController.swift; sourceTree = "<group>"; };
-		7D2AFF402206630900C13363 /* MyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionView.swift; sourceTree = "<group>"; };
-		7D2AFF422206631C00C13363 /* MyCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionController.swift; sourceTree = "<group>"; };
+		7D2AFF402206630900C13363 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		7D2AFF422206631C00C13363 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
 		7D2AFF442206775600C13363 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ColorSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D92ABD42203805500E57FF3 /* Fantasia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fantasia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D92ABD72203805500E57FF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D92ABDE2203805800E57FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D92ABE12203805800E57FF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D92ABE32203805800E57FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D9A15BF220F28F7009915A1 /* MyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionCell.swift; sourceTree = "<group>"; };
+		7D9A15BF220F28F7009915A1 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		7D9A15C6221038E7009915A1 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		7D9A15C922103B3A009915A1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarietiesViewController.swift; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaOutline-Regular.ttf"; sourceTree = "<group>"; };
+		8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.release.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.release.xcconfig"; sourceTree = "<group>"; };
+		C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fantasia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */,
+				E46D3663AB0E493426649E3D /* Pods_Fantasia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28E9C0115E5A5923BC75ABFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */,
+				C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7D2AFF052204CE7000C13363 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +126,7 @@
 			children = (
 				7D2AFF082204FAD600C13363 /* MainMenuView.swift */,
 				7D2AFF442206775600C13363 /* CanvasView.swift */,
-				7D2AFF402206630900C13363 /* MyCollectionView.swift */,
+				7D2AFF402206630900C13363 /* GalleryView.swift */,
 				7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */,
 				7D9A15F42210CB26009915A1 /* DetailsView.swift */,
 				7D9A15BE220F28D9009915A1 /* Cells */,
@@ -122,7 +139,7 @@
 			children = (
 				7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */,
 				7D2AFF3E2206591400C13363 /* CanvasController.swift */,
-				7D2AFF422206631C00C13363 /* MyCollectionController.swift */,
+				7D2AFF422206631C00C13363 /* GalleryController.swift */,
 				7D9A15C6221038E7009915A1 /* ImageController.swift */,
 				7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */,
 				7D9A15F22210CAB9009915A1 /* DetailsController.swift */,
@@ -197,6 +214,8 @@
 			children = (
 				7D92ABD62203805500E57FF3 /* Fantasia */,
 				7D92ABD52203805500E57FF3 /* Products */,
+				E7C0B54E06DC57FDD3798D28 /* Pods */,
+				28E9C0115E5A5923BC75ABFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,7 +247,7 @@
 		7D9A15BE220F28D9009915A1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				7D9A15BF220F28F7009915A1 /* MyCollectionCell.swift */,
+				7D9A15BF220F28F7009915A1 /* GalleryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -258,6 +277,15 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		E7C0B54E06DC57FDD3798D28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7106946E9C63DF77A55B572E /* Pods-Fantasia.debug.xcconfig */,
+				8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,9 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D92ABE62203805800E57FF3 /* Build configuration list for PBXNativeTarget "Fantasia" */;
 			buildPhases = (
+				F6241241DE929CF4BE4C3FAC /* [CP] Check Pods Manifest.lock */,
 				7D92ABD02203805500E57FF3 /* Sources */,
 				7D92ABD12203805500E57FF3 /* Frameworks */,
 				7D92ABD22203805500E57FF3 /* Resources */,
+				8C5858494DBD604F8A521778 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +358,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C5858494DBD604F8A521778 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fantasia/Pods-Fantasia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ColorSlider/ColorSlider.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorSlider.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fantasia/Pods-Fantasia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6241241DE929CF4BE4C3FAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fantasia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7D92ABD02203805500E57FF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -335,7 +412,7 @@
 			files = (
 				7D9A15F32210CAB9009915A1 /* DetailsController.swift in Sources */,
 				7D2AFF2122051AD900C13363 /* AppFonts.swift in Sources */,
-				7D9A15C0220F28F7009915A1 /* MyCollectionCell.swift in Sources */,
+				7D9A15C0220F28F7009915A1 /* GalleryCell.swift in Sources */,
 				7D9A15F52210CB26009915A1 /* DetailsView.swift in Sources */,
 				7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */,
 				7D2AFF452206775600C13363 /* CanvasView.swift in Sources */,
@@ -353,9 +430,9 @@
 				7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */,
 				7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */,
 				7DAE569E220903BE003AE323 /* Line.swift in Sources */,
-				7D2AFF432206631C00C13363 /* MyCollectionController.swift in Sources */,
+				7D2AFF432206631C00C13363 /* GalleryController.swift in Sources */,
 				7D2AFF152205044200C13363 /* Constants.swift in Sources */,
-				7D2AFF412206630900C13363 /* MyCollectionView.swift in Sources */,
+				7D2AFF412206630900C13363 /* GalleryView.swift in Sources */,
 				7D2AFF172205052600C13363 /* AppColors.swift in Sources */,
 				7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */,
 				7D2AFF122205003700C13363 /* String+Extension.swift in Sources */,
@@ -436,6 +513,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -490,12 +568,14 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		7D92ABE72203805800E57FF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7106946E9C63DF77A55B572E /* Pods-Fantasia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -514,6 +594,7 @@
 		};
 		7D92ABE82203805800E57FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

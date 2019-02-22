@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import ColorSlider
 
 
 fileprivate let kStrokeInitialWidth: CGFloat = 10
@@ -17,47 +18,70 @@ fileprivate let kSliderInitialValue: Float = 10
 
 class CanvasView: UIView {
     
+    // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public actions
     var changeColorAction: (() -> Void)?
     var backAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
     
-    //temp:
-    var audioPlayer: AVAudioPlayer?
-    
+    // MARK: - Private variables
     fileprivate var strokeColor = AppColors.ACCENT_BLUE
     fileprivate var strokeWidth = kStrokeInitialWidth
     
-    let backgroundImageView: UIImageView = {
+    //temp:
+    var audioPlayer: AVAudioPlayer?
+    
+    // MARK: - All subviews in main view
+    fileprivate let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "background1")
         return iv
     }()
     
-    let safeAreaBackground: UIView = {
+    fileprivate let safeAreaBackground: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let navBarView: UIView = {
+    fileprivate let navBarView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let bottomSafeAreaBackground: UIView = {
+    fileprivate let bottomSafeAreaBackground: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let toolBarView: UIView = {
+    fileprivate let toolBarView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let backButton: UIButton = {
+    fileprivate let colorSlider: ColorSlider = {
+        let slider = ColorSlider(orientation: .horizontal, previewSide: .top)
+        slider.addTarget(self, action: #selector(handleColorChange), for: .valueChanged)
+        return slider
+    }()
+    
+    @objc fileprivate func handleColorChange(_ slider: ColorSlider) {
+        correctCanvasView.setStrokeColor(color: slider.color)
+    }
+    
+    fileprivate let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
@@ -65,7 +89,7 @@ class CanvasView: UIView {
         return button
     }()
     
-    let saveButton: UIButton = {
+    fileprivate let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "button_save"), for: .normal)
@@ -74,7 +98,7 @@ class CanvasView: UIView {
     }()
     
     
-    let undoButton: UIButton = {
+    fileprivate let undoButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = AppColors.WHITE_GRAY
         button.setImage(UIImage(named: "btn_undo"), for: .normal)
@@ -82,7 +106,7 @@ class CanvasView: UIView {
         return button
     }()
     
-    let titleTF: UITextField = {
+    fileprivate let titleTF: UITextField = {
         let tf = UITextField()
         tf.font = UIFont(name: "Oswald-Medium", size: 20)
         tf.textAlignment = .center
@@ -91,7 +115,7 @@ class CanvasView: UIView {
         return tf
     }()
     
-    let clearButton: UIButton = {
+    fileprivate let clearButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = AppColors.CRIMSON_RED
         button.setImage(UIImage(named: "btn_clear"), for: .normal)
@@ -99,7 +123,7 @@ class CanvasView: UIView {
         return button
     }()
     
-    var correctCanvasView: CorrectCanvasView = {
+    fileprivate var correctCanvasView: CorrectCanvasView = {
         let view = CorrectCanvasView()
         view.setShadow()
         return view
@@ -120,7 +144,7 @@ class CanvasView: UIView {
         playSound()
     }
     
-    let widthSlider: UISlider = {
+    fileprivate let widthSlider: UISlider = {
         let slider = UISlider()
         slider.tintColor = AppColors.WHITE_GRAY
         slider.minimumValue = kSliderMinValue
@@ -130,7 +154,7 @@ class CanvasView: UIView {
        return slider
     }()
     
-    let colorButton: UIButton = {
+    fileprivate let colorButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.black
         button.layer.cornerRadius = 15
@@ -139,16 +163,6 @@ class CanvasView: UIView {
         button.addTarget(self, action: #selector(handleChangeColor), for: .touchUpInside)
         return button
     }()
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
@@ -177,7 +191,7 @@ class CanvasView: UIView {
         bottomSafeAreaBackground.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         addSubview(toolBarView)
-        toolBarView.setAnchor(top: nil, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        toolBarView.setAnchor(top: nil, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 86)
         
         toolBarView.addSubview(undoButton)
         undoButton.setAnchor(top: nil, leading: toolBarView.leadingAnchor, bottom: toolBarView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
@@ -185,15 +199,15 @@ class CanvasView: UIView {
         toolBarView.addSubview(clearButton)
         clearButton.setAnchor(top: nil, leading: nil, bottom: toolBarView.bottomAnchor, trailing: toolBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 16, width: 30, height: 30)
         
-        toolBarView.addSubview(colorButton)
-        colorButton.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: toolBarView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
-        
         
         toolBarView.addSubview(widthSlider)
-        widthSlider.setAnchor(top: nil, leading: colorButton.trailingAnchor, bottom: toolBarView.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 16)
+        widthSlider.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: toolBarView.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 16)
         
         addSubview(correctCanvasView)
         correctCanvasView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: toolBarView.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
+        
+        addSubview(colorSlider)
+        colorSlider.setAnchor(top: correctCanvasView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 18, paddingLeft: 22, paddingBottom: 0, paddingRight: 22, width: 0, height: 25)
         
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)
@@ -253,19 +267,18 @@ class CanvasView: UIView {
         saveCanvasAction?()
     }
     
-    
-    
     //public functions
     public func setColor(color: UIColor){
         correctCanvasView.setStrokeColor(color: color)
         colorButton.layer.backgroundColor = color.cgColor
     }
     
-    
+    // MARK: - public functions
     public func saveCanvas(){
         CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: titleTF.text ?? "No title", date: Date())
     }
     
+    // todo: move
     func playSound() {
         if let audioPlayer = audioPlayer, audioPlayer.isPlaying { audioPlayer.stop() }
         

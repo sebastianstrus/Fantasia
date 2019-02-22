@@ -1,5 +1,5 @@
 //
-//  MyCollectionController.swift
+//  GalleryController.swift
 //  Fantasia
 //
 //  Created by Sebastian Strus on 2019-02-03.
@@ -7,15 +7,15 @@
 //
 import UIKit
 
-class MyCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, MyCollectionCellDelegate {
+class GalleryController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, GalleryCellDelegate {
     
     
-    fileprivate var myCollectionView: MyCollectionView!
+    fileprivate var galleryView: GalleryView!
     fileprivate let cellId = "cellId"
     
     private var canvases: [CanvasObject]  = [] {
         didSet {
-            myCollectionView.toggleInfoLabel(isEmpty: canvases.isEmpty)
+            galleryView.toggleInfoLabel(isEmpty: canvases.isEmpty)
         }
     }
     
@@ -32,20 +32,20 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidAppear(animated)
         CanvasObjectController.shared.fetchCanvasObjects()
         canvases = CanvasObjectController.shared.canvases
-        self.myCollectionView.reload(isEmpty: canvases.isEmpty)
+        self.galleryView.reload(isEmpty: canvases.isEmpty)
     }
     
     
     private func setupView() {
-        let myCV = MyCollectionView(frame: view.frame)
-        self.myCollectionView = myCV
+        let myCV = GalleryView(frame: view.frame)
+        self.galleryView = myCV
         
-        view.addSubview(myCollectionView)
-        myCollectionView.backAction = handleBack
-        myCollectionView.editAction = handleEdit
-        myCollectionView.setDelegate(d: self)
-        myCollectionView.setDataSource(ds: self)
-        myCollectionView.registerCell(className: MyCollectionCell.self, id: cellId)
+        view.addSubview(galleryView)
+        galleryView.backAction = handleBack
+        galleryView.editAction = handleEdit
+        galleryView.setDelegate(d: self)
+        galleryView.setDataSource(ds: self)
+        galleryView.registerCell(className: GalleryCell.self, id: cellId)
     }
     
     func handleBack() {
@@ -66,7 +66,7 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MyCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GalleryCell
         cell.canvas = canvases[indexPath.row]
         cell.delegate = self
         return cell
@@ -82,10 +82,10 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
     // Mark: - Delete items
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        myCollectionView.toggleEditButton(isEditing: editing)
-        let indexPaths = myCollectionView.collectionView.indexPathsForVisibleItems
+        galleryView.toggleEditButton(isEditing: editing)
+        let indexPaths = galleryView.collectionView.indexPathsForVisibleItems
         for indexPath in indexPaths {
-            if let cell = myCollectionView.collectionView.cellForItem(at: indexPath) as? MyCollectionCell {
+            if let cell = galleryView.collectionView.cellForItem(at: indexPath) as? GalleryCell {
                 cell.isEditing = editing
             }
         }
@@ -106,11 +106,11 @@ class MyCollectionController: UIViewController, UICollectionViewDelegate, UIColl
         return UIEdgeInsets(top: space, left: space, bottom: space, right: space)
     }
     
-    // MARK: - MyCollectionCellDelegate functions
-    func delete(cell: MyCollectionCell) {
-        if let indexPath = myCollectionView.collectionView.indexPath(for: cell) {
+    // MARK: - GalleryCellDelegate functions
+    func delete(cell: GalleryCell) {
+        if let indexPath = galleryView.collectionView.indexPath(for: cell) {
             canvases.remove(at: indexPath.row)
-            myCollectionView.collectionView.deleteItems(at: [indexPath])
+            galleryView.collectionView.deleteItems(at: [indexPath])
             CanvasObjectController.shared.deleteCanvasObject(imageIndex: indexPath.row)
         }
     }

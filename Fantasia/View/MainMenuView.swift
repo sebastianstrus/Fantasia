@@ -9,14 +9,13 @@
 
 import UIKit
 
-let kButtonsStackViewHeight: CGFloat = Device.IS_IPHONE ? 90 : 170
+let kButtonsStackViewHeight: CGFloat = Device.IS_IPHONE ? 140 : 280
 let kStackViewMargin: CGFloat = Device.IS_IPHONE ? 120 : 300
 
+// View is devided into 2 containers.
 class MainMenuView: UIView {
     
-    var newCanvasAction: (() -> Void)?
-    var myCollectionAction: (() -> Void)?
-    
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -26,24 +25,29 @@ class MainMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var backgroundImageView: UIImageView = {
+    // MARK: - Public actions
+    var newCanvasAction: (() -> Void)?
+    var galleryAction: (() -> Void)?
+    
+    // MARK: - All subviews in main view
+    fileprivate var backgroundImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "blur_background"))
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFill
         return iv
     }()
     
-    var topContainer: UIView = {
+    fileprivate var topContainer: UIView = {
         let view = UIView()
         return view
     }()
     
-    var bottomContainer: UIView = {
+    fileprivate var bottomContainer: UIView = {
         let view = UIView()
         return view
     }()
     
-    let titleLabel: UILabel = {
+    fileprivate let titleLabel: UILabel = {
         let label = UILabel()
         let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: Strings.APP_TITLE, attributes: [NSAttributedString.Key.font: AppFonts.TITLE_FONT!, .foregroundColor: UIColor.white]))
         label.attributedText = attributedString
@@ -53,7 +57,7 @@ class MainMenuView: UIView {
         return label
     }()
     
-    let subtitleLabel: UILabel = {
+    fileprivate let subtitleLabel: UILabel = {
         let label = UILabel()
         let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string:  Strings.APP_SUBTITLE, attributes: [NSAttributedString.Key.font: AppFonts.SUBTITLE_FONT!, .foregroundColor: UIColor.white]))
         label.attributedText = attributedString
@@ -63,28 +67,28 @@ class MainMenuView: UIView {
         return label
     }()
     
-    let newCanvasButton: UIButton = {
+    fileprivate let newCanvasButton: UIButton = {
         let button = UIButton(title: "New canvas".localized)
         button.addTarget(self, action: #selector(handleNewCanvas), for: .touchUpInside)
         return button
     }()
     
-    let myCollectionButton: UIButton = {
-        let button = UIButton(title: "Collection".localized)
-        button.addTarget(self, action: #selector(handleMyCollection), for: .touchUpInside)
+    fileprivate let galleryButton: UIButton = {
+        let button = UIButton(title: "Gallery".localized)
+        button.addTarget(self, action: #selector(handleGallery), for: .touchUpInside)
         return button
     }()
     
-    @objc func handleNewCanvas() {
+    // MARK: - private functions
+    @objc fileprivate func handleNewCanvas() {
         newCanvasAction?()
     }
     
-    @objc func handleMyCollection() {
-        myCollectionAction?()
+    @objc fileprivate func handleGallery() {
+        galleryAction?()
     }
     
-    func setup() {
-        
+    fileprivate func setup() {
         addSubview(backgroundImageView)
         backgroundImageView.pinToEdges(view: self, safe: false)
         
@@ -97,24 +101,12 @@ class MainMenuView: UIView {
         titlesStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titlesStackView.centerYAnchor.constraint(equalTo: topContainer.centerYAnchor).isActive = true
         
-        
         addSubview(bottomContainer)
         bottomContainer.setAnchor(top: topContainer.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: CGFloat(Device.SCREEN_WIDTH), height: 0)
         
-        //
-        
-        let titles2StackView = createStackView(views: [newCanvasButton, myCollectionButton], spacing: 0)
-        bottomContainer.addSubview(titles2StackView)
-        titles2StackView.setAnchor(width: self.frame.width, height: Device.IS_IPHONE ? 130 : 260)
-        titles2StackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titles2StackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
-        
-        //
-        
-        let buttonsStackView = createStackView(views: [newCanvasButton, myCollectionButton], spacing: Device.IS_IPHONE ? 10 : 40)
+        let buttonsStackView = createStackView(views: [newCanvasButton, galleryButton], spacing: Device.IS_IPHONE ? 20 : 40)
         bottomContainer.addSubview(buttonsStackView)
         buttonsStackView.backgroundColor = UIColor.lightGray
-        
         buttonsStackView.setAnchor(width: self.frame.width - kStackViewMargin, height: kButtonsStackViewHeight)
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true

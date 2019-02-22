@@ -1,5 +1,5 @@
 //
-//  MyCollectionCell.swift
+//  GalleryCell.swift
 //  Fantasia
 //
 //  Created by Sebastian Strus on 2019-02-09.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol MyCollectionCellDelegate: class {
-    func delete(cell: MyCollectionCell)
+protocol GalleryCellDelegate: class {
+    func delete(cell: GalleryCell)
 }
 
 
-class MyCollectionCell: UICollectionViewCell {
+class GalleryCell: UICollectionViewCell {
     
-    weak var delegate: MyCollectionCellDelegate?
+    weak var delegate: GalleryCellDelegate?
     
     
     var canvas : CanvasObject? {

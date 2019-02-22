@@ -22,7 +22,7 @@ class MainMenuController: UIViewController {
     func setupView() {
         self.mainMenuView = MainMenuView()
         self.mainMenuView.newCanvasAction = handleNewCanvas
-        self.mainMenuView.myCollectionAction = handleMyCollection
+        self.mainMenuView.galleryAction = handleGallery
         self.view.addSubview(mainMenuView)
         mainMenuView.pinToEdges(view: view, safe: false)
     }
@@ -33,9 +33,9 @@ class MainMenuController: UIViewController {
         present(canvasController, animated: true, completion: nil)
     }
     
-    func handleMyCollection() {
-        let myCollectionController = MyCollectionController()
-        present(myCollectionController, animated: true, completion: nil)
+    func handleGallery() {
+        let galleryController = GalleryController()
+        present(galleryController, animated: true, completion: nil)
     }
 }
 
