@@ -18,11 +18,7 @@ let kCorrectSliderInitialValue: Float = 10
 
 class CorrectCanvasView: UIView {
     
-    var changeColorAction: (() -> Void)?
-    
-    fileprivate var strokeColor = kCorrectInitialColor
-    fileprivate var strokeWidth = kCorrectStrokeInitialWidth
-    
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -31,6 +27,12 @@ class CorrectCanvasView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public actions
+    var changeColorAction: (() -> Void)?
+    
+    fileprivate var strokeColor = kCorrectInitialColor
+    fileprivate var strokeWidth = kCorrectStrokeInitialWidth
     
     fileprivate func setup() {
         backgroundColor = UIColor.white

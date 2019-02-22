@@ -12,7 +12,6 @@ import UIKit
 let kButtonsStackViewHeight: CGFloat = Device.IS_IPHONE ? 140 : 280
 let kStackViewMargin: CGFloat = Device.IS_IPHONE ? 120 : 300
 
-// View is devided into 2 containers.
 class MainMenuView: UIView {
     
     // MARK: - Initializers
@@ -29,7 +28,7 @@ class MainMenuView: UIView {
     var newCanvasAction: (() -> Void)?
     var galleryAction: (() -> Void)?
     
-    // MARK: - All subviews in main view
+    // MARK: - All subviews
     fileprivate var backgroundImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "blur_background"))
         iv.backgroundColor = .white
@@ -80,14 +79,6 @@ class MainMenuView: UIView {
     }()
     
     // MARK: - private functions
-    @objc fileprivate func handleNewCanvas() {
-        newCanvasAction?()
-    }
-    
-    @objc fileprivate func handleGallery() {
-        galleryAction?()
-    }
-    
     fileprivate func setup() {
         addSubview(backgroundImageView)
         backgroundImageView.pinToEdges(view: self, safe: false)
@@ -110,5 +101,13 @@ class MainMenuView: UIView {
         buttonsStackView.setAnchor(width: self.frame.width - kStackViewMargin, height: kButtonsStackViewHeight)
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
+    }
+    
+    @objc fileprivate func handleNewCanvas() {
+        newCanvasAction?()
+    }
+    
+    @objc fileprivate func handleGallery() {
+        galleryAction?()
     }
 }

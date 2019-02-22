@@ -14,9 +14,7 @@ let kPadding: CGFloat = 20
 
 class DetailsView: UIView {
     
-    var backAction: (() -> Void)?
-    var editAction: (() -> Void)?
-        
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -27,6 +25,11 @@ class DetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public actions
+    var backAction: (() -> Void)?
+    var editAction: (() -> Void)?
+    
+    // MARK: - All subviews
     let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "background1")

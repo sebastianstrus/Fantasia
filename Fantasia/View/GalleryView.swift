@@ -10,22 +10,33 @@ import UIKit
 
 class GalleryView: UIView {
     
+    // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public actions
     var backAction: (() -> Void)?
     var editAction: (() -> Void)?
     
-    let safeAreaBackground: UIView = {
+    // MARK: - All subviews
+    fileprivate let safeAreaBackground: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let navBarView: UIView = {
+    fileprivate let navBarView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let titleLabel: UILabel = {
+    fileprivate let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Gallery"
         label.textAlignment = .center
@@ -34,8 +45,7 @@ class GalleryView: UIView {
         return label
     }()
 
-    
-    let backgroundImageView: UIImageView = {
+    fileprivate let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "background1")
         return iv
@@ -50,7 +60,7 @@ class GalleryView: UIView {
         return cv
     }()
     
-    let infoLabel: UILabel = {
+    fileprivate let infoLabel: UILabel = {
         let label = UILabel()
         let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: "No canvas to show.", attributes: [NSAttributedString.Key.font: AppFonts.INFO_FONT!, .foregroundColor: UIColor.darkGray]))
         label.attributedText = attributedString
@@ -58,7 +68,7 @@ class GalleryView: UIView {
         return label
     }()
     
-    let backButton: UIButton = {
+    fileprivate let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
@@ -66,7 +76,7 @@ class GalleryView: UIView {
         return button
     }()
     
-    let editButton: UIButton = {
+    fileprivate let editButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setTitle("Edit", for: .normal)
@@ -77,20 +87,11 @@ class GalleryView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setup() {
+    // MARK: - Private functions
+    fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         addSubview(backgroundImageView)
         backgroundImageView.pinToEdges(view: self, safe: false)
-//        addSubview(backgroundIV)
-//        backgroundIV.pinToEdges(view: self, safe: false)
         
         addSubview(safeAreaBackground)
         safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
@@ -116,14 +117,15 @@ class GalleryView: UIView {
         infoLabel.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
     }
     
-    @objc func handleBack() {
+    @objc fileprivate func handleBack() {
         backAction?()
     }
     
-    @objc func handleEdit() {
+    @objc fileprivate func handleEdit() {
         editAction?()
     }
     
+    // MARK: - Public functions
     func reload(isEmpty: Bool) {
         infoLabel.isHidden = !isEmpty
         collectionView.reloadData()
