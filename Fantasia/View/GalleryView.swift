@@ -94,27 +94,86 @@ class GalleryView: UIView {
         backgroundImageView.pinToEdges(view: self, safe: false)
         
         addSubview(safeAreaBackground)
-        safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        safeAreaBackground.setAnchor(top: topAnchor,
+                                     leading: leadingAnchor,
+                                     bottom: nil,
+                                     trailing: trailingAnchor,
+                                     paddingTop: 0,
+                                     paddingLeft: 0,
+                                     paddingBottom: 0,
+                                     paddingRight: 0,
+                                     width: 0,
+                                     height: 44)
         
         addSubview(navBarView)
-        navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        navBarView.setAnchor(top: safeTopAnchor,
+                             leading: leadingAnchor,
+                             bottom: nil,
+                             trailing: trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 0,
+                             height: 44)
         
         navBarView.addSubview(backButton)
-        backButton.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
+        backButton.setAnchor(top: navBarView.topAnchor,
+                             leading: navBarView.leadingAnchor,
+                             bottom: nil,
+                             trailing: nil,
+                             paddingTop: 0,
+                             paddingLeft: 10,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 44,
+                             height: 44)
         
         navBarView.addSubview(editButton)
-        editButton.setAnchor(top: navBarView.topAnchor, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 60, height: 44)
+        editButton.setAnchor(top: navBarView.topAnchor,
+                             leading: nil,
+                             bottom: nil,
+                             trailing: navBarView.trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 10,
+                             width: 60,
+                             height: 44)
         editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(titleLabel)
-        titleLabel.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: navBarView.bottomAnchor, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 32)
+        titleLabel.setAnchor(top: navBarView.topAnchor,
+                             leading: navBarView.leadingAnchor,
+                             bottom: navBarView.bottomAnchor,
+                             trailing: navBarView.trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 60,
+                             paddingBottom: 0,
+                             paddingRight: 60,
+                             width: 0,
+                             height: 32)
         titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         addSubview(collectionView)
-        collectionView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        collectionView.setAnchor(top: navBarView.bottomAnchor,
+                                 leading: leadingAnchor,
+                                 bottom: bottomAnchor,
+                                 trailing: trailingAnchor,
+                                 paddingTop: 0,
+                                 paddingLeft: 0,
+                                 paddingBottom: 0,
+                                 paddingRight: 0)
         
         collectionView.addSubview(infoLabel)
-        infoLabel.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        infoLabel.setAnchor(top: navBarView.bottomAnchor,
+                            leading: leadingAnchor,
+                            bottom: bottomAnchor,
+                            trailing: trailingAnchor,
+                            paddingTop: 0,
+                            paddingLeft: 0,
+                            paddingBottom: 0,
+                            paddingRight: 0)
     }
     
     @objc fileprivate func handleBack() {

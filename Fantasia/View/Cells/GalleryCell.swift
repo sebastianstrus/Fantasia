@@ -83,10 +83,26 @@ class GalleryCell: UICollectionViewCell {
         imageView.pinToEdges(view: self, safe: false)
         
         addSubview(blurEffectView)
-        blurEffectView.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 6, paddingLeft: 6, paddingBottom: 0, paddingRight: 0, width: 36, height: 36)
+        blurEffectView.setAnchor(top: topAnchor,
+                                 leading: leadingAnchor,
+                                 bottom: nil,
+                                 trailing: nil,
+                                 paddingTop: 6,
+                                 paddingLeft: 6,
+                                 paddingBottom: 0,
+                                 paddingRight: 0,
+                                 width: 36,
+                                 height: 36)
         
         blurEffectView.contentView.addSubview(xButton)
-        xButton.setAnchor(top: blurEffectView.contentView.topAnchor, leading: blurEffectView.contentView.leadingAnchor, bottom: blurEffectView.contentView.bottomAnchor, trailing: blurEffectView.contentView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        xButton.setAnchor(top: blurEffectView.contentView.topAnchor,
+                          leading: blurEffectView.contentView.leadingAnchor,
+                          bottom: blurEffectView.contentView.bottomAnchor,
+                          trailing: blurEffectView.contentView.trailingAnchor,
+                          paddingTop: 0,
+                          paddingLeft: 0,
+                          paddingBottom: 0,
+                          paddingRight: 0)
         xButton.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         
         

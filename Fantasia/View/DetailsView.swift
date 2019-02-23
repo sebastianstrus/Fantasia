@@ -102,29 +102,79 @@ class DetailsView: UIView {
         backgroundImageView.pinToEdges(view: self, safe: false)
         
         addSubview(safeAreaBackground)
-        safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        safeAreaBackground.setAnchor(top: topAnchor,
+                                     leading: leadingAnchor,
+                                     bottom: nil,
+                                     trailing: trailingAnchor,
+                                     paddingTop: 0,
+                                     paddingLeft: 0,
+                                     paddingBottom: 0,
+                                     paddingRight: 0,
+                                     width: 0,
+                                     height: 44)
         
         addSubview(navBarView)
-        navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        navBarView.setAnchor(top: safeTopAnchor,
+                             leading: leadingAnchor,
+                             bottom: nil,
+                             trailing: trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 0,
+                             height: 44)
         
         navBarView.addSubview(backButton)
-        backButton.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
+        backButton.setAnchor(top: navBarView.topAnchor,
+                             leading: navBarView.leadingAnchor,
+                             bottom: nil,
+                             trailing: nil,
+                             paddingTop: 0,
+                             paddingLeft: 10,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 44,
+                             height: 44)
         
         navBarView.addSubview(editButton)
-        editButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)
+        editButton.setAnchor(top: nil,
+                             leading: nil,
+                             bottom: nil,
+                             trailing: navBarView.trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 10,
+                             width: 32,
+                             height: 32)
         editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(titleLabel)
-        titleLabel.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: editButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        titleLabel.setAnchor(top: navBarView.topAnchor,
+                             leading: backButton.trailingAnchor,
+                             bottom: navBarView.bottomAnchor,
+                             trailing: editButton.leadingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 20,
+                             paddingBottom: 0,
+                             paddingRight: 20)
         
         
         addSubview(imageView)
         imageView.setShadow()
         
         addSubview(dateLabel)
-        dateLabel.setAnchor(top: imageView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30)
-        
-        
+        dateLabel.setAnchor(top: imageView.bottomAnchor,
+                            leading: leadingAnchor,
+                            bottom: nil,
+                            trailing: trailingAnchor,
+                            paddingTop: 10,
+                            paddingLeft: 20,
+                            paddingBottom: 0,
+                            paddingRight: 20,
+                            width: 0,
+                            height: 30)
     }
     
     
@@ -141,7 +191,16 @@ class DetailsView: UIView {
         let height_by_width = image!.size.height / image!.size.width
         let imageHeight = CGFloat(imageWidth) * height_by_width
         
-        imageView.setAnchor(top: titleLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: CGFloat(imageWidth), height: imageHeight)
+        imageView.setAnchor(top: titleLabel.bottomAnchor,
+                            leading: leadingAnchor,
+                            bottom: nil,
+                            trailing: nil,
+                            paddingTop: 10,
+                            paddingLeft: 10,
+                            paddingBottom: 10,
+                            paddingRight: 0,
+                            width: CGFloat(imageWidth),
+                            height: imageHeight)
 
     }
     

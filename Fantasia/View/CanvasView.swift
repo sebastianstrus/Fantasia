@@ -107,7 +107,7 @@ class CanvasView: UIView {
     
     fileprivate let titleTF: UITextField = {
         let tf = UITextField()
-        tf.font = UIFont(name: "Oswald-Medium", size: 20)
+        tf.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
         tf.textAlignment = .center
         tf.textColor = AppColors.WHITE_GRAY
         tf.attributedPlaceholder = NSAttributedString(string: "Enter title".localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.WHITE_GRAY])
@@ -160,46 +160,146 @@ class CanvasView: UIView {
         backgroundImageView.pinToEdges(view: self, safe: false)
         
         addSubview(safeAreaBackground)
-        safeAreaBackground.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        safeAreaBackground.setAnchor(top: topAnchor,
+                                     leading: leadingAnchor,
+                                     bottom: nil,
+                                     trailing: trailingAnchor,
+                                     paddingTop: 0,
+                                     paddingLeft: 0,
+                                     paddingBottom: 0,
+                                     paddingRight: 0,
+                                     width: 0,
+                                     height: Device.IS_IPHONE ? 44 : 88)
         
         addSubview(navBarView)
-        navBarView.setAnchor(top: safeTopAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 44)
+        navBarView.setAnchor(top: safeTopAnchor,
+                             leading: leadingAnchor,
+                             bottom: nil,
+                             trailing: trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: 0,
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(backButton)
-        backButton.setAnchor(top: navBarView.topAnchor, leading: navBarView.leadingAnchor, bottom: nil, trailing: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 44, height: 44)
+        backButton.setAnchor(top: navBarView.topAnchor,
+                             leading: navBarView.leadingAnchor,
+                             bottom: nil,
+                             trailing: nil,
+                             paddingTop: 0,
+                             paddingLeft: 10,
+                             paddingBottom: 0,
+                             paddingRight: 0,
+                             width: Device.IS_IPHONE ? 44 : 88,
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(saveButton)
-        saveButton.setAnchor(top: nil, leading: nil, bottom: nil, trailing: navBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 32, height: 32)
-        saveButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
-
+        saveButton.setAnchor(top: navBarView.topAnchor,
+                             leading: nil,
+                             bottom: nil,
+                             trailing: navBarView.trailingAnchor,
+                             paddingTop: 0,
+                             paddingLeft: 0,
+                             paddingBottom: 0,
+                             paddingRight: Device.IS_IPHONE ? 10 : 20,
+                             width: Device.IS_IPHONE ? 44 : 88,
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(titleTF)
-        titleTF.setAnchor(top: navBarView.topAnchor, leading: backButton.trailingAnchor, bottom: navBarView.bottomAnchor, trailing: saveButton.leadingAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20)
+        titleTF.setAnchor(top: navBarView.topAnchor,
+                          leading: backButton.trailingAnchor,
+                          bottom: navBarView.bottomAnchor,
+                          trailing: saveButton.leadingAnchor,
+                          paddingTop: 0,
+                          paddingLeft: Device.IS_IPHONE ? 20 : 40,
+                          paddingBottom: 0,
+                          paddingRight: Device.IS_IPHONE ? 20 : 40)
         
         addSubview(bottomSafeAreaBackground)
-        bottomSafeAreaBackground.setAnchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        bottomSafeAreaBackground.setAnchor(top: nil,
+                                           leading: leadingAnchor,
+                                           bottom: bottomAnchor,
+                                           trailing: trailingAnchor,
+                                           paddingTop: 0,
+                                           paddingLeft: 0,
+                                           paddingBottom: 0,
+                                           paddingRight: 0,
+                                           width: 0,
+                                           height: Device.IS_IPHONE ? 50 : 100)
         
         addSubview(toolBarView)
-        toolBarView.setAnchor(top: nil, leading: leadingAnchor, bottom: safeBottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 86)
+        toolBarView.setAnchor(top: nil,
+                              leading: leadingAnchor,
+                              bottom: safeBottomAnchor,
+                              trailing: trailingAnchor,
+                              paddingTop: 0,
+                              paddingLeft: 0,
+                              paddingBottom: 0,
+                              paddingRight: 0,
+                              width: 0,
+                              height: Device.IS_IPHONE ? 96 : 192)
         
         toolBarView.addSubview(undoButton)
-        undoButton.setAnchor(top: nil, leading: toolBarView.leadingAnchor, bottom: toolBarView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 0, width: 30, height: 30)
+        undoButton.setAnchor(top: nil,
+                             leading: toolBarView.leadingAnchor,
+                             bottom: toolBarView.bottomAnchor,
+                             trailing: nil,
+                             paddingTop: 0,
+                             paddingLeft: Device.IS_IPHONE ? 10 : 20,
+                             paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                             paddingRight: 0,
+                             width: Device.IS_IPHONE ? 44 : 88,
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         toolBarView.addSubview(clearButton)
-        clearButton.setAnchor(top: nil, leading: nil, bottom: toolBarView.bottomAnchor, trailing: toolBarView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 16, width: 30, height: 30)
+        clearButton.setAnchor(top: nil,
+                              leading: nil,
+                              bottom: toolBarView.bottomAnchor,
+                              trailing: toolBarView.trailingAnchor,
+                              paddingTop: 0,
+                              paddingLeft: 0,
+                              paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                              paddingRight: Device.IS_IPHONE ? 10 : 20,
+                              width: Device.IS_IPHONE ? 44 : 88,
+                              height: Device.IS_IPHONE ? 44 : 88)
         
         
         toolBarView.addSubview(widthSlider)
-        widthSlider.setAnchor(top: nil, leading: undoButton.trailingAnchor, bottom: toolBarView.bottomAnchor, trailing: clearButton.leadingAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 10, paddingRight: 16)
+        widthSlider.setAnchor(top: nil,
+                              leading: undoButton.trailingAnchor,
+                              bottom: toolBarView.bottomAnchor,
+                              trailing: clearButton.leadingAnchor,
+                              paddingTop: 0,
+                              paddingLeft: Device.IS_IPHONE ? 16 : 32,
+                              paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                              paddingRight: Device.IS_IPHONE ? 16 : 32, width: 0, height: Device.IS_IPHONE ? 44 : 88)
         
         addSubview(correctCanvasView)
-        correctCanvasView.setAnchor(top: navBarView.bottomAnchor, leading: leadingAnchor, bottom: toolBarView.topAnchor, trailing: trailingAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10)
+        correctCanvasView.setAnchor(top: navBarView.bottomAnchor,
+                                    leading: leadingAnchor,
+                                    bottom: toolBarView.topAnchor,
+                                    trailing: trailingAnchor,
+                                    paddingTop: Device.IS_IPHONE ? 10 : 20,
+                                    paddingLeft: Device.IS_IPHONE ? 10 : 20,
+                                    paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                                    paddingRight: Device.IS_IPHONE ? 10 : 20)
         
         addSubview(colorSlider)
-        colorSlider.setAnchor(top: correctCanvasView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 18, paddingLeft: 22, paddingBottom: 0, paddingRight: 22, width: 0, height: 25)
+        colorSlider.setAnchor(top: correctCanvasView.bottomAnchor,
+                              leading: leadingAnchor,
+                              bottom: nil,
+                              trailing: trailingAnchor,
+                              paddingTop: Device.IS_IPHONE ? 18 : 36,
+                              paddingLeft: Device.IS_IPHONE ? 22 : 44,
+                              paddingBottom: 0,
+                              paddingRight: Device.IS_IPHONE ? 22 : 44,
+                              width: 0,
+                              height: Device.IS_IPHONE ? 25 : 50)
         
-        self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
-        self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)
+        self.widthSlider.setThumbImage(self.progressImage(with: Device.IS_IPHONE ? 10 : 20), for: UIControl.State.normal)
+        self.widthSlider.setThumbImage(self.progressImage(with: Device.IS_IPHONE ? 10 : 20), for: UIControl.State.selected)
         widthSlider.setLightShadow()
     }
     
@@ -217,8 +317,8 @@ class CanvasView: UIView {
     func progressImage(with progress : Float) -> UIImage {
         let layer = CALayer()
         layer.backgroundColor = UIColor.white.cgColor
-        layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        layer.cornerRadius = 15
+        layer.frame = CGRect(x: 0, y: 0, width: Device.IS_IPHONE ? 30 : 60, height: Device.IS_IPHONE ? 30 : 60)
+        layer.cornerRadius = Device.IS_IPHONE ? 15 : 30
         
         let label = UILabel(frame: layer.frame)
         label.text = "\(Int(progress))"

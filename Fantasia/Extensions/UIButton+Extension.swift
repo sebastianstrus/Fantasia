@@ -16,7 +16,7 @@ extension UIButton {
         self.setAttributedTitle(attributedString, for: .normal)
         self.layer.cornerRadius = Device.IS_IPHONE ? 20 : 40
         self.backgroundColor = AppColors.BUTTON_BACKGROUND
-        self.setAnchor(width: Device.IS_IPHONE ? 160 : 320/*CGFloat(Device.SCREEN_WIDTH * 1/2)*/,
+        self.setAnchor(width: Device.IS_IPHONE ? 180 : 360,
                        height: Device.IS_IPHONE ? 40 : 80)
     }
 

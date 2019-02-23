@@ -81,22 +81,44 @@ class MainMenuView: UIView {
         backgroundImageView.pinToEdges(view: self, safe: false)
         
         addSubview(topContainer)
-        topContainer.setAnchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: CGFloat(Device.SCREEN_WIDTH), height: CGFloat(Device.SCREEN_HEIGHT/2))
+        topContainer.setAnchor(top: topAnchor,
+                               leading: leadingAnchor,
+                               bottom: nil,
+                               trailing: trailingAnchor,
+                               paddingTop: 0,
+                               paddingLeft: 0,
+                               paddingBottom: 0,
+                               paddingRight: 0,
+                               width: CGFloat(Device.SCREEN_WIDTH),
+                               height: CGFloat(Device.SCREEN_HEIGHT/2))
         
-        let titlesStackView = createStackView(views: [titleLabel, subtitleLabel], spacing: 0)
+        let titlesStackView = createStackView(views: [titleLabel, subtitleLabel],
+                                              spacing: Device.IS_IPHONE ? -20 : -40)
         topContainer.addSubview(titlesStackView)
-        titlesStackView.setAnchor(width: self.frame.width, height: Device.IS_IPHONE ? 130 : 260)
+        titlesStackView.setAnchor(width: self.frame.width,
+                                  height: Device.IS_IPHONE ? 110 : 220)
         titlesStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titlesStackView.centerYAnchor.constraint(equalTo: topContainer.centerYAnchor).isActive = true
         
         addSubview(bottomContainer)
-        bottomContainer.setAnchor(top: topContainer.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: CGFloat(Device.SCREEN_WIDTH), height: 0)
+        bottomContainer.setAnchor(top: topContainer.bottomAnchor,
+                                  leading: leadingAnchor,
+                                  bottom: bottomAnchor,
+                                  trailing: trailingAnchor,
+                                  paddingTop: 0,
+                                  paddingLeft: 0,
+                                  paddingBottom: 0,
+                                  paddingRight: 0,
+                                  width: CGFloat(Device.SCREEN_WIDTH),
+                                  height: 0)
         
         
         
-        let buttonsStackView = createStackView(views: [newCanvasButton, galleryButton], spacing: Device.IS_IPHONE ? 10 : 20)
+        let buttonsStackView = createStackView(views: [newCanvasButton, galleryButton],
+                                               spacing: Device.IS_IPHONE ? 10 : 20)
         bottomContainer.addSubview(buttonsStackView)
-        buttonsStackView.setAnchor(width: Device.IS_IPHONE ? 160 : 320, height: Device.IS_IPHONE ? 90 : 180)
+        buttonsStackView.setAnchor(width: Device.IS_IPHONE ? 180 : 360,
+                                   height: Device.IS_IPHONE ? 90 : 180)
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
     }
