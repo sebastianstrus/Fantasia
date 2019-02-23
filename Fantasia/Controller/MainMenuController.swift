@@ -11,7 +11,7 @@ import UIKit
 class MainMenuController: UIViewController {
     
     
-    var mainMenuView: MainMenuView!
+    fileprivate var mainMenuView: MainMenuView!
 
     
     override func viewDidLoad() {
@@ -19,7 +19,8 @@ class MainMenuController: UIViewController {
         setupView()
     }
     
-    func setupView() {
+    // MARK: - Private functions
+    fileprivate func setupView() {
         self.mainMenuView = MainMenuView()
         self.mainMenuView.newCanvasAction = handleNewCanvas
         self.mainMenuView.galleryAction = handleGallery
@@ -27,13 +28,12 @@ class MainMenuController: UIViewController {
         mainMenuView.pinToEdges(view: view, safe: false)
     }
     
-    // MARK: - Events
-    func handleNewCanvas() {
+    fileprivate func handleNewCanvas() {
         let canvasController = CanvasController()
         present(canvasController, animated: true, completion: nil)
     }
     
-    func handleGallery() {
+    fileprivate func handleGallery() {
         let galleryController = GalleryController()
         present(galleryController, animated: true, completion: nil)
     }

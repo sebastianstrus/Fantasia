@@ -9,13 +9,11 @@
 import UIKit
 import AVFoundation
 
-class CanvasController: UIViewController, ColorDelegate {
+class CanvasController: UIViewController {
     
-    let varietiesViewController = VarietiesViewController()
+    fileprivate var canvasActivityView: CanvasView!
     
-    var canvasActivityView: CanvasView!
-    
-    func onGetColor(color: UIColor) {
+    fileprivate func onGetColor(color: UIColor) {
         canvasActivityView.setColor(color: color)
     }
     
@@ -25,8 +23,6 @@ class CanvasController: UIViewController, ColorDelegate {
         hideKeyboardWhenTappedAround()
         
         setupLayout()
-        varietiesViewController.delegate = self
-        
     }
     
     fileprivate func setupLayout() {
@@ -35,26 +31,18 @@ class CanvasController: UIViewController, ColorDelegate {
         view.addSubview(canvasActivityView)
         canvasActivityView.pinToEdges(view: view, safe: false)
         
-        canvasActivityView.changeColorAction = handleChangeColor
         canvasActivityView.backAction = handleBack
         canvasActivityView.saveCanvasAction = handleSaveCanvas
     }
     
-    func handleChangeColor() {
-        present(varietiesViewController, animated: true, completion: nil)
-    }
+
     
-    func handleBack() {
+    fileprivate func handleBack() {
         dismiss(animated: true, completion: nil)
     }
     
-    func handleSaveCanvas() {
+    fileprivate func handleSaveCanvas() {
         canvasActivityView.saveCanvas()
         dismiss(animated: true, completion: nil)
     }
-}
-
-protocol ColorDelegate
-{
-    func onGetColor(color: UIColor)
 }

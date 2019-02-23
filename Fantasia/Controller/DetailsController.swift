@@ -10,9 +10,9 @@ import UIKit
 
 class DetailsController: UIViewController {
     
-    var detailsView: DetailsView!
+    fileprivate var detailsView: DetailsView!
     
-    var canvas: CanvasObject?
+    fileprivate var canvas: CanvasObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,7 @@ class DetailsController: UIViewController {
         setupLayout()
     }
     
+    // MARK: - Private functions
     fileprivate func setupLayout() {
         detailsView = DetailsView(frame: view.frame)
         view.addSubview(detailsView)
@@ -36,6 +37,11 @@ class DetailsController: UIViewController {
     
     fileprivate func handleEdit() {
         print("Edit soon")
+    }
+    
+    // MARK: - Public functions
+    func setCanvas(canvas: CanvasObject) {
+        self.canvas = canvas
     }
 }
 

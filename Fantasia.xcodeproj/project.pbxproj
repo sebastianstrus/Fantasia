@@ -39,8 +39,6 @@
 		7D9A15F52210CB26009915A1 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F42210CB26009915A1 /* DetailsView.swift */; };
 		7D9A15F72211F6C3009915A1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */; };
 		7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D9A15F922122F21009915A1 /* page_flip.mp3 */; };
-		7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE56952208E213003AE323 /* ColorPicker.swift */; };
-		7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
 		7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */; };
 		E46D3663AB0E493426649E3D /* Pods_Fantasia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */; };
@@ -82,8 +80,6 @@
 		7D9A15F42210CB26009915A1 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7D9A15F922122F21009915A1 /* page_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = page_flip.mp3; sourceTree = "<group>"; };
-		7DAE56952208E213003AE323 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VarietiesViewController.swift; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaOutline-Regular.ttf"; sourceTree = "<group>"; };
 		8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.release.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,8 +259,6 @@
 		7DAE56942208E1DB003AE323 /* Custom controls */ = {
 			isa = PBXGroup;
 			children = (
-				7DAE56952208E213003AE323 /* ColorPicker.swift */,
-				7DAE569B2208E2B1003AE323 /* VarietiesViewController.swift */,
 			);
 			path = "Custom controls";
 			sourceTree = "<group>";
@@ -417,7 +411,6 @@
 				7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */,
 				7D2AFF452206775600C13363 /* CanvasView.swift in Sources */,
 				7D2AFF1D22050E1800C13363 /* UIView+Extension.swift in Sources */,
-				7DAE569C2208E2B1003AE323 /* VarietiesViewController.swift in Sources */,
 				7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */,
 				7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */,
 				7D2AFF192205056800C13363 /* UIColor+Extension.swift in Sources */,
@@ -434,7 +427,6 @@
 				7D2AFF152205044200C13363 /* Constants.swift in Sources */,
 				7D2AFF412206630900C13363 /* GalleryView.swift in Sources */,
 				7D2AFF172205052600C13363 /* AppColors.swift in Sources */,
-				7DAE56962208E213003AE323 /* ColorPicker.swift in Sources */,
 				7D2AFF122205003700C13363 /* String+Extension.swift in Sources */,
 				7D2AFF3B22064DBA00C13363 /* Strings.swift in Sources */,
 				7D2AFF0B2204FAF800C13363 /* MainMenuController.swift in Sources */,

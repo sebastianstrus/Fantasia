@@ -29,7 +29,6 @@ class CanvasView: UIView {
     }
     
     // MARK: - Public actions
-    var changeColorAction: (() -> Void)?
     var backAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
     
@@ -154,16 +153,6 @@ class CanvasView: UIView {
        return slider
     }()
     
-    fileprivate let colorButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = UIColor.black
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
-        button.addTarget(self, action: #selector(handleChangeColor), for: .touchUpInside)
-        return button
-    }()
-    
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
@@ -255,10 +244,6 @@ class CanvasView: UIView {
         self.widthSlider.setThumbImage(self.progressImage(with: self.widthSlider.value), for: UIControl.State.selected)
     }
     
-    @objc fileprivate func handleChangeColor() {
-        changeColorAction?()
-    }
-    
     @objc fileprivate func handleBack() {
         backAction?()
     }
@@ -270,7 +255,6 @@ class CanvasView: UIView {
     //public functions
     public func setColor(color: UIColor){
         correctCanvasView.setStrokeColor(color: color)
-        colorButton.layer.backgroundColor = color.cgColor
     }
     
     // MARK: - public functions

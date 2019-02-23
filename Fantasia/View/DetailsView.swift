@@ -30,32 +30,32 @@ class DetailsView: UIView {
     var editAction: (() -> Void)?
     
     // MARK: - All subviews
-    let backgroundImageView: UIImageView = {
+    fileprivate let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "background1")
         return iv
     }()
     
-    let safeAreaBackground: UIView = {
+    fileprivate let safeAreaBackground: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    let navBarView: UIView = {
+    fileprivate let navBarView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
     }()
     
-    var imageView: UIImageView = {
+    fileprivate var imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFill
         return iv
     }()
     
-    let titleLabel: UILabel = {
+    fileprivate let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = AppColors.WHITE_GRAY
@@ -63,7 +63,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    let dateLabel: UILabel = {
+    fileprivate let dateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFonts.DATE_FONT
         label.textColor = UIColor.red
@@ -71,7 +71,7 @@ class DetailsView: UIView {
         return label
     }()
     
-    let backButton: UIButton = {
+    fileprivate let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
@@ -79,7 +79,7 @@ class DetailsView: UIView {
         return button
     }()
     
-    let editButton: UIButton = {
+    fileprivate let editButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "button_edit"), for: .normal)
@@ -87,11 +87,11 @@ class DetailsView: UIView {
         return button
     }()
     
-    @objc func handleBack() {
+    @objc fileprivate func handleBack() {
         backAction?()
     }
     
-    @objc func handleEdit() {
+    @objc fileprivate func handleEdit() {
         editAction?()
     }
     

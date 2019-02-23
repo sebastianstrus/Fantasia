@@ -17,9 +17,10 @@ class CanvasObjectController {
     
     let entityName = "CanvasObject"
     
-    private var savedCanvasObjects = [NSManagedObject]()
-    private var images = [UIImage]()
-    private var managedContext: NSManagedObjectContext!
+    fileprivate var savedCanvasObjects = [NSManagedObject]()
+    fileprivate var images = [UIImage]()
+    fileprivate var managedContext: NSManagedObjectContext!
+    
     var canvases: [CanvasObject] = []
     
     private init() {

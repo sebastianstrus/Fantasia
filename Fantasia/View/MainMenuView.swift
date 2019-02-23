@@ -9,9 +9,6 @@
 
 import UIKit
 
-let kButtonsStackViewHeight: CGFloat = Device.IS_IPHONE ? 140 : 280
-let kStackViewMargin: CGFloat = Device.IS_IPHONE ? 120 : 300
-
 class MainMenuView: UIView {
     
     // MARK: - Initializers
@@ -95,14 +92,15 @@ class MainMenuView: UIView {
         addSubview(bottomContainer)
         bottomContainer.setAnchor(top: topContainer.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: CGFloat(Device.SCREEN_WIDTH), height: 0)
         
-        let buttonsStackView = createStackView(views: [newCanvasButton, galleryButton], spacing: Device.IS_IPHONE ? 20 : 40)
+        
+        
+        let buttonsStackView = createStackView(views: [newCanvasButton, galleryButton], spacing: Device.IS_IPHONE ? 10 : 20)
         bottomContainer.addSubview(buttonsStackView)
-        buttonsStackView.backgroundColor = UIColor.lightGray
-        buttonsStackView.setAnchor(width: self.frame.width - kStackViewMargin, height: kButtonsStackViewHeight)
+        buttonsStackView.setAnchor(width: Device.IS_IPHONE ? 160 : 320, height: Device.IS_IPHONE ? 90 : 180)
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
     }
-    
+
     @objc fileprivate func handleNewCanvas() {
         newCanvasAction?()
     }

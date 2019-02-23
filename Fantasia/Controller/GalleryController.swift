@@ -13,7 +13,7 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     fileprivate var galleryView: GalleryView!
     fileprivate let cellId = "cellId"
     
-    private var canvases: [CanvasObject]  = [] {
+    fileprivate var canvases: [CanvasObject]  = [] {
         didSet {
             galleryView.toggleInfoLabel(isEmpty: canvases.isEmpty)
         }
@@ -36,7 +36,7 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     }
     
     
-    private func setupView() {
+    fileprivate func setupView() {
         let myCV = GalleryView(frame: view.frame)
         self.galleryView = myCV
         
@@ -48,11 +48,11 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
         galleryView.registerCell(className: GalleryCell.self, id: cellId)
     }
     
-    func handleBack() {
+    fileprivate func handleBack() {
         dismiss(animated: true, completion: nil)
     }
     
-    func handleEdit() {
+    fileprivate func handleEdit() {
         setEditing(!isEditing, animated: true)
     }
     
@@ -75,7 +75,7 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     // MARK: - UICollectionViewDelegate functions
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsController = DetailsController()
-        detailsController.canvas = canvases[indexPath.row]
+        detailsController.setCanvas(canvas: canvases[indexPath.row])
         present(detailsController, animated: true, completion: nil)
     }
     
