@@ -19,4 +19,5 @@ struct AppFonts {
     static let LIST_CELL_DISTANCE_FONT = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 13 : 26)
     static let DESCRIPTION_FONT = UIFont(name: "Oswald-Medium", size: 24)
     static let DATE_FONT = UIFont(name: "Oswald-Medium", size: 20)
+    static let SLIDER_FONT = UIFont(name: "SeymourOne", size: Device.IS_IPHONE ? 12 : 24)
 }

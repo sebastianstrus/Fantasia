@@ -25,6 +25,8 @@
 		7D2AFF432206631C00C13363 /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF422206631C00C13363 /* GalleryController.swift */; };
 		7D2AFF452206775600C13363 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF442206775600C13363 /* CanvasView.swift */; };
 		7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */; };
+		7D4EE3BA2221DA3E005D1F46 /* SavePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */; };
+		7D4EE3BC22221015005D1F46 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */; };
 		7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABD72203805500E57FF3 /* AppDelegate.swift */; };
 		7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABDE2203805800E57FF3 /* Assets.xcassets */; };
 		7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */; };
@@ -64,6 +66,8 @@
 		7D2AFF422206631C00C13363 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
 		7D2AFF442206775600C13363 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ColorSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePopupView.swift; sourceTree = "<group>"; };
+		7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		7D92ABD42203805500E57FF3 /* Fantasia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fantasia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D92ABD72203805500E57FF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D92ABDE2203805800E57FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */,
 				7D9A15EE22107C3C009915A1 /* Date+Extension.swift */,
 				7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */,
+				7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 		7DAE56942208E1DB003AE323 /* Custom controls */ = {
 			isa = PBXGroup;
 			children = (
+				7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */,
 			);
 			path = "Custom controls";
 			sourceTree = "<group>";
@@ -408,10 +414,12 @@
 				7D2AFF2122051AD900C13363 /* AppFonts.swift in Sources */,
 				7D9A15C0220F28F7009915A1 /* GalleryCell.swift in Sources */,
 				7D9A15F52210CB26009915A1 /* DetailsView.swift in Sources */,
+				7D4EE3BA2221DA3E005D1F46 /* SavePopupView.swift in Sources */,
 				7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */,
 				7D2AFF452206775600C13363 /* CanvasView.swift in Sources */,
 				7D2AFF1D22050E1800C13363 /* UIView+Extension.swift in Sources */,
 				7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */,
+				7D4EE3BC22221015005D1F46 /* UITextField+Extension.swift in Sources */,
 				7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */,
 				7D2AFF192205056800C13363 /* UIColor+Extension.swift in Sources */,
 				7D9A15C5221037BF009915A1 /* UIImage+Extension.swift in Sources */,

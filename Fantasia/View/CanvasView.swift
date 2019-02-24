@@ -31,6 +31,7 @@ class CanvasView: UIView {
     // MARK: - Public actions
     var backAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
+    var cancelAction: (() -> Void)?
     
     // MARK: - Private variables
     fileprivate var strokeColor = AppColors.ACCENT_BLUE
@@ -92,7 +93,7 @@ class CanvasView: UIView {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "button_save"), for: .normal)
-        button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePopup), for: .touchUpInside)
         return button
     }()
     
@@ -151,6 +152,66 @@ class CanvasView: UIView {
         slider.setValue(kSliderInitialValue, animated: false)
         slider.addTarget(self, action: #selector(handleSliderChange), for: .valueChanged)
        return slider
+    }()
+    
+    fileprivate let savingView: UIView = {
+        let view = UIView()
+        view.backgroundColor = AppColors.TRANSPARENT_BLACK
+        view.isHidden = true
+        return view
+    }()
+    
+    fileprivate let popupView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = Device.IS_IPHONE ? 10 : 20
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor.white
+        view.layer.borderWidth = 2
+        view.layer.borderColor = AppColors.DODGERBLUE.cgColor
+        return view
+    }()
+    
+    fileprivate let headerLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = AppColors.DODGERBLUE
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.text = "Save canvas"
+        label.font = UIFont.systemFont(ofSize: 30)
+        return label
+    }()
+    
+    fileprivate let textField: UITextField = {
+        let tf = UITextField()
+        tf.font = UIFont.systemFont(ofSize: 24)
+        tf.placeholder = "Enter title"
+        tf.layer.borderWidth = 0.5
+        tf.layer.borderColor = AppColors.DODGERBLUE.cgColor
+        tf.setLeftPaddiingPoints(20)
+        return tf
+    }()
+    
+    fileprivate let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(AppColors.DODGERBLUE, for: .normal)
+        button.layer.borderWidth = 0.5
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        button.layer.borderColor = AppColors.DODGERBLUE.cgColor
+        button.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
+        return button
+    }()
+    
+    fileprivate let okButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.setTitleColor(AppColors.DODGERBLUE, for: .normal)
+        button.tintColor = AppColors.WHITE_GRAY
+        button.layer.borderWidth = 0.5
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        button.layer.borderColor = AppColors.DODGERBLUE.cgColor
+        button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
+        return button
     }()
     
     fileprivate func setup() {
@@ -298,9 +359,34 @@ class CanvasView: UIView {
                               width: 0,
                               height: Device.IS_IPHONE ? 25 : 50)
         
-        self.widthSlider.setThumbImage(self.progressImage(with: Device.IS_IPHONE ? 10 : 20), for: UIControl.State.normal)
-        self.widthSlider.setThumbImage(self.progressImage(with: Device.IS_IPHONE ? 10 : 20), for: UIControl.State.selected)
+        self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
+        self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)
         widthSlider.setLightShadow()
+        
+        
+        // Saving popup view
+        addSubview(savingView)
+        savingView.pinToEdges(view: self, safe: false)
+        
+        savingView.addSubview(popupView)
+        popupView.setAnchor(width: 400, height: 200)
+        
+        popupView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        popupView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        popupView.addSubview(headerLabel)
+        headerLabel.setAnchor(top: popupView.topAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
+        
+        popupView.addSubview(textField)
+        textField.setAnchor(top: headerLabel.bottomAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 80)
+        
+        popupView.addSubview(cancelButton)
+        cancelButton.setAnchor(top: textField.bottomAnchor, leading: popupView.leadingAnchor, bottom: popupView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 0)
+        
+        popupView.addSubview(okButton)
+        okButton.setAnchor(top: textField.bottomAnchor, leading: nil, bottom: popupView.bottomAnchor, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 0)
+        
+        
     }
     
     let minColor : UIImage = {
@@ -322,6 +408,8 @@ class CanvasView: UIView {
         
         let label = UILabel(frame: layer.frame)
         label.text = "\(Int(progress))"
+        label.font = AppFonts.SLIDER_FONT
+        label.textColor = UIColor.darkGray
         layer.addSublayer(label.layer)
         label.textAlignment = .center
         label.tag = 100
@@ -348,8 +436,18 @@ class CanvasView: UIView {
         backAction?()
     }
     
+    @objc fileprivate func handlePopup() {
+        savingView.setIsHidden(false, animated: true)
+        //savingView.isHidden = false
+    }
+    
     @objc fileprivate func handleSaveCanvas() {
         saveCanvasAction?()
+    }
+    
+    @objc fileprivate func handleCancel() {
+        savingView.setIsHidden(true, animated: true)
+        //savingView.isHidden = true
     }
     
     //public functions
@@ -359,7 +457,7 @@ class CanvasView: UIView {
     
     // MARK: - public functions
     public func saveCanvas(){
-        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: titleTF.text ?? "No title", date: Date())
+        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: textField.text ?? "No title", date: Date())
     }
     
     // todo: move
