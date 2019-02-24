@@ -177,17 +177,17 @@ class CanvasView: UIView {
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.text = "Save canvas"
-        label.font = UIFont.systemFont(ofSize: 30)
+        label.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 15 : 30)
         return label
     }()
     
     fileprivate let textField: UITextField = {
         let tf = UITextField()
-        tf.font = UIFont.systemFont(ofSize: 24)
+        tf.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ?  12 : 24)
         tf.placeholder = "Enter title"
         tf.layer.borderWidth = 0.5
         tf.layer.borderColor = AppColors.DODGERBLUE.cgColor
-        tf.setLeftPaddiingPoints(20)
+        tf.setLeftPaddiingPoints(Device.IS_IPHONE ? 10 : 20)
         return tf
     }()
     
@@ -196,7 +196,7 @@ class CanvasView: UIView {
         button.setTitle("Cancel", for: .normal)
         button.setTitleColor(AppColors.DODGERBLUE, for: .normal)
         button.layer.borderWidth = 0.5
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 12 : 24)
         button.layer.borderColor = AppColors.DODGERBLUE.cgColor
         button.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         return button
@@ -208,7 +208,7 @@ class CanvasView: UIView {
         button.setTitleColor(AppColors.DODGERBLUE, for: .normal)
         button.tintColor = AppColors.WHITE_GRAY
         button.layer.borderWidth = 0.5
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 12 : 24)
         button.layer.borderColor = AppColors.DODGERBLUE.cgColor
         button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
         return button
@@ -369,22 +369,22 @@ class CanvasView: UIView {
         savingView.pinToEdges(view: self, safe: false)
         
         savingView.addSubview(popupView)
-        popupView.setAnchor(width: 400, height: 200)
+        popupView.setAnchor(width: Device.IS_IPHONE ? 200 : 400, height: Device.IS_IPHONE ? 100 : 200)
         
         popupView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         popupView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         popupView.addSubview(headerLabel)
-        headerLabel.setAnchor(top: popupView.topAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 60)
+        headerLabel.setAnchor(top: popupView.topAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ? 30 : 60)
         
         popupView.addSubview(textField)
-        textField.setAnchor(top: headerLabel.bottomAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 80)
+        textField.setAnchor(top: headerLabel.bottomAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ?  40 : 80)
         
         popupView.addSubview(cancelButton)
-        cancelButton.setAnchor(top: textField.bottomAnchor, leading: popupView.leadingAnchor, bottom: popupView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 0)
+        cancelButton.setAnchor(top: textField.bottomAnchor, leading: popupView.leadingAnchor, bottom: popupView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
         
         popupView.addSubview(okButton)
-        okButton.setAnchor(top: textField.bottomAnchor, leading: nil, bottom: popupView.bottomAnchor, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 0)
+        okButton.setAnchor(top: textField.bottomAnchor, leading: nil, bottom: popupView.bottomAnchor, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
         
         
     }
