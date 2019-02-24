@@ -41,7 +41,7 @@ class GalleryView: UIView {
         label.text = "Gallery"
         label.textAlignment = .center
         label.textColor = AppColors.WHITE_GRAY
-        label.font = UIFont(name: "Oswald-Medium", size: 20)
+        label.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
         return label
     }()
 
@@ -82,7 +82,7 @@ class GalleryView: UIView {
         button.setTitle("Edit", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.textColor = AppColors.WHITE_GRAY
-        button.titleLabel?.font = .systemFont(ofSize: 22)
+        button.titleLabel?.font = .systemFont(ofSize: Device.IS_IPHONE ? 22 : 44)
         button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
         return button
     }()
@@ -103,7 +103,7 @@ class GalleryView: UIView {
                                      paddingBottom: 0,
                                      paddingRight: 0,
                                      width: 0,
-                                     height: 44)
+                                     height: Device.IS_IPHONE ? 44 : 88)
         
         addSubview(navBarView)
         navBarView.setAnchor(top: safeTopAnchor,
@@ -115,7 +115,7 @@ class GalleryView: UIView {
                              paddingBottom: 0,
                              paddingRight: 0,
                              width: 0,
-                             height: 44)
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(backButton)
         backButton.setAnchor(top: navBarView.topAnchor,
@@ -126,8 +126,8 @@ class GalleryView: UIView {
                              paddingLeft: 10,
                              paddingBottom: 0,
                              paddingRight: 0,
-                             width: 44,
-                             height: 44)
+                             width: Device.IS_IPHONE ? 44 : 88,
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(editButton)
         editButton.setAnchor(top: navBarView.topAnchor,
@@ -138,8 +138,8 @@ class GalleryView: UIView {
                              paddingLeft: 0,
                              paddingBottom: 0,
                              paddingRight: 10,
-                             width: 60,
-                             height: 44)
+                             width: Device.IS_IPHONE ? 60 : 120,
+                             height: Device.IS_IPHONE ? 44 : 88)
         editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(titleLabel)
@@ -148,11 +148,11 @@ class GalleryView: UIView {
                              bottom: navBarView.bottomAnchor,
                              trailing: navBarView.trailingAnchor,
                              paddingTop: 0,
-                             paddingLeft: 60,
+                             paddingLeft: Device.IS_IPHONE ? 60 : 120,
                              paddingBottom: 0,
-                             paddingRight: 60,
+                             paddingRight: Device.IS_IPHONE ? 60 : 120,
                              width: 0,
-                             height: 32)
+                             height: Device.IS_IPHONE ? 44 : 88)
         titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         addSubview(collectionView)

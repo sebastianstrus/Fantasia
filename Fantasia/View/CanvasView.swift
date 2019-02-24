@@ -106,13 +106,13 @@ class CanvasView: UIView {
         return button
     }()
     
-    fileprivate let titleTF: UITextField = {
-        let tf = UITextField()
-        tf.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
-        tf.textAlignment = .center
-        tf.textColor = AppColors.WHITE_GRAY
-        tf.attributedPlaceholder = NSAttributedString(string: "Enter title".localized, attributes: [NSAttributedString.Key.foregroundColor: AppColors.WHITE_GRAY])
-        return tf
+    fileprivate let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "New canvas"
+        label.textAlignment = .center
+        label.textColor = AppColors.WHITE_GRAY
+        label.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
+        return label
     }()
     
     fileprivate let clearButton: UIButton = {
@@ -268,8 +268,8 @@ class CanvasView: UIView {
                              width: Device.IS_IPHONE ? 44 : 88,
                              height: Device.IS_IPHONE ? 44 : 88)
         
-        navBarView.addSubview(titleTF)
-        titleTF.setAnchor(top: navBarView.topAnchor,
+        navBarView.addSubview(titleLabel)
+        titleLabel.setAnchor(top: navBarView.topAnchor,
                           leading: backButton.trailingAnchor,
                           bottom: navBarView.bottomAnchor,
                           trailing: saveButton.leadingAnchor,

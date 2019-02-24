@@ -10,8 +10,6 @@
 
 import UIKit
 
-let kPadding: CGFloat = 20
-
 class DetailsView: UIView {
     
     // MARK: - Initializers
@@ -59,7 +57,7 @@ class DetailsView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = AppColors.WHITE_GRAY
-        label.font = UIFont(name: "Oswald-Medium", size: 20)
+        label.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
         return label
     }()
     
@@ -123,7 +121,7 @@ class DetailsView: UIView {
                              paddingBottom: 0,
                              paddingRight: 0,
                              width: 0,
-                             height: 44)
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(backButton)
         backButton.setAnchor(top: navBarView.topAnchor,
@@ -131,11 +129,11 @@ class DetailsView: UIView {
                              bottom: nil,
                              trailing: nil,
                              paddingTop: 0,
-                             paddingLeft: 10,
+                             paddingLeft: Device.IS_IPHONE ? 10 : 20,
                              paddingBottom: 0,
                              paddingRight: 0,
-                             width: 44,
-                             height: 44)
+                             width: Device.IS_IPHONE ? 44 : 88,
+                             height: Device.IS_IPHONE ? 44 : 88)
         
         navBarView.addSubview(editButton)
         editButton.setAnchor(top: nil,
@@ -145,9 +143,9 @@ class DetailsView: UIView {
                              paddingTop: 0,
                              paddingLeft: 0,
                              paddingBottom: 0,
-                             paddingRight: 10,
-                             width: 32,
-                             height: 32)
+                             paddingRight: Device.IS_IPHONE ? 10 : 20,
+                             width: Device.IS_IPHONE ? 44 : 88,
+                             height: Device.IS_IPHONE ? 44 : 88)
         editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
         
         navBarView.addSubview(titleLabel)
@@ -156,9 +154,9 @@ class DetailsView: UIView {
                              bottom: navBarView.bottomAnchor,
                              trailing: editButton.leadingAnchor,
                              paddingTop: 0,
-                             paddingLeft: 20,
+                             paddingLeft: Device.IS_IPHONE ? 20 : 40,
                              paddingBottom: 0,
-                             paddingRight: 20)
+                             paddingRight: Device.IS_IPHONE ? 20 : 40)
         
         
         addSubview(imageView)
@@ -169,12 +167,12 @@ class DetailsView: UIView {
                             leading: leadingAnchor,
                             bottom: nil,
                             trailing: trailingAnchor,
-                            paddingTop: 10,
-                            paddingLeft: 20,
+                            paddingTop: Device.IS_IPHONE ? 10 : 20,
+                            paddingLeft: Device.IS_IPHONE ? 20 : 40,
                             paddingBottom: 0,
-                            paddingRight: 20,
+                            paddingRight: Device.IS_IPHONE ? 20 : 40,
                             width: 0,
-                            height: 30)
+                            height: Device.IS_IPHONE ? 30 : 60)
     }
     
     
@@ -187,7 +185,7 @@ class DetailsView: UIView {
         titleLabel.text = (canvas.title != "") ? canvas.title : "No title"
         dateLabel.text = canvas.date?.formatedString()
         
-        let imageWidth = Device.SCREEN_WIDTH - 20
+        let imageWidth = Device.SCREEN_WIDTH - (Device.IS_IPHONE ? 20 : 40)
         let height_by_width = image!.size.height / image!.size.width
         let imageHeight = CGFloat(imageWidth) * height_by_width
         
@@ -195,9 +193,9 @@ class DetailsView: UIView {
                             leading: leadingAnchor,
                             bottom: nil,
                             trailing: nil,
-                            paddingTop: 10,
-                            paddingLeft: 10,
-                            paddingBottom: 10,
+                            paddingTop: Device.IS_IPHONE ? 10 : 20,
+                            paddingLeft: Device.IS_IPHONE ? 10 : 20,
+                            paddingBottom: Device.IS_IPHONE ? 10 : 20,
                             paddingRight: 0,
                             width: CGFloat(imageWidth),
                             height: imageHeight)
