@@ -123,9 +123,16 @@ class CanvasView: UIView {
         return button
     }()
     
+    // Workaround, adds shadow
+    fileprivate var correctCanvasViewShadow: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.setShadow()
+        return view
+    }()
+    
     fileprivate var correctCanvasView: CorrectCanvasView = {
         let view = CorrectCanvasView()
-        view.setShadow()
         return view
     }()
     
@@ -337,6 +344,16 @@ class CanvasView: UIView {
                               paddingBottom: Device.IS_IPHONE ? 10 : 20,
                               paddingRight: Device.IS_IPHONE ? 16 : 32, width: 0, height: Device.IS_IPHONE ? 44 : 88)
         
+        addSubview(correctCanvasViewShadow)
+        correctCanvasViewShadow.setAnchor(top: navBarView.bottomAnchor,
+                                    leading: leadingAnchor,
+                                    bottom: toolBarView.topAnchor,
+                                    trailing: trailingAnchor,
+                                    paddingTop: Device.IS_IPHONE ? 10 : 20,
+                                    paddingLeft: Device.IS_IPHONE ? 10 : 20,
+                                    paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                                    paddingRight: Device.IS_IPHONE ? 10 : 20)
+        
         addSubview(correctCanvasView)
         correctCanvasView.setAnchor(top: navBarView.bottomAnchor,
                                     leading: leadingAnchor,
@@ -457,7 +474,7 @@ class CanvasView: UIView {
     
     // MARK: - public functions
     public func saveCanvas(){
-        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage2(), title: textField.text ?? "No title", date: Date())
+        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage(), title: textField.text ?? "No title", date: Date())
     }
     
     // todo: move

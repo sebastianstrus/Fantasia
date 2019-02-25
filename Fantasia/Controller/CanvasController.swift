@@ -9,7 +9,15 @@
 import UIKit
 import AVFoundation
 
+
+/*enum State {
+    case write
+    case read
+}*/
+
 class CanvasController: UIViewController {
+    
+    //private var state = State.write
     
     fileprivate var canvasActivityView: CanvasView!
     

@@ -91,12 +91,11 @@ extension UIView {
     
     func setShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowOffset = CGSize(width: Device.IS_IPHONE ?  4 : 8, height: Device.IS_IPHONE ?  4 : 8)
         self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 4.0
+        self.layer.shadowRadius = Device.IS_IPHONE ?  4 : 8
         self.layer.masksToBounds = false
         self.clipsToBounds = false
-        self.layer.cornerRadius = 4
     }
     
     func setLightShadow() {
@@ -126,16 +125,9 @@ extension UIView {
         self.layer.cornerRadius  = round(self.frame.size.width/2.0)
     }
     
-    func asImage1() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-    
     // Using a function since `var image` might conflict with an existing variable
     // (like on `UIImageView`)
-    func asImage2() -> UIImage {
+    func asImage() -> UIImage {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(bounds: bounds)
             return renderer.image { rendererContext in
