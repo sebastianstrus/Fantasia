@@ -19,7 +19,8 @@ class CanvasController: UIViewController {
     
     //private var state = State.write
     
-    fileprivate var canvasActivityView: CanvasView!
+    public var canvasActivityView: CanvasView!
+    fileprivate var canvas: CanvasObject?
     
     fileprivate func onGetColor(color: UIColor) {
         canvasActivityView.setColor(color: color)
@@ -27,10 +28,10 @@ class CanvasController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         hideKeyboardWhenTappedAround()
         
         setupLayout()
+        
     }
     
     fileprivate func setupLayout() {
@@ -41,6 +42,10 @@ class CanvasController: UIViewController {
         
         canvasActivityView.backAction = handleBack
         canvasActivityView.saveCanvasAction = handleSaveCanvas
+        
+        if let canvas = canvas {
+            canvasActivityView.setCanvas(canvas: canvas)
+        }
     }
     
 
@@ -52,5 +57,10 @@ class CanvasController: UIViewController {
     fileprivate func handleSaveCanvas() {
         canvasActivityView.saveCanvas()
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Public functions
+    func setCanvas(canvas: CanvasObject) {
+        self.canvas = canvas
     }
 }

@@ -37,6 +37,11 @@ class DetailsController: UIViewController {
     
     fileprivate func handleEdit() {
         print("Edit soon")
+        let canvasController = CanvasController()
+        canvasController.setCanvas(canvas: canvas!)
+        
+
+        present(canvasController, animated: true, completion: nil)
     }
     
     // MARK: - Public functions
