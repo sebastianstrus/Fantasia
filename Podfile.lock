@@ -1,16 +1,20 @@
 PODS:
   - ColorSlider (4.3)
+  - SwiftySound (1.0.0)
 
 DEPENDENCIES:
   - ColorSlider (~> 4.3)
+  - SwiftySound
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ColorSlider
+    - SwiftySound
 
 SPEC CHECKSUMS:
   ColorSlider: 83fb6f174a13d7235ef100d8d5fee1f71adf2182
+  SwiftySound: b9c3370956fd4ed65ed79d45563070077a50a2cd
 
-PODFILE CHECKSUM: 39b8b8a0526a6c6f950eaf9f19903d0abaee16ff
+PODFILE CHECKSUM: 7034dc5eb38fca3eca04cc7d43d472a7e85da366
 
 COCOAPODS: 1.6.1

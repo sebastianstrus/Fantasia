@@ -7,6 +7,6 @@ target 'Fantasia' do
 
   # Pods for Fantasia
 pod 'ColorSlider', '~> 4.3'
-
+pod 'SwiftySound'
 
 end

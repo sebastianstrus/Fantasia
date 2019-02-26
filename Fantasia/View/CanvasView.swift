@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import AVFoundation
 import ColorSlider
+import SwiftySound
 
 
 fileprivate let kStrokeInitialWidth: CGFloat = 10
@@ -36,10 +36,7 @@ class CanvasView: UIView {
     // MARK: - Private variables
     fileprivate var strokeColor = AppColors.ACCENT_BLUE
     fileprivate var strokeWidth = kStrokeInitialWidth
-    
-    //temp:
-    var audioPlayer: AVAudioPlayer?
-    
+        
     // MARK: - All subviews in main view
     fileprivate let backgroundImageView: UIImageView = {
         let iv = UIImageView()
@@ -148,7 +145,8 @@ class CanvasView: UIView {
                           animations: { self.correctCanvasView = self.correctCanvasView },
                           completion: nil)
         correctCanvasView.clear()
-        playSound()
+        Sound.play(file: "page_flip.mp3")
+
     }
     
     fileprivate let widthSlider: UISlider = {
@@ -494,21 +492,5 @@ class CanvasView: UIView {
     // MARK: - public functions
     public func saveCanvas(){
         CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage(), title: textField.text ?? "No title", date: Date())
-    }
-    
-    // todo: move
-    func playSound() {
-        if let audioPlayer = audioPlayer, audioPlayer.isPlaying { audioPlayer.stop() }
-        
-        guard let soundURL = Bundle.main.url(forResource: "page_flip", withExtension: "mp3") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            audioPlayer?.play()
-        } catch let error {
-            print(error)
-        }
     }
 }
