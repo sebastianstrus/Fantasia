@@ -10,9 +10,13 @@ import Foundation
 import UIKit
 
 extension UIImage {
-//    func jpegData(withCompressionQuality quality: CGFloat) -> Data? {
-//        return autoreleasepool(invoking: {() -> Data? in
-//            return UIImageJPEGRepresentation(self, quality)
-//        })
-//    }
+    
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+
 }

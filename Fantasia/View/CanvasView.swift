@@ -462,26 +462,14 @@ class CanvasView: UIView {
     
     @objc fileprivate func handleCancel() {
         savingView.setIsHidden(true, animated: true)
-        //savingView.isHidden = true
     }
     
     func setCanvas(canvas: CanvasObject) {
         titleLabel.text = canvas.title
-        
-        
-        let myLayer = CALayer()
-        let myImage = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)
-        myLayer.frame = correctCanvasView.frame
-        myLayer.contents = myImage
-        correctCanvasView.layer.addSublayer(myLayer)
-        
-        
-        let imageView = UIImageView()
-        
-        correctCanvasView.addSubview(imageView)
-        imageView.setAnchor(top: correctCanvasView.topAnchor, leading: correctCanvasView.leadingAnchor, bottom: correctCanvasView.bottomAnchor, trailing: correctCanvasView.trailingAnchor, paddingTop: 50, paddingLeft: 50, paddingBottom: 50, paddingRight: 50)
-        //imageView.pinToEdges(view: correctCanvasView, safe: false)
-        imageView.image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)
+        let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)
+        let width = Device.SCREEN_WIDTH - 20
+        let resizedImage = image?.resized(toWidth: CGFloat(width))
+        correctCanvasView.backgroundColor = UIColor(patternImage: resizedImage!)
     }
     
     //public functions
