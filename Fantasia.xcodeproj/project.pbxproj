@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D313FA045ED8BE678812719 /* Pods_Fantasia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDC5F016E0BE31ECB06DD35 /* Pods_Fantasia.framework */; };
 		7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF082204FAD600C13363 /* MainMenuView.swift */; };
 		7D2AFF0B2204FAF800C13363 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */; };
 		7D2AFF122205003700C13363 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF112205003700C13363 /* String+Extension.swift */; };
@@ -43,11 +44,11 @@
 		7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D9A15F922122F21009915A1 /* page_flip.mp3 */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
 		7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */; };
-		E46D3663AB0E493426649E3D /* Pods_Fantasia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7106946E9C63DF77A55B572E /* Pods-Fantasia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.debug.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.debug.xcconfig"; sourceTree = "<group>"; };
+		4CF2BDFFC77C3E476E3A8554 /* Pods-Fantasia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.debug.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.debug.xcconfig"; sourceTree = "<group>"; };
+		5FDC5F016E0BE31ECB06DD35 /* Pods_Fantasia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fantasia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2AFF082204FAD600C13363 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		7D2AFF112205003700C13363 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -86,8 +87,7 @@
 		7D9A15F922122F21009915A1 /* page_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = page_flip.mp3; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaOutline-Regular.ttf"; sourceTree = "<group>"; };
-		8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.release.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.release.xcconfig"; sourceTree = "<group>"; };
-		C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fantasia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D17F2C057957E3AB711BAFF /* Pods-Fantasia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fantasia.release.xcconfig"; path = "Target Support Files/Pods-Fantasia/Pods-Fantasia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */,
-				E46D3663AB0E493426649E3D /* Pods_Fantasia.framework in Frameworks */,
+				0D313FA045ED8BE678812719 /* Pods_Fantasia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */,
-				C91B87C5084D254B9AF3F2DF /* Pods_Fantasia.framework */,
+				5FDC5F016E0BE31ECB06DD35 /* Pods_Fantasia.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 		E7C0B54E06DC57FDD3798D28 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7106946E9C63DF77A55B572E /* Pods-Fantasia.debug.xcconfig */,
-				8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */,
+				4CF2BDFFC77C3E476E3A8554 /* Pods-Fantasia.debug.xcconfig */,
+				8D17F2C057957E3AB711BAFF /* Pods-Fantasia.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -293,11 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D92ABE62203805800E57FF3 /* Build configuration list for PBXNativeTarget "Fantasia" */;
 			buildPhases = (
-				F6241241DE929CF4BE4C3FAC /* [CP] Check Pods Manifest.lock */,
+				406E5FCE32D02D1D6F8B5C34 /* [CP] Check Pods Manifest.lock */,
 				7D92ABD02203805500E57FF3 /* Sources */,
 				7D92ABD12203805500E57FF3 /* Frameworks */,
 				7D92ABD22203805500E57FF3 /* Resources */,
-				8C5858494DBD604F8A521778 /* [CP] Embed Pods Frameworks */,
+				113E0B3955E5D2463147A2F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -359,7 +359,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8C5858494DBD604F8A521778 /* [CP] Embed Pods Frameworks */ = {
+		113E0B3955E5D2463147A2F2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,7 +383,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fantasia/Pods-Fantasia-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6241241DE929CF4BE4C3FAC /* [CP] Check Pods Manifest.lock */ = {
+		406E5FCE32D02D1D6F8B5C34 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,7 +577,7 @@
 		};
 		7D92ABE72203805800E57FF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7106946E9C63DF77A55B572E /* Pods-Fantasia.debug.xcconfig */;
+			baseConfigurationReference = 4CF2BDFFC77C3E476E3A8554 /* Pods-Fantasia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -596,7 +596,7 @@
 		};
 		7D92ABE82203805800E57FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C0050D0594C13307B940518 /* Pods-Fantasia.release.xcconfig */;
+			baseConfigurationReference = 8D17F2C057957E3AB711BAFF /* Pods-Fantasia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

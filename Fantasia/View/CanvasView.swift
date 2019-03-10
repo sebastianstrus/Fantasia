@@ -120,7 +120,15 @@ class CanvasView: UIView {
         return button
     }()
     
-    // Workaround, adds shadow
+    fileprivate let libraryButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.clipsToBounds = true
+        button.setImage(UIImage(named: "library_icon"), for: .normal)
+        button.addTarget(self, action: #selector(handleLibrary), for: .touchUpInside)
+        return button
+    }()
+    
+    // Workaround, adds shadow which doesn't desappear onClear
     fileprivate var correctCanvasViewShadow: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -147,6 +155,10 @@ class CanvasView: UIView {
         correctCanvasView.clear()
         Sound.play(file: "page_flip.mp3")
 
+    }
+    
+    @objc fileprivate func handleLibrary() {
+        print("library pressed")
     }
     
     fileprivate let widthSlider: UISlider = {
@@ -331,12 +343,24 @@ class CanvasView: UIView {
                               width: Device.IS_IPHONE ? 44 : 88,
                               height: Device.IS_IPHONE ? 44 : 88)
         
+        toolBarView.addSubview(libraryButton)
+        libraryButton.setAnchor(top: nil,
+                              leading: nil,
+                              bottom: toolBarView.bottomAnchor,
+                              trailing: clearButton.leadingAnchor,
+                              paddingTop: 0,
+                              paddingLeft: 0,
+                              paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                              paddingRight: Device.IS_IPHONE ? 0 : 20,
+                              width: Device.IS_IPHONE ? 44 : 88,
+                              height: Device.IS_IPHONE ? 44 : 88)
+        
         
         toolBarView.addSubview(widthSlider)
         widthSlider.setAnchor(top: nil,
                               leading: undoButton.trailingAnchor,
                               bottom: toolBarView.bottomAnchor,
-                              trailing: clearButton.leadingAnchor,
+                              trailing: libraryButton.leadingAnchor,
                               paddingTop: 0,
                               paddingLeft: Device.IS_IPHONE ? 16 : 32,
                               paddingBottom: Device.IS_IPHONE ? 10 : 20,
