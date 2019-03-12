@@ -32,6 +32,7 @@ class CanvasView: UIView {
     var backAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
     var cancelAction: (() -> Void)?
+    var libraryAction: (() -> Void)?
     
     // MARK: - Private variables
     fileprivate var strokeColor = AppColors.ACCENT_BLUE
@@ -140,26 +141,6 @@ class CanvasView: UIView {
         let view = CorrectCanvasView()
         return view
     }()
-    
-    @objc fileprivate func handleUndo() {
-        correctCanvasView.undo()
-    }
-    
-    @objc fileprivate func handleClear() {
-
-        UIView.transition(with:correctCanvasView,
-                          duration:0.8,
-                          options: .transitionCurlUp,
-                          animations: { self.correctCanvasView = self.correctCanvasView },
-                          completion: nil)
-        correctCanvasView.clear()
-        Sound.play(file: "page_flip.mp3")
-
-    }
-    
-    @objc fileprivate func handleLibrary() {
-        print("library pressed")
-    }
     
     fileprivate let widthSlider: UISlider = {
         let slider = UISlider()
@@ -488,12 +469,30 @@ class CanvasView: UIView {
         savingView.setIsHidden(true, animated: true)
     }
     
+    @objc fileprivate func handleUndo() {
+        correctCanvasView.undo()
+    }
+    
+    @objc fileprivate func handleClear() {
+        
+        UIView.transition(with:correctCanvasView,
+                          duration:0.8,
+                          options: .transitionCurlUp,
+                          animations: { self.correctCanvasView = self.correctCanvasView },
+                          completion: nil)
+        correctCanvasView.clear()
+        Sound.play(file: "page_flip.mp3")
+        
+    }
+    
+    @objc fileprivate func handleLibrary() {
+        libraryAction?()
+    }
+    
     func setCanvas(canvas: CanvasObject) {
         titleLabel.text = canvas.title
-        let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)
-        let width = Device.SCREEN_WIDTH - 20
-        let resizedImage = image?.resized(toWidth: CGFloat(width))
-        correctCanvasView.backgroundColor = UIColor(patternImage: resizedImage!)
+        let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)!
+        setImage(image: image)
     }
     
     //public functions
@@ -504,5 +503,69 @@ class CanvasView: UIView {
     // MARK: - public functions
     public func saveCanvas(){
         CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage(), title: textField.text ?? "No title", date: Date())
+    }
+    
+    public func setImage(image: UIImage) {
+        /*print("size: \(correctCanvasView.frame.size)")
+        
+        let size = image.size
+        let aspectRatio =  size.height / size.width
+        
+        print("aspectRatio: \(aspectRatio)")
+        
+        
+        let realWidth = Device.SCREEN_WIDTH - 20
+        let realHeight = CGFloat(realWidth) * aspectRatio
+        
+        
+        let realSize = CGSize(width: realWidth, height: Int(realHeight))
+        print("realSize: \(realSize)")
+        print("realSize.w: \(realSize.width)")
+        print("realSize.h: \(realSize.height)")
+        UIGraphicsBeginImageContext(realSize)
+        print("correctCanvasView.bounds: \(correctCanvasView.bounds)") //0 0 0 0
+        image.draw(in: correctCanvasView.bounds)
+        let im = UIGraphicsGetImageFromCurrentImageContext()
+        //UIGraphicsEndImageContext()
+        correctCanvasView.backgroundColor = UIColor(patternImage: im!)*/
+        
+
+        
+//
+//        UIGraphicsBeginImageContext(correctCanvasView.frame.size);
+//        var imageX = image
+//        imageX.draw(in: correctCanvasView.bounds)
+//        imageX: UIImage? = UIGraphicsGetImageFromCurrentImageContext() ?? <#default value#>
+//        UIGraphicsEndImageContext()
+//        if let im = imageX {
+//            correctCanvasView.backgroundColor = UIColor(patternImage: im)
+//        }
+//
+        
+        /*var newImage = image
+        newImage.sizeThatFits(correctCanvasView.bounds.size)
+        
+        
+        let size = CGSize(width: 30.0, height: 30.0)
+        let aspectScaledToFitImage = image
+            aspectScaledToFitImage.af_imageAspectScaled(toFit: size)
+        
+        let width = Device.SCREEN_WIDTH - 20
+        let resizedImage = image.resized(toWidth: CGFloat(width))
+        correctCanvasView.backgroundColor = UIColor(patternImage: resizedImage!)
+        
+        
+        
+        UIGraphicsBeginImageContext(correctCanvasView.frame.size)
+        image.drawAsPattern(in: correctCanvasView.bounds)
+        let image2: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        correctCanvasView.backgroundColor = UIColor(patternImage: image2)*/
+        
+        let width = Device.SCREEN_WIDTH - 20
+        let resizedImage = image.resized(toWidth: CGFloat(width))
+        correctCanvasView.backgroundColor = UIColor(patternImage: resizedImage!)
+        
+        
     }
 }

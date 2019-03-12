@@ -15,7 +15,7 @@ import AVFoundation
     case read
 }*/
 
-class CanvasController: UIViewController {
+class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPickerViewDelegate, UINavigationControllerDelegate {
     
     //private var state = State.write
     
@@ -42,6 +42,7 @@ class CanvasController: UIViewController {
         
         canvasActivityView.backAction = handleBack
         canvasActivityView.saveCanvasAction = handleSaveCanvas
+        canvasActivityView.libraryAction = handleLibrary
         
         if let canvas = canvas {
             canvasActivityView.setCanvas(canvas: canvas)
@@ -57,6 +58,30 @@ class CanvasController: UIViewController {
     fileprivate func handleSaveCanvas() {
         canvasActivityView.saveCanvas()
         dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func handleLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate functions
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        if let selectedImage = selectedImageFromPicker {
+            canvasActivityView.setImage(image: selectedImage)
+        }
+        picker.dismiss(animated: true)
     }
     
     // MARK: - Public functions
