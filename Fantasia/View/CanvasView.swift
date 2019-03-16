@@ -29,13 +29,13 @@ class CanvasView: UIView {
     }
     
     // MARK: - Public actions
-    var backAction: (() -> Void)?
+    //var backAction: (() -> Void)?
     var saveCanvasAction: (() -> Void)?
     var cancelAction: (() -> Void)?
     var libraryAction: (() -> Void)?
     
     // MARK: - Private variables
-    fileprivate var strokeColor = AppColors.ACCENT_BLUE
+    fileprivate var strokeColor = AppColors.TRANSPARENT_BLACK
     fileprivate var strokeWidth = kStrokeInitialWidth
         
     // MARK: - All subviews in main view
@@ -79,13 +79,13 @@ class CanvasView: UIView {
         correctCanvasView.setStrokeColor(color: slider.color)
     }
     
-    fileprivate let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.white
-        button.setImage(UIImage(named: "back_arrow"), for: .normal)
-        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
-        return button
-    }()
+//    fileprivate let backButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.tintColor = UIColor.white
+//        button.setImage(UIImage(named: "back_arrow"), for: .normal)
+//        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+//        return button
+//    }()
     
     fileprivate let saveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -218,7 +218,7 @@ class CanvasView: UIView {
         addSubview(backgroundImageView)
         backgroundImageView.pinToEdges(view: self, safe: false)
         
-        addSubview(safeAreaBackground)
+        /*addSubview(safeAreaBackground)
         safeAreaBackground.setAnchor(top: topAnchor,
                                      leading: leadingAnchor,
                                      bottom: nil,
@@ -228,9 +228,9 @@ class CanvasView: UIView {
                                      paddingBottom: 0,
                                      paddingRight: 0,
                                      width: 0,
-                                     height: Device.IS_IPHONE ? 44 : 88)
+                                     height: Device.IS_IPHONE ? 44 : 88)*/
         
-        addSubview(navBarView)
+        /*addSubview(navBarView)
         navBarView.setAnchor(top: safeTopAnchor,
                              leading: leadingAnchor,
                              bottom: nil,
@@ -240,9 +240,9 @@ class CanvasView: UIView {
                              paddingBottom: 0,
                              paddingRight: 0,
                              width: 0,
-                             height: Device.IS_IPHONE ? 44 : 88)
+                             height: Device.IS_IPHONE ? 44 : 88)*/
         
-        navBarView.addSubview(backButton)
+        /*navBarView.addSubview(backButton)
         backButton.setAnchor(top: navBarView.topAnchor,
                              leading: navBarView.leadingAnchor,
                              bottom: nil,
@@ -252,9 +252,9 @@ class CanvasView: UIView {
                              paddingBottom: 0,
                              paddingRight: 0,
                              width: Device.IS_IPHONE ? 44 : 88,
-                             height: Device.IS_IPHONE ? 44 : 88)
+                             height: Device.IS_IPHONE ? 44 : 88)*/
         
-        navBarView.addSubview(saveButton)
+        /*navBarView.addSubview(saveButton)
         saveButton.setAnchor(top: navBarView.topAnchor,
                              leading: nil,
                              bottom: nil,
@@ -264,9 +264,9 @@ class CanvasView: UIView {
                              paddingBottom: 0,
                              paddingRight: Device.IS_IPHONE ? 10 : 20,
                              width: Device.IS_IPHONE ? 44 : 88,
-                             height: Device.IS_IPHONE ? 44 : 88)
+                             height: Device.IS_IPHONE ? 44 : 88)*/
         
-        navBarView.addSubview(titleLabel)
+        /*navBarView.addSubview(titleLabel)
         titleLabel.setAnchor(top: navBarView.topAnchor,
                           leading: backButton.trailingAnchor,
                           bottom: navBarView.bottomAnchor,
@@ -274,7 +274,7 @@ class CanvasView: UIView {
                           paddingTop: 0,
                           paddingLeft: Device.IS_IPHONE ? 20 : 40,
                           paddingBottom: 0,
-                          paddingRight: Device.IS_IPHONE ? 20 : 40)
+                          paddingRight: Device.IS_IPHONE ? 20 : 40)*/
         
         addSubview(bottomSafeAreaBackground)
         bottomSafeAreaBackground.setAnchor(top: nil,
@@ -348,7 +348,7 @@ class CanvasView: UIView {
                               paddingRight: Device.IS_IPHONE ? 16 : 32, width: 0, height: Device.IS_IPHONE ? 44 : 88)
         
         addSubview(correctCanvasViewShadow)
-        correctCanvasViewShadow.setAnchor(top: navBarView.bottomAnchor,
+        correctCanvasViewShadow.setAnchor(top: safeTopAnchor,
                                     leading: leadingAnchor,
                                     bottom: toolBarView.topAnchor,
                                     trailing: trailingAnchor,
@@ -358,7 +358,7 @@ class CanvasView: UIView {
                                     paddingRight: Device.IS_IPHONE ? 10 : 20)
         
         addSubview(correctCanvasView)
-        correctCanvasView.setAnchor(top: navBarView.bottomAnchor,
+        correctCanvasView.setAnchor(top: safeTopAnchor,
                                     leading: leadingAnchor,
                                     bottom: toolBarView.topAnchor,
                                     trailing: trailingAnchor,
@@ -452,9 +452,9 @@ class CanvasView: UIView {
         self.widthSlider.setThumbImage(self.progressImage(with: self.widthSlider.value), for: UIControl.State.selected)
     }
     
-    @objc fileprivate func handleBack() {
-        backAction?()
-    }
+//    @objc fileprivate func handleBack() {
+//        backAction?()
+//    }
     
     @objc fileprivate func handlePopup() {
         savingView.setIsHidden(false, animated: true)
@@ -493,11 +493,6 @@ class CanvasView: UIView {
         titleLabel.text = canvas.title
         let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)!
         setImage(image: image)
-    }
-    
-    //public functions
-    public func setColor(color: UIColor){
-        correctCanvasView.setStrokeColor(color: color)
     }
     
     // MARK: - public functions

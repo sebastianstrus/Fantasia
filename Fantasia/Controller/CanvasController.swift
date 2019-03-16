@@ -22,25 +22,29 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     public var canvasActivityView: CanvasView!
     fileprivate var canvas: CanvasObject?
     
-    fileprivate func onGetColor(color: UIColor) {
-        canvasActivityView.setColor(color: color)
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        //isEditing = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         hideKeyboardWhenTappedAround()
-        
         setupLayout()
-        
     }
+
     
     fileprivate func setupLayout() {
         view.backgroundColor = AppColors.WHITE_GRAY
         canvasActivityView = CanvasView()
         view.addSubview(canvasActivityView)
-        canvasActivityView.pinToEdges(view: view, safe: false)
+        //canvasActivityView.setAnchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop:100, paddingLeft: 40, paddingBottom: 100, paddingRight: 40)
+        canvasActivityView.pinToEdges(view: view, safe: true)
         
-        canvasActivityView.backAction = handleBack
+        //canvasActivityView.backAction = handleBack
         canvasActivityView.saveCanvasAction = handleSaveCanvas
         canvasActivityView.libraryAction = handleLibrary
         
@@ -51,9 +55,9 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     
 
     
-    fileprivate func handleBack() {
-        dismiss(animated: true, completion: nil)
-    }
+//    fileprivate func handleBack() {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     fileprivate func handleSaveCanvas() {
         canvasActivityView.saveCanvas()

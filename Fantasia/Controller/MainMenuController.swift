@@ -19,6 +19,16 @@ class MainMenuController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     // MARK: - Private functions
     fileprivate func setupView() {
         self.mainMenuView = MainMenuView()
@@ -30,7 +40,8 @@ class MainMenuController: UIViewController {
     
     fileprivate func handleNewCanvas() {
         let canvasController = CanvasController()
-        present(canvasController, animated: true, completion: nil)
+        navigationController?.pushViewController(canvasController, animated: true)
+        //present(canvasController, animated: true, completion: nil)
     }
     
     fileprivate func handleGallery() {
