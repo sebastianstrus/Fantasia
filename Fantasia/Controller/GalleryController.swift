@@ -48,7 +48,6 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
         galleryView.setDataSource(ds: self)
         galleryView.registerCell(className: GalleryCell.self, id: cellId)
     }
-    
 
     @objc fileprivate func handleEdit() {
         setEditing(!isEditing, animated: true)

@@ -65,7 +65,9 @@ class CorrectCanvasView: UIView {
     fileprivate var lines = [Line]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        lines.append(Line.init(color: strokeColor, width: strokeWidth, points: []))
+        lines.append(Line.init(color: strokeColor,
+                               width: strokeWidth,
+                               points: []))
     }
     
     // handle screen touching

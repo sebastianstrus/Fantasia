@@ -1,5 +1,5 @@
 //
-//  Canvas.swift
+//  CanvasView.swift
 //  Fantasia
 //
 //  Created by Sebastian Strus on 2019-02-03.
@@ -28,12 +28,6 @@ class CanvasView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public actions
-    //var backAction: (() -> Void)?
-    var saveCanvasAction: (() -> Void)?
-    var cancelAction: (() -> Void)?
-    var libraryAction: (() -> Void)?
-    
     // MARK: - Private variables
     fileprivate var strokeColor = AppColors.TRANSPARENT_BLACK
     fileprivate var strokeWidth = kStrokeInitialWidth
@@ -55,7 +49,6 @@ class CanvasView: UIView {
         let view = UIView()
         return view
     }()
-    
     
     fileprivate let undoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -82,16 +75,7 @@ class CanvasView: UIView {
         return button
     }()
     
-    let libraryButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.backgroundColor = UIColor(r: 255, g: 0, b: 0, a: 0.5)
-        button.clipsToBounds = true
-        button.setImage(UIImage(named: "library_icon"), for: .normal)
-        button.addTarget(self, action: #selector(handleLibrary), for: .touchUpInside)
-        return button
-    }()
-    
-    // Workaround, adds shadow which doesn't desappear onClear
+    // Workaround, adds shadow which doesn't desappear on clear-animation
     fileprivate var correctCanvasViewShadow: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -148,7 +132,6 @@ class CanvasView: UIView {
         correctCanvasView.setStrokeColor(color: slider.color)
     }
     
-    
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
@@ -203,7 +186,6 @@ class CanvasView: UIView {
                              height: 44)
         undoButton.centerYAnchor.constraint(equalTo: toolsContainer.centerYAnchor).isActive = true
         
-        
         toolsContainer.addSubview(clearButton)
         clearButton.setAnchor(top: nil,
                               leading: nil,
@@ -220,12 +202,8 @@ class CanvasView: UIView {
         let slidersStackView = createHorizontalStackView(views: [widthSliderContainer, colorSlider],
                                                        spacing: 20)
         
-        
         widthSliderContainer.addSubview(widthSlider)
         widthSlider.pinToEdges(view: widthSliderContainer, safe: false)
-        
-        
-        
         
         toolsContainer.addSubview(slidersStackView)
         slidersStackView.setAnchor(top: toolsContainer.topAnchor,
@@ -242,7 +220,6 @@ class CanvasView: UIView {
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)
         widthSlider.setLightShadow()
-        
     }
     
     let minColor : UIImage = {
@@ -278,8 +255,6 @@ class CanvasView: UIView {
         return image!
     }
     
-    
-    
     @objc fileprivate func handleSliderChange() {
         strokeWidth = CGFloat(widthSlider.value)
         correctCanvasView.setStrokeWidth(width: strokeWidth)
@@ -304,10 +279,6 @@ class CanvasView: UIView {
         
     }
     
-    @objc fileprivate func handleLibrary() {
-        libraryAction?()
-    }
-    
     func setCanvas(canvas: CanvasObject) {
         titleLabel.text = canvas.title
         let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)!
@@ -315,8 +286,11 @@ class CanvasView: UIView {
     }
     
     public func setImage(image: UIImage) {
-        let width = Device.SCREEN_WIDTH - 20
-        let resizedImage = image.resized(toWidth: CGFloat(width))
-        correctCanvasView.backgroundColor = UIColor(patternImage: resizedImage!)
+        
+        let temImageView = UIImageView(frame: correctCanvasView.frame)
+        temImageView.contentMode = .scaleAspectFill
+        temImageView.image = image
+        let correctImage = temImageView.asImage()
+        correctCanvasView.backgroundColor = UIColor(patternImage: correctImage)//resizedImage!)
     }
 }

@@ -37,23 +37,16 @@ class DetailsController: UIViewController {
             return button
         }()
         
-        
-        
         let editItem = UIBarButtonItem(customView: editButton)
         editItem.customView?.widthAnchor.constraint(equalToConstant: 44).isActive = true//ipad 50
         editItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        //libraryItem.customView?.trailingAnchor.constraint(equalTo: libraryItem.customView!.leadingAnchor, constant: 0).isActive = true
         self.navigationItem.rightBarButtonItem = editItem
     }
 
     fileprivate func setupLayout() {
         detailsView = DetailsView(frame: view.frame)
         view.addSubview(detailsView)
-        
-        //detailsView.backAction = handleBack
-        detailsView.editAction = handleEdit
-        
         detailsView.setCanvas(canvas: canvas!)
     }
     

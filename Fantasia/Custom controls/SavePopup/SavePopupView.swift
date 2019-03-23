@@ -10,9 +10,6 @@ import UIKit
 
 class SavePopupView: UIView {
     
-    //var popupDelegate: PopupDelegate?
-    
-    // MARK: - Public actions
     var saveAction: ((_ title: String) -> Void)?
     var cancelAction: (() -> Void)?
     
@@ -21,7 +18,6 @@ class SavePopupView: UIView {
         return view
     }()
     
-    // TODO: add shadow/opacity/ alpha 0.84
     fileprivate let popupView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = Device.IS_IPHONE ? 10 : 20
@@ -75,13 +71,6 @@ class SavePopupView: UIView {
         return button
     }()
     
-    
-    
-    
-    
-    
-    
-    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,7 +81,7 @@ class SavePopupView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    // MARK: - Private functions
     fileprivate func setup() {
         addSubview(blurView)
         blurView.pinToEdges(view: self, safe: false)
@@ -116,12 +105,10 @@ class SavePopupView: UIView {
         popupView.addSubview(okButton)
         okButton.setAnchor(top: textField.bottomAnchor, leading: nil, bottom: popupView.bottomAnchor, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
 
-
         popupView.alpha = 0
         popupView.transform = CGAffineTransform.init(scaleX: 2, y: 2)
 
     }
-
     
     @objc fileprivate func handleCancel() {
         UIView.animate(withDuration: 0.4, animations: {
@@ -145,6 +132,7 @@ class SavePopupView: UIView {
         }
     }
     
+    // MARK: - Public actions
     public func animate() {
         UIView.animate(withDuration: 0.4) {
             self.blurView.effect = UIBlurEffect(style: .light)
@@ -153,5 +141,3 @@ class SavePopupView: UIView {
         }
     }
 }
-
-

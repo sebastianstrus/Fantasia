@@ -81,33 +81,28 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
         canvasActivityView = CanvasView()
         view.addSubview(canvasActivityView)
         
-        canvasActivityView.setAnchor(top: view.safeTopAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
-        
-        canvasActivityView.libraryAction = handleLibrary
-        
+        canvasActivityView.setAnchor(top: view.safeTopAnchor,
+                                     leading: view.leadingAnchor,
+                                     bottom: view.bottomAnchor,
+                                     trailing: view.trailingAnchor,
+                                     paddingTop:0,
+                                     paddingLeft: 0,
+                                     paddingBottom: 0,
+                                     paddingRight: 0)
+
         if let canvas = canvas {
             canvasActivityView.setCanvas(canvas: canvas)
         }
-        
-
     }
     
-
-
-    @objc func handlePopup() {
+    @objc fileprivate func handlePopup() {
         savePopupController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         present(savePopupController, animated: false)
-        
 //        if let pop = savePopupController.popoverPresentationController {
 //            pop.delegate = self
 //        }
-        
-        
-        
     }
-    
 
-    
     @objc fileprivate func handleLibrary() {
         print("handleLibrary")
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {

@@ -10,10 +10,8 @@ import UIKit
 
 class MainMenuController: UIViewController {
     
-    
     fileprivate var mainMenuView: MainMenuView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -40,16 +38,12 @@ class MainMenuController: UIViewController {
     
     fileprivate func handleNewCanvas() {
         let canvasController = CanvasController()
-        
-        
         navigationController?.pushViewController(canvasController, animated: true)
-        //present(canvasController, animated: true, completion: nil)
     }
     
     fileprivate func handleGallery() {
         let galleryController = GalleryController()
         navigationController?.pushViewController(galleryController, animated: true)
-        //present(galleryController, animated: true, completion: nil)
     }
 }
 

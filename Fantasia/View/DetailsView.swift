@@ -23,10 +23,6 @@ class DetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public actions
-    var backAction: (() -> Void)?
-    var editAction: (() -> Void)?
-    
     // MARK: - All subviews
     fileprivate let backgroundImageView: UIImageView = {
         let iv = UIImageView()
@@ -34,32 +30,12 @@ class DetailsView: UIView {
         return iv
     }()
     
-//    fileprivate let safeAreaBackground: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = AppColors.DODGERBLUE
-//        return view
-//    }()
-//
-//    fileprivate let navBarView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = AppColors.DODGERBLUE
-//        return view
-//    }()
-    
     fileprivate var imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFill
         return iv
     }()
-    
-//    fileprivate let titleLabel: UILabel = {
-//        let label = UILabel()
-//        label.textAlignment = .center
-//        label.textColor = AppColors.WHITE_GRAY
-//        label.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
-//        return label
-//    }()
     
     fileprivate let dateLabel: UILabel = {
         let label = UILabel()
@@ -69,95 +45,11 @@ class DetailsView: UIView {
         return label
     }()
     
-//    fileprivate let backButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.tintColor = UIColor.white
-//        button.setImage(UIImage(named: "back_arrow"), for: .normal)
-//        button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
-//        return button
-//    }()
-    
-//    fileprivate let editButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.tintColor = UIColor.white
-//        button.setImage(UIImage(named: "button_edit"), for: .normal)
-//        button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
-//        return button
-//    }()
-    
-    @objc fileprivate func handleBack() {
-        backAction?()
-    }
-    
-    @objc fileprivate func handleEdit() {
-        editAction?()
-    }
-    
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
         addSubview(backgroundImageView)
         backgroundImageView.pinToEdges(view: self, safe: false)
-        
-//        addSubview(safeAreaBackground)
-//        safeAreaBackground.setAnchor(top: topAnchor,
-//                                     leading: leadingAnchor,
-//                                     bottom: nil,
-//                                     trailing: trailingAnchor,
-//                                     paddingTop: 0,
-//                                     paddingLeft: 0,
-//                                     paddingBottom: 0,
-//                                     paddingRight: 0,
-//                                     width: 0,
-//                                     height: 44)
-//
-//        addSubview(navBarView)
-//        navBarView.setAnchor(top: safeTopAnchor,
-//                             leading: leadingAnchor,
-//                             bottom: nil,
-//                             trailing: trailingAnchor,
-//                             paddingTop: 0,
-//                             paddingLeft: 0,
-//                             paddingBottom: 0,
-//                             paddingRight: 0,
-//                             width: 0,
-//                             height: Device.IS_IPHONE ? 44 : 88)
-//
-//        navBarView.addSubview(backButton)
-//        backButton.setAnchor(top: navBarView.topAnchor,
-//                             leading: navBarView.leadingAnchor,
-//                             bottom: nil,
-//                             trailing: nil,
-//                             paddingTop: 0,
-//                             paddingLeft: Device.IS_IPHONE ? 10 : 20,
-//                             paddingBottom: 0,
-//                             paddingRight: 0,
-//                             width: Device.IS_IPHONE ? 44 : 88,
-//                             height: Device.IS_IPHONE ? 44 : 88)
-        
-//        navBarView.addSubview(editButton)
-//        editButton.setAnchor(top: nil,
-//                             leading: nil,
-//                             bottom: nil,
-//                             trailing: navBarView.trailingAnchor,
-//                             paddingTop: 0,
-//                             paddingLeft: 0,
-//                             paddingBottom: 0,
-//                             paddingRight: Device.IS_IPHONE ? 10 : 20,
-//                             width: Device.IS_IPHONE ? 44 : 88,
-//                             height: Device.IS_IPHONE ? 44 : 88)
-//        editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
-        
-//        navBarView.addSubview(titleLabel)
-//        titleLabel.setAnchor(top: navBarView.topAnchor,
-//                             leading: backButton.trailingAnchor,
-//                             bottom: navBarView.bottomAnchor,
-//                             trailing: editButton.leadingAnchor,
-//                             paddingTop: 0,
-//                             paddingLeft: Device.IS_IPHONE ? 20 : 40,
-//                             paddingBottom: 0,
-//                             paddingRight: Device.IS_IPHONE ? 20 : 40)
-        
         
         addSubview(imageView)
         imageView.setShadow()
@@ -175,14 +67,12 @@ class DetailsView: UIView {
                             height: Device.IS_IPHONE ? 30 : 60)
     }
     
-    
     // public functions
     func setCanvas(canvas: CanvasObject) {
         let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)
         imageView.image = image
         imageView.backgroundColor = UIColor.red
         
-        //titleLabel.text = (canvas.title != "") ? canvas.title : "No title"
         dateLabel.text = canvas.date?.formatedString()
         
         let imageWidth = Device.SCREEN_WIDTH - (Device.IS_IPHONE ? 20 : 40)
@@ -199,8 +89,5 @@ class DetailsView: UIView {
                             paddingRight: 0,
                             width: CGFloat(imageWidth),
                             height: imageHeight)
-
     }
-    
-  
 }
