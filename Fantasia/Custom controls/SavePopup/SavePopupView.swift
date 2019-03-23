@@ -21,13 +21,6 @@ class SavePopupView: UIView {
         return view
     }()
     
-    fileprivate let savingView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.clear
-        return view
-    }()
-    
-    
     // TODO: add shadow/opacity/ alpha 0.84
     fileprivate let popupView: UIView = {
         let view = UIView()
@@ -105,14 +98,11 @@ class SavePopupView: UIView {
         blurView.pinToEdges(view: self, safe: false)
         blurView.effect = nil
     
-        addSubview(savingView)
-        savingView.pinToEdges(view: self, safe: false)
-
-        savingView.addSubview(popupView)
+        addSubview(popupView)
         popupView.setAnchor(width: Device.IS_IPHONE ? 200 : 400, height: Device.IS_IPHONE ? 100 : 200)
 
-        popupView.centerXAnchor.constraint(equalTo: savingView.centerXAnchor).isActive = true
-        popupView.centerYAnchor.constraint(equalTo: savingView.centerYAnchor).isActive = true
+        popupView.centerXAnchor.constraint(equalTo: blurView.centerXAnchor).isActive = true
+        popupView.centerYAnchor.constraint(equalTo: blurView.centerYAnchor).isActive = true
 
         popupView.addSubview(headerLabel)
         headerLabel.setAnchor(top: popupView.topAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ? 30 : 60)
