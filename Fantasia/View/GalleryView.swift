@@ -20,11 +20,11 @@ class GalleryView: UIView {
     }
     
     // MARK: - Public actions
-    var backAction: (() -> Void)?
-    var editAction: (() -> Void)?
+    //var backAction: (() -> Void)?
+    //var editAction: (() -> Void)?
     
     // MARK: - All subviews
-    fileprivate let safeAreaBackground: UIView = {
+    /*fileprivate let safeAreaBackground: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
@@ -43,7 +43,7 @@ class GalleryView: UIView {
         label.textColor = AppColors.WHITE_GRAY
         label.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
         return label
-    }()
+    }()*/
 
     fileprivate let backgroundImageView: UIImageView = {
         let iv = UIImageView()
@@ -68,15 +68,15 @@ class GalleryView: UIView {
         return label
     }()
     
-    fileprivate let backButton: UIButton = {
+    /*fileprivate let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setImage(UIImage(named: "back_arrow"), for: .normal)
         button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
         return button
-    }()
+    }()*/
     
-    fileprivate let editButton: UIButton = {
+    /*fileprivate let editButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor.white
         button.setTitle("Edit", for: .normal)
@@ -85,15 +85,23 @@ class GalleryView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: Device.IS_IPHONE ? 22 : 44)
         button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
         return button
-    }()
+    }()*/
     
     // MARK: - Private functions
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         addSubview(backgroundImageView)
-        backgroundImageView.pinToEdges(view: self, safe: false)
+        backgroundImageView.setAnchor(top: safeTopAnchor,
+                                      leading: leadingAnchor,
+                                      bottom: bottomAnchor,
+                                      trailing: trailingAnchor,
+                                      paddingTop: 0,
+                                      paddingLeft: 0,
+                                      paddingBottom: 0,
+                                      paddingRight: 0)
+        //backgroundImageView.pinToEdges(view: self, safe: false)
         
-        addSubview(safeAreaBackground)
+        /*addSubview(safeAreaBackground)
         safeAreaBackground.setAnchor(top: topAnchor,
                                      leading: leadingAnchor,
                                      bottom: nil,
@@ -103,9 +111,9 @@ class GalleryView: UIView {
                                      paddingBottom: 0,
                                      paddingRight: 0,
                                      width: 0,
-                                     height: Device.IS_IPHONE ? 44 : 88)
+                                     height: Device.IS_IPHONE ? 44 : 88)*/
         
-        addSubview(navBarView)
+        /*addSubview(navBarView)
         navBarView.setAnchor(top: safeTopAnchor,
                              leading: leadingAnchor,
                              bottom: nil,
@@ -115,9 +123,9 @@ class GalleryView: UIView {
                              paddingBottom: 0,
                              paddingRight: 0,
                              width: 0,
-                             height: Device.IS_IPHONE ? 44 : 88)
+                             height: Device.IS_IPHONE ? 44 : 88)*/
         
-        navBarView.addSubview(backButton)
+        /*navBarView.addSubview(backButton)
         backButton.setAnchor(top: navBarView.topAnchor,
                              leading: navBarView.leadingAnchor,
                              bottom: nil,
@@ -127,9 +135,9 @@ class GalleryView: UIView {
                              paddingBottom: 0,
                              paddingRight: 0,
                              width: Device.IS_IPHONE ? 44 : 88,
-                             height: Device.IS_IPHONE ? 44 : 88)
+                             height: Device.IS_IPHONE ? 44 : 88)*/
         
-        navBarView.addSubview(editButton)
+        /*navBarView.addSubview(editButton)
         editButton.setAnchor(top: navBarView.topAnchor,
                              leading: nil,
                              bottom: nil,
@@ -140,9 +148,9 @@ class GalleryView: UIView {
                              paddingRight: 10,
                              width: Device.IS_IPHONE ? 60 : 120,
                              height: Device.IS_IPHONE ? 44 : 88)
-        editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        editButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true*/
         
-        navBarView.addSubview(titleLabel)
+        /*navBarView.addSubview(titleLabel)
         titleLabel.setAnchor(top: navBarView.topAnchor,
                              leading: navBarView.leadingAnchor,
                              bottom: navBarView.bottomAnchor,
@@ -153,10 +161,10 @@ class GalleryView: UIView {
                              paddingRight: Device.IS_IPHONE ? 60 : 120,
                              width: 0,
                              height: Device.IS_IPHONE ? 44 : 88)
-        titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor).isActive = true*/
         
         addSubview(collectionView)
-        collectionView.setAnchor(top: navBarView.bottomAnchor,
+        collectionView.setAnchor(top: safeTopAnchor,
                                  leading: leadingAnchor,
                                  bottom: bottomAnchor,
                                  trailing: trailingAnchor,
@@ -166,7 +174,7 @@ class GalleryView: UIView {
                                  paddingRight: 0)
         
         collectionView.addSubview(infoLabel)
-        infoLabel.setAnchor(top: navBarView.bottomAnchor,
+        infoLabel.setAnchor(top: safeTopAnchor,
                             leading: leadingAnchor,
                             bottom: bottomAnchor,
                             trailing: trailingAnchor,
@@ -175,14 +183,14 @@ class GalleryView: UIView {
                             paddingBottom: 0,
                             paddingRight: 0)
     }
-    
+    /*
     @objc fileprivate func handleBack() {
         backAction?()
     }
     
     @objc fileprivate func handleEdit() {
         editAction?()
-    }
+    }*/
     
     // MARK: - Public functions
     func reload(isEmpty: Bool) {
@@ -202,9 +210,9 @@ class GalleryView: UIView {
         collectionView.register(className, forCellWithReuseIdentifier: id)
     }
     
-    func toggleEditButton(isEditing: Bool) {
+    /*func toggleEditButton(isEditing: Bool) {
         editButton.setTitle(isEditing ? "Done" : "Edit", for: .normal)
-    }
+    }*/
     
     public func toggleInfoLabel(isEmpty: Bool) {
         infoLabel.isHidden = !isEmpty

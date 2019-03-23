@@ -7,8 +7,7 @@
 //
 import UIKit
 
-class GalleryController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, GalleryCellDelegate {
-    
+class GalleryController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UINavigationControllerDelegate, GalleryCellDelegate {
     
     fileprivate var galleryView: GalleryView!
     fileprivate let cellId = "cellId"
@@ -22,37 +21,34 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupView()
     }
-
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         CanvasObjectController.shared.fetchCanvasObjects()
         canvases = CanvasObjectController.shared.canvases
         self.galleryView.reload(isEmpty: canvases.isEmpty)
+        
     }
     
+    fileprivate func setupNavigationBar() {        
+        self.navigationItem.rightBarButtonItem = editButtonItem
+    }
     
     fileprivate func setupView() {
         let myCV = GalleryView(frame: view.frame)
         self.galleryView = myCV
         
         view.addSubview(galleryView)
-        galleryView.backAction = handleBack
-        galleryView.editAction = handleEdit
         galleryView.setDelegate(d: self)
         galleryView.setDataSource(ds: self)
         galleryView.registerCell(className: GalleryCell.self, id: cellId)
     }
     
-    fileprivate func handleBack() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    fileprivate func handleEdit() {
+
+    @objc fileprivate func handleEdit() {
         setEditing(!isEditing, animated: true)
     }
     
@@ -76,20 +72,20 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsController = DetailsController()
         detailsController.setCanvas(canvas: canvases[indexPath.row])
+        //navigationController?.pushViewController(detailsController, animated: true)
         present(detailsController, animated: true, completion: nil)
     }
     
     // Mark: - Delete items
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        galleryView.toggleEditButton(isEditing: editing)
+        //galleryView.toggleEditButton(isEditing: editing)
         let indexPaths = galleryView.collectionView.indexPathsForVisibleItems
         for indexPath in indexPaths {
             if let cell = galleryView.collectionView.cellForItem(at: indexPath) as? GalleryCell {
                 cell.isEditing = editing
             }
         }
-        
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout functions
@@ -114,6 +110,4 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
             CanvasObjectController.shared.deleteCanvasObject(imageIndex: indexPath.row)
         }
     }
-    
-
 }

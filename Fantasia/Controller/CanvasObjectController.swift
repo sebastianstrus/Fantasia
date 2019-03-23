@@ -77,21 +77,9 @@ class CanvasObjectController {
         }
     }
     
-    func deleteCanvasObject(imageIndex: Int) {
-        print("imageIndex: \(imageIndex)")
-        
-        if (images.indices.contains(imageIndex)) {
-            print("first ok")
-        }
-        
-        if (savedCanvasObjects.indices.contains(imageIndex)) {
-            print("second ok")
-        }
-        guard images.indices.contains(imageIndex) && savedCanvasObjects.indices.contains(imageIndex) else {
-            print("return")
-            return
-            
-        }
+    func deleteCanvasObject(imageIndex: Int) {        
+
+        guard images.indices.contains(imageIndex) && savedCanvasObjects.indices.contains(imageIndex) else { return }
         
         let imageObjectToDelete = savedCanvasObjects[imageIndex] as! CanvasObject
         let imageName = imageObjectToDelete.imageName

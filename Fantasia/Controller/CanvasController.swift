@@ -9,25 +9,15 @@
 import UIKit
 import AVFoundation
 
-
-/*enum State {
-    case write
-    case read
-}*/
-
 class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPickerViewDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, PopupDelegate {
     
     
     let savePopupController = SavePopupController()
     
     func onGotTitle(title: String) {
-        print("New title: \(title)")
         CanvasObjectController.shared.saveCanvasObject(image: canvasActivityView.correctCanvasView.asImage(), title: title, date: Date())
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
-    
-    
-    //private var state = State.write
     
     public var canvasActivityView: CanvasView!
     fileprivate var canvas: CanvasObject?
@@ -87,18 +77,12 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     fileprivate func setupLayout() {
         
         savePopupController.popupDelegate = self
-        
+    
         canvasActivityView = CanvasView()
         view.addSubview(canvasActivityView)
         
-
-
-        
-        
         canvasActivityView.setAnchor(top: view.safeTopAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop:0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
-        //canvasActivityView.backAction = handleBack
-        //canvasActivityView.saveCanvasAction = handleSaveCanvas
         canvasActivityView.libraryAction = handleLibrary
         
         if let canvas = canvas {
