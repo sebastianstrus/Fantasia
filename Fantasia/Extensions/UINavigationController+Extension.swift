@@ -29,7 +29,6 @@ extension UINavigationController {
                 rightItems.filter({ $0.customView != nil }).count > 0 {
                 needAdjustRightItems = true
             } else {
-                print("Use 8(320|375)/12(414), if need precious margin ,use UIBarButtonItem(customView:)!!!")
                 needAdjustRightItems = false
             }
             
@@ -40,7 +39,6 @@ extension UINavigationController {
                 leftItems.filter({ $0.customView != nil }).count > 0 {
                 needAdjustLeftItems = true
             } else {
-                print("Use 8(320|375)/12(414), if need precious margin ,use UIBarButtonItem(customView:)!!!")
                 needAdjustLeftItems = false
             }
             
