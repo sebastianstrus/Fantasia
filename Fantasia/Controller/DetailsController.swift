@@ -17,15 +17,41 @@ class DetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupLayout()
     }
     
     // MARK: - Private functions
+    fileprivate func setupNavigationBar() {
+        //navigationItem.rightBarButtonItem = editButtonItem
+        navigationItem.title = canvas?.title
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        
+        let editButton: UIButton = {
+            let button = UIButton(type: .custom)
+            button.setImage(UIImage(named: "button_edit"), for: .normal)
+            button.tintColor = UIColor.white
+            button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
+            return button
+        }()
+        
+        
+        
+        let editItem = UIBarButtonItem(customView: editButton)
+        editItem.customView?.widthAnchor.constraint(equalToConstant: 44).isActive = true//ipad 50
+        editItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        //libraryItem.customView?.trailingAnchor.constraint(equalTo: libraryItem.customView!.leadingAnchor, constant: 0).isActive = true
+        self.navigationItem.rightBarButtonItem = editItem
+    }
+
     fileprivate func setupLayout() {
         detailsView = DetailsView(frame: view.frame)
         view.addSubview(detailsView)
         
-        detailsView.backAction = handleBack
+        //detailsView.backAction = handleBack
         detailsView.editAction = handleEdit
         
         detailsView.setCanvas(canvas: canvas!)
@@ -35,13 +61,14 @@ class DetailsController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    fileprivate func handleEdit() {
+    @objc fileprivate func handleEdit() {
         print("Edit soon")
         let canvasController = CanvasController()
         canvasController.setCanvas(canvas: canvas!)
         
 
-        present(canvasController, animated: true, completion: nil)
+        //present(canvasController, animated: true, completion: nil)
+        navigationController?.pushViewController(canvasController, animated: true)
     }
     
     // MARK: - Public functions

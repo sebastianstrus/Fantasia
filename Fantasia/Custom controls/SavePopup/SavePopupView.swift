@@ -158,13 +158,10 @@ class SavePopupView: UIView {
     public func animate() {
         UIView.animate(withDuration: 0.4) {
             self.blurView.effect = UIBlurEffect(style: .light)
-            self.popupView.alpha = 0.84
+            self.popupView.alpha = 1
             self.popupView.transform = CGAffineTransform.identity
         }
     }
 }
 
 
-//protocol PopupDelegate {
-//    func saveCanvas(title: String)
-//}

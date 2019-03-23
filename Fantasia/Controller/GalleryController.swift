@@ -42,9 +42,7 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     }
     
     fileprivate func setupView() {
-        let myCV = GalleryView(frame: view.frame)
-        self.galleryView = myCV
-        
+        galleryView = GalleryView(frame: view.frame)        
         view.addSubview(galleryView)
         galleryView.setDelegate(d: self)
         galleryView.setDataSource(ds: self)
@@ -76,8 +74,8 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsController = DetailsController()
         detailsController.setCanvas(canvas: canvases[indexPath.row])
-        //navigationController?.pushViewController(detailsController, animated: true)
-        present(detailsController, animated: true, completion: nil)
+        navigationController?.pushViewController(detailsController, animated: true)
+        //present(detailsController, animated: true, completion: nil)
     }
     
     // Mark: - Delete items
