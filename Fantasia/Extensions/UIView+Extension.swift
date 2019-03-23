@@ -10,9 +10,17 @@ import UIKit
 
 extension UIView {
     
-    func createStackView(views: [UIView], spacing: CGFloat) -> UIStackView {
+    func createVerticalStackView(views: [UIView], spacing: CGFloat) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.spacing = spacing
+        return stackView
+    }
+    
+    func createHorizontalStackView(views: [UIView], spacing: CGFloat) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
         stackView.spacing = spacing
         return stackView
@@ -31,7 +39,16 @@ extension UIView {
                        height: height)
     }
     
-    func setAnchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat = 0, height: CGFloat = 0) {
+    func setAnchor(top: NSLayoutYAxisAnchor?,
+                   leading: NSLayoutXAxisAnchor?,
+                   bottom: NSLayoutYAxisAnchor?,
+                   trailing: NSLayoutXAxisAnchor?,
+                   paddingTop: CGFloat,
+                   paddingLeft: CGFloat,
+                   paddingBottom: CGFloat,
+                   paddingRight: CGFloat,
+                   width: CGFloat = 0,
+                   height: CGFloat = 0) {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         

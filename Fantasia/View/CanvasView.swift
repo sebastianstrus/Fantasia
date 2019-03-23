@@ -45,23 +45,23 @@ class CanvasView: UIView {
         return iv
     }()
     
-    fileprivate let safeAreaBackground: UIView = {
+    /*fileprivate let safeAreaBackground: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
-    }()
+    }()*/
     
-    fileprivate let navBarView: UIView = {
+    /*fileprivate let navBarView: UIView = {
         let view = UIView()
         view.backgroundColor = AppColors.DODGERBLUE
         return view
-    }()
+    }()*/
     
-    fileprivate let bottomSafeAreaBackground: UIView = {
-        let view = UIView()
-        view.backgroundColor = AppColors.DODGERBLUE
-        return view
-    }()
+//    fileprivate let bottomSafeAreaBackground: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = AppColors.DODGERBLUE
+//        return view
+//    }()
     
     fileprivate let toolBarView: UIView = {
         let view = UIView()
@@ -69,15 +69,11 @@ class CanvasView: UIView {
         return view
     }()
     
-    fileprivate let colorSlider: ColorSlider = {
-        let slider = ColorSlider(orientation: .horizontal, previewSide: .top)
-        slider.addTarget(self, action: #selector(handleColorChange), for: .valueChanged)
-        return slider
+    fileprivate let toolsContainer: UIView = {
+        let view = UIView()
+        return view
     }()
     
-    @objc fileprivate func handleColorChange(_ slider: ColorSlider) {
-        correctCanvasView.setStrokeColor(color: slider.color)
-    }
     
 //    fileprivate let backButton: UIButton = {
 //        let button = UIButton(type: .system)
@@ -87,13 +83,14 @@ class CanvasView: UIView {
 //        return button
 //    }()
     
-    fileprivate let saveButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.white
-        button.setImage(UIImage(named: "button_save"), for: .normal)
-        button.addTarget(self, action: #selector(handlePopup), for: .touchUpInside)
-        return button
-    }()
+//    let saveButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.backgroundColor = UIColor(r: 255, g: 0, b: 0, a: 0.5)
+//        button.tintColor = UIColor.white
+//        button.setImage(UIImage(named: "button_save"), for: .normal)
+//        button.addTarget(self, action: #selector(handlePopup), for: .touchUpInside)
+//        return button
+//    }()
     
     
     fileprivate let undoButton: UIButton = {
@@ -121,8 +118,9 @@ class CanvasView: UIView {
         return button
     }()
     
-    fileprivate let libraryButton: UIButton = {
+    let libraryButton: UIButton = {
         let button = UIButton(type: .custom)
+        button.backgroundColor = UIColor(r: 255, g: 0, b: 0, a: 0.5)
         button.clipsToBounds = true
         button.setImage(UIImage(named: "library_icon"), for: .normal)
         button.addTarget(self, action: #selector(handleLibrary), for: .touchUpInside)
@@ -142,6 +140,24 @@ class CanvasView: UIView {
         return view
     }()
     
+    let greenView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.green
+        return view
+    }()
+    
+    let redView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.red
+        return view
+    }()
+    
+    fileprivate let widthSliderContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }()
+    
     fileprivate let widthSlider: UISlider = {
         let slider = UISlider()
         slider.tintColor = AppColors.WHITE_GRAY
@@ -152,71 +168,29 @@ class CanvasView: UIView {
        return slider
     }()
     
-    fileprivate let savingView: UIView = {
+    fileprivate let colorView: UIView = {
         let view = UIView()
-        view.backgroundColor = AppColors.TRANSPARENT_BLACK
-        view.isHidden = true
+        view.backgroundColor = UIColor.orange
         return view
     }()
     
-    fileprivate let popupView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = Device.IS_IPHONE ? 10 : 20
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.white
-        view.layer.borderWidth = 2
-        view.layer.borderColor = AppColors.DODGERBLUE.cgColor
-        return view
+    fileprivate let colorSlider: ColorSlider = {
+        let slider = ColorSlider(orientation: .horizontal, previewSide: .top)
+        slider.addTarget(self, action: #selector(handleColorChange), for: .valueChanged)
+        return slider
     }()
     
-    fileprivate let headerLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = AppColors.DODGERBLUE
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.text = "Save canvas"
-        label.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 15 : 30)
-        return label
-    }()
+    @objc fileprivate func handleColorChange(_ slider: ColorSlider) {
+        correctCanvasView.setStrokeColor(color: slider.color)
+    }
     
-    fileprivate let textField: UITextField = {
-        let tf = UITextField()
-        tf.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ?  12 : 24)
-        tf.placeholder = "Enter title"
-        tf.layer.borderWidth = 0.5
-        tf.layer.borderColor = AppColors.DODGERBLUE.cgColor
-        tf.setLeftPaddiingPoints(Device.IS_IPHONE ? 10 : 20)
-        return tf
-    }()
-    
-    fileprivate let cancelButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(AppColors.DODGERBLUE, for: .normal)
-        button.layer.borderWidth = 0.5
-        button.titleLabel?.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 12 : 24)
-        button.layer.borderColor = AppColors.DODGERBLUE.cgColor
-        button.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
-        return button
-    }()
-    
-    fileprivate let okButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Save", for: .normal)
-        button.setTitleColor(AppColors.DODGERBLUE, for: .normal)
-        button.tintColor = AppColors.WHITE_GRAY
-        button.layer.borderWidth = 0.5
-        button.titleLabel?.font = UIFont.systemFont(ofSize: Device.IS_IPHONE ? 12 : 24)
-        button.layer.borderColor = AppColors.DODGERBLUE.cgColor
-        button.addTarget(self, action: #selector(handleSaveCanvas), for: .touchUpInside)
-        return button
-    }()
     
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         
         addSubview(backgroundImageView)
         backgroundImageView.pinToEdges(view: self, safe: false)
+        
         
         /*addSubview(safeAreaBackground)
         safeAreaBackground.setAnchor(top: topAnchor,
@@ -276,136 +250,154 @@ class CanvasView: UIView {
                           paddingBottom: 0,
                           paddingRight: Device.IS_IPHONE ? 20 : 40)*/
         
-        addSubview(bottomSafeAreaBackground)
-        bottomSafeAreaBackground.setAnchor(top: nil,
-                                           leading: leadingAnchor,
-                                           bottom: bottomAnchor,
-                                           trailing: trailingAnchor,
-                                           paddingTop: 0,
-                                           paddingLeft: 0,
-                                           paddingBottom: 0,
-                                           paddingRight: 0,
-                                           width: 0,
-                                           height: Device.IS_IPHONE ? 50 : 100)
+//        addSubview(bottomSafeAreaBackground)
+//        bottomSafeAreaBackground.setAnchor(top: nil,
+//                                           leading: leadingAnchor,
+//                                           bottom: bottomAnchor,
+//                                           trailing: trailingAnchor,
+//                                           paddingTop: 0,
+//                                           paddingLeft: 0,
+//                                           paddingBottom: 0,
+//                                           paddingRight: 0,
+//                                           width: 0,
+//                                           height: 50)
+        
+        addSubview(correctCanvasViewShadow)
+        correctCanvasViewShadow.setAnchor(top: safeTopAnchor,
+                                          leading: leadingAnchor,
+                                          bottom: safeBottomAnchor,
+                                          trailing: trailingAnchor,
+                                          paddingTop: Device.IS_IPHONE ? 10 : 20,
+                                          paddingLeft: Device.IS_IPHONE ? 10 : 20,
+                                          paddingBottom: Device.IS_IPHONE ? 60 : 70,
+                                          paddingRight: Device.IS_IPHONE ? 10 : 20)
+        
+        correctCanvasViewShadow.addSubview(correctCanvasView)
+        correctCanvasView.pinToEdges(view: correctCanvasViewShadow, safe: false)
         
         addSubview(toolBarView)
-        toolBarView.setAnchor(top: nil,
+        toolBarView.setAnchor(top: safeBottomAnchor,
                               leading: leadingAnchor,
-                              bottom: safeBottomAnchor,
+                              bottom: bottomAnchor,
                               trailing: trailingAnchor,
+                              paddingTop: -50,
+                              paddingLeft: 0,
+                              paddingBottom: 0,
+                              paddingRight: 0)
+        
+        toolBarView.addSubview(toolsContainer)
+        toolsContainer.setAnchor(top: toolBarView.topAnchor,
+                              leading: toolBarView.leadingAnchor,
+                              bottom: nil,
+                              trailing: toolBarView.trailingAnchor,
                               paddingTop: 0,
                               paddingLeft: 0,
                               paddingBottom: 0,
                               paddingRight: 0,
                               width: 0,
-                              height: Device.IS_IPHONE ? 96 : 192)
+                              height: 50)
         
-        toolBarView.addSubview(undoButton)
+        toolsContainer.addSubview(undoButton)
         undoButton.setAnchor(top: nil,
-                             leading: toolBarView.leadingAnchor,
-                             bottom: toolBarView.bottomAnchor,
+                             leading: toolsContainer.leadingAnchor,
+                             bottom: nil,
                              trailing: nil,
                              paddingTop: 0,
                              paddingLeft: Device.IS_IPHONE ? 10 : 20,
-                             paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                             paddingBottom: 0,
                              paddingRight: 0,
-                             width: Device.IS_IPHONE ? 44 : 88,
-                             height: Device.IS_IPHONE ? 44 : 88)
+                             width: 44,
+                             height: 44)
+        undoButton.centerYAnchor.constraint(equalTo: toolsContainer.centerYAnchor).isActive = true
         
-        toolBarView.addSubview(clearButton)
+        
+        toolsContainer.addSubview(clearButton)
         clearButton.setAnchor(top: nil,
                               leading: nil,
-                              bottom: toolBarView.bottomAnchor,
-                              trailing: toolBarView.trailingAnchor,
+                              bottom: nil,
+                              trailing: toolsContainer.trailingAnchor,
                               paddingTop: 0,
                               paddingLeft: 0,
-                              paddingBottom: Device.IS_IPHONE ? 10 : 20,
+                              paddingBottom: 0,
                               paddingRight: Device.IS_IPHONE ? 10 : 20,
-                              width: Device.IS_IPHONE ? 44 : 88,
-                              height: Device.IS_IPHONE ? 44 : 88)
+                              width: 44,
+                              height: 44)
+        clearButton.centerYAnchor.constraint(equalTo: toolsContainer.centerYAnchor).isActive = true
         
-        toolBarView.addSubview(libraryButton)
+        /*toolBarView.addSubview(libraryButton)
         libraryButton.setAnchor(top: nil,
                               leading: nil,
                               bottom: toolBarView.bottomAnchor,
                               trailing: clearButton.leadingAnchor,
                               paddingTop: 0,
                               paddingLeft: 0,
-                              paddingBottom: Device.IS_IPHONE ? 10 : 20,
-                              paddingRight: Device.IS_IPHONE ? 0 : 20,
-                              width: Device.IS_IPHONE ? 44 : 88,
-                              height: Device.IS_IPHONE ? 44 : 88)
+                              paddingBottom: 10,
+                              paddingRight: 10,
+                              width: 44,
+                              height: 44)*/
+        
+        let slidersStackView = createHorizontalStackView(views: [widthSliderContainer, colorSlider],
+                                                       spacing: 20)
         
         
-        toolBarView.addSubview(widthSlider)
-        widthSlider.setAnchor(top: nil,
+        widthSliderContainer.addSubview(widthSlider)
+        widthSlider.pinToEdges(view: widthSliderContainer, safe: false)
+        
+        
+        
+        
+        toolsContainer.addSubview(slidersStackView)
+        slidersStackView.setAnchor(top: toolsContainer.topAnchor,
                               leading: undoButton.trailingAnchor,
-                              bottom: toolBarView.bottomAnchor,
-                              trailing: libraryButton.leadingAnchor,
-                              paddingTop: 0,
-                              paddingLeft: Device.IS_IPHONE ? 16 : 32,
-                              paddingBottom: Device.IS_IPHONE ? 10 : 20,
-                              paddingRight: Device.IS_IPHONE ? 16 : 32, width: 0, height: Device.IS_IPHONE ? 44 : 88)
-        
-        addSubview(correctCanvasViewShadow)
-        correctCanvasViewShadow.setAnchor(top: safeTopAnchor,
-                                    leading: leadingAnchor,
-                                    bottom: toolBarView.topAnchor,
-                                    trailing: trailingAnchor,
-                                    paddingTop: Device.IS_IPHONE ? 10 : 20,
-                                    paddingLeft: Device.IS_IPHONE ? 10 : 20,
-                                    paddingBottom: Device.IS_IPHONE ? 10 : 20,
-                                    paddingRight: Device.IS_IPHONE ? 10 : 20)
-        
-        addSubview(correctCanvasView)
-        correctCanvasView.setAnchor(top: safeTopAnchor,
-                                    leading: leadingAnchor,
-                                    bottom: toolBarView.topAnchor,
-                                    trailing: trailingAnchor,
-                                    paddingTop: Device.IS_IPHONE ? 10 : 20,
-                                    paddingLeft: Device.IS_IPHONE ? 10 : 20,
-                                    paddingBottom: Device.IS_IPHONE ? 10 : 20,
-                                    paddingRight: Device.IS_IPHONE ? 10 : 20)
-        
-        addSubview(colorSlider)
-        colorSlider.setAnchor(top: correctCanvasView.bottomAnchor,
-                              leading: leadingAnchor,
-                              bottom: nil,
-                              trailing: trailingAnchor,
-                              paddingTop: Device.IS_IPHONE ? 18 : 36,
-                              paddingLeft: Device.IS_IPHONE ? 22 : 44,
-                              paddingBottom: 0,
-                              paddingRight: Device.IS_IPHONE ? 22 : 44,
+                              bottom: toolsContainer.bottomAnchor,
+                              trailing: clearButton.leadingAnchor,
+                              paddingTop: 10,
+                              paddingLeft: 8,
+                              paddingBottom: 10,
+                              paddingRight: 8,
                               width: 0,
-                              height: Device.IS_IPHONE ? 25 : 50)
+                              height: 30)
+        
+//        addSubview(colorSlider)
+//        colorSlider.setAnchor(top: correctCanvasView.bottomAnchor,
+//                              leading: leadingAnchor,
+//                              bottom: nil,
+//                              trailing: trailingAnchor,
+//                              paddingTop: Device.IS_IPHONE ? 18 : 36,
+//                              paddingLeft: Device.IS_IPHONE ? 22 : 44,
+//                              paddingBottom: 0,
+//                              paddingRight: Device.IS_IPHONE ? 22 : 44,
+//                              width: 0,
+//                              height: Device.IS_IPHONE ? 25 : 50)
         
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.normal)
         self.widthSlider.setThumbImage(self.progressImage(with: 10), for: UIControl.State.selected)
         widthSlider.setLightShadow()
         
         
-        // Saving popup view
-        addSubview(savingView)
-        savingView.pinToEdges(view: self, safe: false)
-        
-        savingView.addSubview(popupView)
-        popupView.setAnchor(width: Device.IS_IPHONE ? 200 : 400, height: Device.IS_IPHONE ? 100 : 200)
-        
-        popupView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        popupView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
-        popupView.addSubview(headerLabel)
-        headerLabel.setAnchor(top: popupView.topAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ? 30 : 60)
-        
-        popupView.addSubview(textField)
-        textField.setAnchor(top: headerLabel.bottomAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ?  40 : 80)
-        
-        popupView.addSubview(cancelButton)
-        cancelButton.setAnchor(top: textField.bottomAnchor, leading: popupView.leadingAnchor, bottom: popupView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
-        
-        popupView.addSubview(okButton)
-        okButton.setAnchor(top: textField.bottomAnchor, leading: nil, bottom: popupView.bottomAnchor, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
-        
+//        // Saving popup view
+//        addSubview(savingView)
+//        savingView.pinToEdges(view: self, safe: false)
+//
+//        savingView.addSubview(popupView)
+//        popupView.setAnchor(width: Device.IS_IPHONE ? 200 : 400, height: Device.IS_IPHONE ? 100 : 200)
+//
+//        popupView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        popupView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//
+//        popupView.addSubview(headerLabel)
+//        headerLabel.setAnchor(top: popupView.topAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ? 30 : 60)
+//
+//        popupView.addSubview(textField)
+//        textField.setAnchor(top: headerLabel.bottomAnchor, leading: popupView.leadingAnchor, bottom: nil, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: Device.IS_IPHONE ?  40 : 80)
+//
+//        popupView.addSubview(cancelButton)
+//        cancelButton.setAnchor(top: textField.bottomAnchor, leading: popupView.leadingAnchor, bottom: popupView.bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
+//
+//        popupView.addSubview(okButton)
+//        okButton.setAnchor(top: textField.bottomAnchor, leading: nil, bottom: popupView.bottomAnchor, trailing: popupView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: Device.IS_IPHONE ? 100 : 200, height: 0)
+//
+//
         
     }
     
@@ -423,8 +415,8 @@ class CanvasView: UIView {
     func progressImage(with progress : Float) -> UIImage {
         let layer = CALayer()
         layer.backgroundColor = UIColor.white.cgColor
-        layer.frame = CGRect(x: 0, y: 0, width: Device.IS_IPHONE ? 30 : 60, height: Device.IS_IPHONE ? 30 : 60)
-        layer.cornerRadius = Device.IS_IPHONE ? 15 : 30
+        layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        layer.cornerRadius = 15
         
         let label = UILabel(frame: layer.frame)
         label.text = "\(Int(progress))"
@@ -456,18 +448,7 @@ class CanvasView: UIView {
 //        backAction?()
 //    }
     
-    @objc fileprivate func handlePopup() {
-        savingView.setIsHidden(false, animated: true)
-        //savingView.isHidden = false
-    }
     
-    @objc fileprivate func handleSaveCanvas() {
-        saveCanvasAction?()
-    }
-    
-    @objc fileprivate func handleCancel() {
-        savingView.setIsHidden(true, animated: true)
-    }
     
     @objc fileprivate func handleUndo() {
         correctCanvasView.undo()
@@ -496,9 +477,9 @@ class CanvasView: UIView {
     }
     
     // MARK: - public functions
-    public func saveCanvas(){
-        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage(), title: textField.text ?? "No title", date: Date())
-    }
+    //    public func saveNewCanvas(title: String){
+//        CanvasObjectController.shared.saveCanvasObject(image: correctCanvasView.asImage(), title: textField.text ?? "No title", date: Date())
+//    }
     
     public func setImage(image: UIImage) {
         /*print("size: \(correctCanvasView.frame.size)")

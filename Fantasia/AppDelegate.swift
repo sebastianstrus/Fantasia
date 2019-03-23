@@ -76,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
        
         //nv.navigationBar.backItem?.title = "Custom"
-        navigationController.navigationItem.prompt = "Navigation prompts appear at the top."
         window?.rootViewController = navigationController
         
         return true

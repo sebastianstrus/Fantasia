@@ -92,7 +92,7 @@ class MainMenuView: UIView {
                                width: CGFloat(Device.SCREEN_WIDTH),
                                height: CGFloat(Device.SCREEN_HEIGHT/2))
         
-        let titlesStackView = createStackView(views: [titleLabel, subtitleLabel],
+        let titlesStackView = createVerticalStackView(views: [titleLabel, subtitleLabel],
                                               spacing: Device.IS_IPHONE ? -20 : -40)
         topContainer.addSubview(titlesStackView)
         titlesStackView.setAnchor(width: self.frame.width,
@@ -114,7 +114,7 @@ class MainMenuView: UIView {
         
         
         
-        let buttonsStackView = createStackView(views: [newCanvasButton, galleryButton],
+        let buttonsStackView = createVerticalStackView(views: [newCanvasButton, galleryButton],
                                                spacing: Device.IS_IPHONE ? 10 : 20)
         bottomContainer.addSubview(buttonsStackView)
         buttonsStackView.setAnchor(width: Device.IS_IPHONE ? 180 : 360,
