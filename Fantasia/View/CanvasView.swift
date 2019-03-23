@@ -286,11 +286,10 @@ class CanvasView: UIView {
     }
     
     public func setImage(image: UIImage) {
-        
         let temImageView = UIImageView(frame: correctCanvasView.frame)
         temImageView.contentMode = .scaleAspectFill
         temImageView.image = image
         let correctImage = temImageView.asImage()
-        correctCanvasView.backgroundColor = UIColor(patternImage: correctImage)//resizedImage!)
+        correctCanvasView.backgroundColor = UIColor(patternImage: correctImage)
     }
 }

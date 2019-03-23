@@ -64,13 +64,9 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
         libraryItem.customView?.widthAnchor.constraint(equalToConstant: 33).isActive = true//ipad 50
         libraryItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        
         let saveItem = UIBarButtonItem(customView: saveButton)
         saveItem.customView?.widthAnchor.constraint(equalToConstant: 33).isActive = true
         saveItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        //let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        libraryItem.customView?.trailingAnchor.constraint(equalTo: libraryItem.customView!.leadingAnchor, constant: 0).isActive = true
         self.navigationItem.rightBarButtonItems = [saveItem, libraryItem]
     }
     
