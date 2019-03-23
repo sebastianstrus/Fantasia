@@ -33,8 +33,12 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
         
     }
     
-    fileprivate func setupNavigationBar() {        
-        self.navigationItem.rightBarButtonItem = editButtonItem
+    fileprivate func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = editButtonItem
+        navigationItem.title = "Gallery"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
     }
     
     fileprivate func setupView() {
