@@ -30,52 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.barTintColor = AppColors.DODGERBLUE
         navigationController.navigationBar.tintColor = UIColor.white
         
-//
-//        var backButtonBackgroundImage = UIImage(named: "back_arrow")
-//        backButtonBackgroundImage =
-//            backButtonBackgroundImage!.resizableImage(withCapInsets:
-//                UIEdgeInsets(top: 0,
-//                             left: backButtonBackgroundImage!.size.width - 1,
-//                             bottom: 0,
-//                             right: 0))
-//
-//        let barAppearance =
-//            UINavigationBar.appearance(whenContainedInInstancesOf: [UINavigationController.self])
-//        barAppearance.backIndicatorImage = backButtonBackgroundImage
-//        barAppearance.backIndicatorTransitionMaskImage = backButtonBackgroundImage
-//
-//        // Provide an empty backBarButton to hide the 'Back' text present by default in the back button.
-//        let backBarButtton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        navigationController.navigationItem.backBarButtonItem = backBarButtton
-//
-//
-//
-//        if #available(iOS 11.0, *) {
-//            navigationController.navigationBar.prefersLargeTitles = true
-//        }
-        
-        //nc.navigationItem.prompt = "Navigation prompts appear at the top."
-        
-        //let segmentBarItem = UIBarButtonItem(customView: segmentedControl)
-        //navigationItem.rightBarButtonItem = segmentBarItem
-        
-        //nc.navigationBar.barStyle = .blackOpaque
-//        nv.navigationBar.backItem = UIBarButtonItem(
-//
-//
-//        let barButtonAppearance = UIBarButtonItem.appearance()
-//
-//
-//        let backButton = UIImage(named: "back_arrow")
-//        let backButtonImage = backButton?.stretchableImage(withLeftCapWidth: 0, topCapHeight: 10)
-//        barButtonAppearance.setBackButtonBackgroundImage(backButtonImage, for: .normal, barMetrics: .default)
-//
-//        let backItem = UIBarButtonItem()
-//        backItem.title = ""
-//        nv.navigationItem.backBarButtonItem = backItem
-
-       
-        //nv.navigationBar.backItem?.title = "Custom"
         window?.rootViewController = navigationController
         
         

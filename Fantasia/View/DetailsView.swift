@@ -40,7 +40,7 @@ class DetailsView: UIView {
     fileprivate let dateLabel: UILabel = {
         let label = UILabel()
         label.font = AppFonts.DATE_FONT
-        label.textColor = UIColor.red
+        label.textColor = UIColor(r: 200, g: 20, b: 20)
         label.textAlignment = NSTextAlignment.center
         return label
     }()
@@ -71,7 +71,6 @@ class DetailsView: UIView {
     func setCanvas(canvas: CanvasObject) {
         let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)
         imageView.image = image
-        imageView.backgroundColor = UIColor.red
         
         dateLabel.text = canvas.date?.formatedString()
         

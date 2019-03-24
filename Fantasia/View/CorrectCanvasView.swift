@@ -90,6 +90,7 @@ class CorrectCanvasView: UIView {
     
     func clear() {
         lines.removeAll()
+        //backgroundColor = UIColor.white
         setNeedsDisplay()
     }
     
