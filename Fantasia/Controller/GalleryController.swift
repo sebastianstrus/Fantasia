@@ -71,6 +71,7 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     
     // MARK: - UICollectionViewDelegate functions
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        setEditing(false, animated: false)
         let detailsController = DetailsController()
         detailsController.canvas = canvases[indexPath.row]
         detailsController.canvasIndex = indexPath.row
