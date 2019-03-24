@@ -208,6 +208,7 @@ class SavePopupView: UIView {
     }
     
     @objc fileprivate func handleCancel() {
+        endEditing(true)
         UIView.animate(withDuration: 0.4, animations: {
             self.blurView.effect = nil
             self.popupView.alpha = 0
@@ -218,6 +219,7 @@ class SavePopupView: UIView {
     }
     
     @objc fileprivate func handleOk() {
+        endEditing(true)
         if let title = textField.text, !title.isEmpty {
             UIView.animate(withDuration: 0.4, animations: {
                 self.blurView.effect = nil
