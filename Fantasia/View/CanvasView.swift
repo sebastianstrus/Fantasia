@@ -285,7 +285,12 @@ class CanvasView: UIView {
         setImage(image: image)
     }
     
-    public func setImage(image: UIImage) {
+    fileprivate func setImage(image: UIImage) {
+        let width = Device.SCREEN_WIDTH - 20
+        let resizedImage = image.resized(toWidth: CGFloat(width))
+        correctCanvasView.backgroundColor = UIColor(patternImage: resizedImage!)
+    }
+    public func setImageFromLibrary(image: UIImage) {
         let temImageView = UIImageView(frame: correctCanvasView.frame)
         temImageView.contentMode = .scaleAspectFill
         temImageView.image = image

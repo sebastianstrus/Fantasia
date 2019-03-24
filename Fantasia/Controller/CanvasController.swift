@@ -71,7 +71,7 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     }
     
     fileprivate func setupLayout() {
-        
+        print("canvas: \(canvas)")
         savePopupController.popupDelegate = self
     
         canvasActivityView = CanvasView()
@@ -119,7 +119,7 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
             selectedImageFromPicker = originalImage
         }
         if let selectedImage = selectedImageFromPicker {
-            canvasActivityView.setImage(image: selectedImage)
+            canvasActivityView.setImageFromLibrary(image: selectedImage)
         }
         picker.dismiss(animated: true)
     }
