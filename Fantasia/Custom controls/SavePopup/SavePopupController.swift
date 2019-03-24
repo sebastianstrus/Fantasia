@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PopupDelegate {
-    func onGotTitle(title: String)
+    func onGotTitle(title: String, keepPrevious: Bool)
 }
 
 class SavePopupController: UIViewController {
@@ -19,9 +19,32 @@ class SavePopupController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //hideKeyboardWhenTappedAround()
         
         setup()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+        
+
     }
+    
+    
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        savePopupView.handleKeyboardUp()
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        savePopupView.handleKeyboardDown()
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -30,7 +53,7 @@ class SavePopupController: UIViewController {
     
     // MARK: - Private functions
     fileprivate func setup() {
-        savePopupView = SavePopupView()
+        savePopupView = SavePopupView(isEditing: isEditing)
         view.addSubview(savePopupView)
         savePopupView.pinToEdges(view: view, safe: false)
         savePopupView.cancelAction = handleCancel
@@ -42,7 +65,11 @@ class SavePopupController: UIViewController {
     }
     
     fileprivate func handleSave(title: String) {
-        popupDelegate?.onGotTitle(title: title)
+        popupDelegate?.onGotTitle(title: title, keepPrevious: savePopupView.getKeepPrevious())
         dismiss(animated: true)
+    }
+    
+    public func setEditing(isEditing: Bool) {
+        savePopupView.isEditing = isEditing
     }
 }

@@ -12,7 +12,8 @@ class DetailsController: UIViewController {
     
     fileprivate var detailsView: DetailsView!
     
-    fileprivate var canvas: CanvasObject?
+    public var canvas: CanvasObject?
+    public var canvasIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,9 @@ class DetailsController: UIViewController {
     @objc fileprivate func handleEdit() {
         print("Edit soon")
         let canvasController = CanvasController()
-        canvasController.setCanvas(canvas: canvas!)
+        canvasController.canvas = canvas
+        canvasController.canvasIndex = canvasIndex
+        canvasController.isEditing = true
         
 
         //present(canvasController, animated: true, completion: nil)

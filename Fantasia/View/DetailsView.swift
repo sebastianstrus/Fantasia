@@ -60,11 +60,11 @@ class DetailsView: UIView {
                             bottom: nil,
                             trailing: trailingAnchor,
                             paddingTop: Device.IS_IPHONE ? 10 : 20,
-                            paddingLeft: Device.IS_IPHONE ? 20 : 40,
+                            paddingLeft: 0,
                             paddingBottom: 0,
-                            paddingRight: Device.IS_IPHONE ? 20 : 40,
+                            paddingRight: 0,
                             width: 0,
-                            height: Device.IS_IPHONE ? 30 : 60)
+                            height: 30)
     }
     
     // public functions

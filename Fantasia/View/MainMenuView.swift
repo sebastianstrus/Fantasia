@@ -59,7 +59,7 @@ class MainMenuView: UIView {
         label.attributedText = attributedString
         label.textAlignment = NSTextAlignment.center
         label.shadowColor = .black
-        label.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        label.shadowOffset = CGSize(width: 2.0, height: 2.0)
         return label
     }()
     

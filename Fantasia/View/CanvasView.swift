@@ -58,14 +58,14 @@ class CanvasView: UIView {
         return button
     }()
     
-    fileprivate let titleLabel: UILabel = {
+    /*fileprivate let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "New canvas"
         label.textAlignment = .center
         label.textColor = AppColors.WHITE_GRAY
         label.font = UIFont(name: "Oswald-Medium", size: Device.IS_IPHONE ? 20 : 40)
         return label
-    }()
+    }()*/
     
     fileprivate let clearButton: UIButton = {
         let button = UIButton(type: .system)
@@ -275,12 +275,14 @@ class CanvasView: UIView {
                           animations: { self.correctCanvasView = self.correctCanvasView },
                           completion: nil)
         correctCanvasView.clear()
+        correctCanvasView.backgroundColor = UIColor.white
         Sound.play(file: "page_flip.mp3")
         
     }
     
     func setCanvas(canvas: CanvasObject) {
-        titleLabel.text = canvas.title
+        //titleLabel.text = canvas.title
+        //navigationItem.title = canvas?.title
         let image = ImageController.shared.fetchImage(imageName: (canvas.imageName)!)!
         setImage(image: image)
     }

@@ -11,20 +11,36 @@ import AVFoundation
 
 class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPickerViewDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, PopupDelegate {
     
-    
-    let savePopupController = SavePopupController()
-    
-    func onGotTitle(title: String) {
-        CanvasObjectController.shared.saveCanvasObject(image: canvasActivityView.correctCanvasView.asImage(), title: title, date: Date())
-        navigationController?.popViewController(animated: true)
-    }
-    
     public var canvasActivityView: CanvasView!
-    fileprivate var canvas: CanvasObject?
+    public var canvas: CanvasObject?
+    public var canvasIndex: Int?
     
+    var savePopupController = SavePopupController()
+    
+    func onGotTitle(title: String, keepPrevious: Bool) {
+        
+        if isEditing {
+            if !keepPrevious {
+                CanvasObjectController.shared.deleteCanvasObject(imageIndex: canvasIndex!)
+            }
+        }
+        
+        
+        
+        
+        CanvasObjectController.shared.saveCanvasObject(image: canvasActivityView.correctCanvasView.asImage(), title: title, date: Date())
+        
 
- 
+        if (isEditing) {
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     
+        
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         navigationController?.fixNavigationItemsMargin(Device.IS_IPHONE ? 8 : 16)
@@ -37,7 +53,6 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         hideKeyboardWhenTappedAround()
         setupNavigationBar()
         setupLayout()
@@ -45,6 +60,10 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
 
     
     fileprivate func setupNavigationBar() {
+        if let aCanvas = canvas {
+            navigationItem.title = "Edit: \((aCanvas.title)!)"
+        }
+
         let libraryButton: UIButton = {
             let button = UIButton(type: .custom)
             button.setImage(UIImage(named: "library_icon"), for: .normal)
@@ -71,7 +90,6 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     }
     
     fileprivate func setupLayout() {
-        print("canvas: \(canvas)")
         savePopupController.popupDelegate = self
     
         canvasActivityView = CanvasView()
@@ -93,6 +111,8 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     
     @objc fileprivate func handlePopup() {
         savePopupController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        savePopupController.isEditing = isEditing
+        print("savePopupController.isEditing: \(savePopupController.isEditing)")
         present(savePopupController, animated: false)
 //        if let pop = savePopupController.popoverPresentationController {
 //            pop.delegate = self

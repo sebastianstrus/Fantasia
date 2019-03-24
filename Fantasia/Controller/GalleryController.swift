@@ -72,7 +72,8 @@ class GalleryController: UIViewController, UICollectionViewDelegate, UICollectio
     // MARK: - UICollectionViewDelegate functions
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsController = DetailsController()
-        detailsController.setCanvas(canvas: canvases[indexPath.row])
+        detailsController.canvas = canvases[indexPath.row]
+        detailsController.canvasIndex = indexPath.row
         navigationController?.pushViewController(detailsController, animated: true)
         //present(detailsController, animated: true, completion: nil)
     }
