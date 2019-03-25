@@ -112,11 +112,8 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
     @objc fileprivate func handlePopup() {
         savePopupController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         savePopupController.isEditing = isEditing
-        print("savePopupController.isEditing: \(savePopupController.isEditing)")
+        savePopupController.canvasTitle = canvas?.title
         present(savePopupController, animated: false)
-//        if let pop = savePopupController.popoverPresentationController {
-//            pop.delegate = self
-//        }
     }
 
     @objc fileprivate func handleLibrary() {

@@ -13,6 +13,7 @@ class SavePopupView: UIView {
     var saveAction: ((_ title: String) -> Void)?
     var cancelAction: (() -> Void)?
     var isEditing: Bool!
+    var title: String?
     
     var yCenterAnchor: NSLayoutConstraint!
     var yUpAnchor: NSLayoutConstraint!
@@ -26,9 +27,10 @@ class SavePopupView: UIView {
         super.init(frame: frame)
     }
     
-    convenience init(isEditing: Bool) {
+    convenience init(isEditing: Bool, title: String?) {
         self.init(frame: .zero)
         self.isEditing = isEditing
+        self.title = title
         setup()
     }
     
@@ -61,7 +63,7 @@ class SavePopupView: UIView {
         return label
     }()
     
-    fileprivate let textField: UITextField = {
+    fileprivate let titleTF: UITextField = {
         let tf = UITextField()
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.placeholder = "Enter title"
@@ -142,8 +144,8 @@ class SavePopupView: UIView {
                               width: 0,
                               height: 40)
 
-        popupView.addSubview(textField)
-        textField.setAnchor(top: headerLabel.bottomAnchor,
+        popupView.addSubview(titleTF)
+        titleTF.setAnchor(top: headerLabel.bottomAnchor,
                             leading: popupView.leadingAnchor,
                             bottom: nil,
                             trailing: popupView.trailingAnchor,
@@ -156,7 +158,7 @@ class SavePopupView: UIView {
 
         if (isEditing) {
             popupView.addSubview(switchButton)
-            switchButton.setAnchor(top: textField.bottomAnchor,
+            switchButton.setAnchor(top: titleTF.bottomAnchor,
                                    leading: popupView.leadingAnchor,
                                    bottom: nil,
                                    trailing: nil,
@@ -168,7 +170,7 @@ class SavePopupView: UIView {
                                    height: 31)
             
             popupView.addSubview(switchLabel)
-            switchLabel.setAnchor(top: textField.bottomAnchor,
+            switchLabel.setAnchor(top: titleTF.bottomAnchor,
                                    leading: switchButton.trailingAnchor,
                                    bottom: nil,
                                    trailing: popupView.trailingAnchor,
@@ -178,6 +180,7 @@ class SavePopupView: UIView {
                                    paddingRight: 5,
                                    width: 0,
                                    height: 30)
+            titleTF.text = title
         }
         
         popupView.addSubview(cancelButton)
@@ -222,7 +225,7 @@ class SavePopupView: UIView {
     
     @objc fileprivate func handleOk() {
         endEditing(true)
-        if let title = textField.text, !title.isEmpty {
+        if let title = titleTF.text, !title.isEmpty {
             UIView.animate(withDuration: 0.4, animations: {
                 self.blurView.effect = nil
                 self.popupView.alpha = 0

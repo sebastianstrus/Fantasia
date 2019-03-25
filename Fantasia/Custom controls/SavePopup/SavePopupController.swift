@@ -16,6 +16,7 @@ class SavePopupController: UIViewController {
     
     var savePopupView: SavePopupView!
     var popupDelegate: PopupDelegate?
+    var canvasTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class SavePopupController: UIViewController {
     
     // MARK: - Private functions
     fileprivate func setup() {
-        savePopupView = SavePopupView(isEditing: isEditing)
+        savePopupView = SavePopupView(isEditing: isEditing, title: canvasTitle)
         view.addSubview(savePopupView)
         savePopupView.pinToEdges(view: view, safe: false)
         savePopupView.cancelAction = handleCancel
