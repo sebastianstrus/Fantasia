@@ -65,7 +65,7 @@ class SavePopupView: UIView {
     
     fileprivate let titleTF: UITextField = {
         let tf = UITextField()
-        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.font = UIFont.boldSystemFont(ofSize: 15)
         tf.placeholder = "Enter title"
         tf.autocorrectionType = UITextAutocorrectionType.no
         tf.textColor = UIColor.darkGray
