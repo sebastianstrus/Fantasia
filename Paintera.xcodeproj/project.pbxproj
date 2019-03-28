@@ -1,0 +1,679 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3416D08296937D13A608FE7C /* Pods_Paintera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44E2B1A8E0D18593EC7FA3 /* Pods_Paintera.framework */; };
+		7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF082204FAD600C13363 /* MainMenuView.swift */; };
+		7D2AFF0B2204FAF800C13363 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */; };
+		7D2AFF122205003700C13363 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF112205003700C13363 /* String+Extension.swift */; };
+		7D2AFF152205044200C13363 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF142205044200C13363 /* Constants.swift */; };
+		7D2AFF172205052600C13363 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF162205052600C13363 /* AppColors.swift */; };
+		7D2AFF192205056800C13363 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF182205056800C13363 /* UIColor+Extension.swift */; };
+		7D2AFF1D22050E1800C13363 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF1C22050E1800C13363 /* UIView+Extension.swift */; };
+		7D2AFF2122051AD900C13363 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF2022051AD900C13363 /* AppFonts.swift */; };
+		7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF1A22050DD300C13363 /* UIButton+Extension.swift */; };
+		7D2AFF3722052D5500C13363 /* SeymourOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3422052D5500C13363 /* SeymourOne-Regular.ttf */; };
+		7D2AFF3822052D5500C13363 /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */; };
+		7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */; };
+		7D2AFF3B22064DBA00C13363 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3A22064DBA00C13363 /* Strings.swift */; };
+		7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3E2206591400C13363 /* CanvasController.swift */; };
+		7D2AFF412206630900C13363 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF402206630900C13363 /* GalleryView.swift */; };
+		7D2AFF432206631C00C13363 /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF422206631C00C13363 /* GalleryController.swift */; };
+		7D2AFF452206775600C13363 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF442206775600C13363 /* CanvasView.swift */; };
+		7D4E6408223DCA7A00D3F308 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4E6407223DCA7A00D3F308 /* UINavigationController+Extension.swift */; };
+		7D4E640A2244386500D3F308 /* SavePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4E64092244386500D3F308 /* SavePopupController.swift */; };
+		7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */; };
+		7D4EE3BA2221DA3E005D1F46 /* SavePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */; };
+		7D4EE3BC22221015005D1F46 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */; };
+		7D90F4D722498CB300200AA0 /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */; };
+		7D90F4DD224C027B00200AA0 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F4DC224C027B00200AA0 /* BounceButton.swift */; };
+		7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABD72203805500E57FF3 /* AppDelegate.swift */; };
+		7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABDE2203805800E57FF3 /* Assets.xcassets */; };
+		7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */; };
+		7D9A15C0220F28F7009915A1 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15BF220F28F7009915A1 /* GalleryCell.swift */; };
+		7D9A15C5221037BF009915A1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */; };
+		7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C6221038E7009915A1 /* ImageController.swift */; };
+		7D9A15CA22103B3A009915A1 /* Paintera.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15C822103B3A009915A1 /* Paintera.xcdatamodeld */; };
+		7D9A15ED22103E3F009915A1 /* CanvasObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */; };
+		7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15EE22107C3C009915A1 /* Date+Extension.swift */; };
+		7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */; };
+		7D9A15F32210CAB9009915A1 /* DetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F22210CAB9009915A1 /* DetailsController.swift */; };
+		7D9A15F52210CB26009915A1 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F42210CB26009915A1 /* DetailsView.swift */; };
+		7D9A15F72211F6C3009915A1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */; };
+		7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D9A15F922122F21009915A1 /* page_flip.mp3 */; };
+		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
+		7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7D2AFF082204FAD600C13363 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		7D2AFF112205003700C13363 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		7D2AFF142205044200C13363 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7D2AFF162205052600C13363 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		7D2AFF182205056800C13363 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		7D2AFF1A22050DD300C13363 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		7D2AFF1C22050E1800C13363 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7D2AFF2022051AD900C13363 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		7D2AFF3422052D5500C13363 /* SeymourOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeymourOne-Regular.ttf"; sourceTree = "<group>"; };
+		7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
+		7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
+		7D2AFF3A22064DBA00C13363 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7D2AFF3E2206591400C13363 /* CanvasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasController.swift; sourceTree = "<group>"; };
+		7D2AFF402206630900C13363 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		7D2AFF422206631C00C13363 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
+		7D2AFF442206775600C13363 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		7D44E2B1A8E0D18593EC7FA3 /* Pods_Paintera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paintera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4E6407223DCA7A00D3F308 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		7D4E64092244386500D3F308 /* SavePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePopupController.swift; sourceTree = "<group>"; };
+		7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ColorSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePopupView.swift; sourceTree = "<group>"; };
+		7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nosifer-Regular.ttf"; path = "../../../../../Downloads/Nosifer/Nosifer-Regular.ttf"; sourceTree = "<group>"; };
+		7D90F4DC224C027B00200AA0 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
+		7D92ABD42203805500E57FF3 /* Paintera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paintera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D92ABD72203805500E57FF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7D92ABDE2203805800E57FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7D92ABE12203805800E57FF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7D92ABE32203805800E57FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D9A15BF220F28F7009915A1 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		7D9A15C6221038E7009915A1 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		7D9A15C922103B3A009915A1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectController.swift; sourceTree = "<group>"; };
+		7D9A15EE22107C3C009915A1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectCanvasView.swift; sourceTree = "<group>"; };
+		7D9A15F22210CAB9009915A1 /* DetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsController.swift; sourceTree = "<group>"; };
+		7D9A15F42210CB26009915A1 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		7D9A15F922122F21009915A1 /* page_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = page_flip.mp3; sourceTree = "<group>"; };
+		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaOutline-Regular.ttf"; sourceTree = "<group>"; };
+		9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.release.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.release.xcconfig"; sourceTree = "<group>"; };
+		FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.debug.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D92ABD12203805500E57FF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */,
+				3416D08296937D13A608FE7C /* Pods_Paintera.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28E9C0115E5A5923BC75ABFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */,
+				7D44E2B1A8E0D18593EC7FA3 /* Pods_Paintera.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D2AFF052204CE7000C13363 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D9A15C822103B3A009915A1 /* Paintera.xcdatamodeld */,
+				7DAE569D220903BE003AE323 /* Line.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D2AFF062204CE7800C13363 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AFF082204FAD600C13363 /* MainMenuView.swift */,
+				7D2AFF442206775600C13363 /* CanvasView.swift */,
+				7D2AFF402206630900C13363 /* GalleryView.swift */,
+				7D9A15F022107FEA009915A1 /* CorrectCanvasView.swift */,
+				7D9A15F42210CB26009915A1 /* DetailsView.swift */,
+				7D9A15BE220F28D9009915A1 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D2AFF072204CE8000C13363 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */,
+				7D2AFF3E2206591400C13363 /* CanvasController.swift */,
+				7D2AFF422206631C00C13363 /* GalleryController.swift */,
+				7D9A15C6221038E7009915A1 /* ImageController.swift */,
+				7D9A15EC22103E3F009915A1 /* CanvasObjectController.swift */,
+				7D9A15F22210CAB9009915A1 /* DetailsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7D2AFF0C2204FF4C00C13363 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7D9A15F822122F0D009915A1 /* Sounds */,
+				7D2AFF0F2204FF7D00C13363 /* Images */,
+				7D2AFF0E2204FF7200C13363 /* Strings */,
+				7D2AFF0D2204FF6B00C13363 /* Fonts */,
+				7DD3205B220CE5650044A6F7 /* Colors */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7D2AFF0D2204FF6B00C13363 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */,
+				7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */,
+				7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */,
+				7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */,
+				7D2AFF3422052D5500C13363 /* SeymourOne-Regular.ttf */,
+				7D2AFF2022051AD900C13363 /* AppFonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7D2AFF0E2204FF7200C13363 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AFF3A22064DBA00C13363 /* Strings.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		7D2AFF0F2204FF7D00C13363 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7D92ABDE2203805800E57FF3 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		7D2AFF102205000D00C13363 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AFF112205003700C13363 /* String+Extension.swift */,
+				7D2AFF182205056800C13363 /* UIColor+Extension.swift */,
+				7D2AFF1A22050DD300C13363 /* UIButton+Extension.swift */,
+				7D2AFF1C22050E1800C13363 /* UIView+Extension.swift */,
+				7D9A15C4221037BF009915A1 /* UIImage+Extension.swift */,
+				7D9A15EE22107C3C009915A1 /* Date+Extension.swift */,
+				7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */,
+				7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */,
+				7D4E6407223DCA7A00D3F308 /* UINavigationController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7D2AFF132205043000C13363 /* Suporting files */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AFF142205044200C13363 /* Constants.swift */,
+			);
+			path = "Suporting files";
+			sourceTree = "<group>";
+		};
+		7D4E642B2245A5C500D3F308 /* SavePopup */ = {
+			isa = PBXGroup;
+			children = (
+				7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */,
+				7D4E64092244386500D3F308 /* SavePopupController.swift */,
+			);
+			path = SavePopup;
+			sourceTree = "<group>";
+		};
+		7D92ABCB2203805500E57FF3 = {
+			isa = PBXGroup;
+			children = (
+				7D92ABD62203805500E57FF3 /* Paintera */,
+				7D92ABD52203805500E57FF3 /* Products */,
+				E7C0B54E06DC57FDD3798D28 /* Pods */,
+				28E9C0115E5A5923BC75ABFF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7D92ABD52203805500E57FF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D92ABD42203805500E57FF3 /* Paintera.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D92ABD62203805500E57FF3 /* Paintera */ = {
+			isa = PBXGroup;
+			children = (
+				7D92ABD72203805500E57FF3 /* AppDelegate.swift */,
+				7D2AFF052204CE7000C13363 /* Model */,
+				7D2AFF062204CE7800C13363 /* View */,
+				7D2AFF072204CE8000C13363 /* Controller */,
+				7D2AFF0C2204FF4C00C13363 /* Resources */,
+				7D2AFF132205043000C13363 /* Suporting files */,
+				7DAE56942208E1DB003AE323 /* Custom controls */,
+				7D2AFF102205000D00C13363 /* Extensions */,
+				7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */,
+				7D92ABE32203805800E57FF3 /* Info.plist */,
+			);
+			path = Paintera;
+			sourceTree = "<group>";
+		};
+		7D9A15BE220F28D9009915A1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7D9A15BF220F28F7009915A1 /* GalleryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7D9A15F822122F0D009915A1 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7D9A15F922122F21009915A1 /* page_flip.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		7DAE56942208E1DB003AE323 /* Custom controls */ = {
+			isa = PBXGroup;
+			children = (
+				7D4E642B2245A5C500D3F308 /* SavePopup */,
+				7D90F4DC224C027B00200AA0 /* BounceButton.swift */,
+			);
+			path = "Custom controls";
+			sourceTree = "<group>";
+		};
+		7DD3205B220CE5650044A6F7 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				7D2AFF162205052600C13363 /* AppColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		E7C0B54E06DC57FDD3798D28 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */,
+				9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7D92ABD32203805500E57FF3 /* Paintera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D92ABE62203805800E57FF3 /* Build configuration list for PBXNativeTarget "Paintera" */;
+			buildPhases = (
+				274B9D1593B96F23F0C5850F /* [CP] Check Pods Manifest.lock */,
+				7D92ABD02203805500E57FF3 /* Sources */,
+				7D92ABD12203805500E57FF3 /* Frameworks */,
+				7D92ABD22203805500E57FF3 /* Resources */,
+				B76EF6532825C33B3733356F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Paintera;
+			productName = Fantasia;
+			productReference = 7D92ABD42203805500E57FF3 /* Paintera.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7D92ABCC2203805500E57FF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Sebastian Strus";
+				TargetAttributes = {
+					7D92ABD32203805500E57FF3 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 7D92ABCF2203805500E57FF3 /* Build configuration list for PBXProject "Paintera" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7D92ABCB2203805500E57FF3;
+			productRefGroup = 7D92ABD52203805500E57FF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7D92ABD32203805500E57FF3 /* Paintera */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7D92ABD22203805500E57FF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */,
+				7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */,
+				7D2AFF3722052D5500C13363 /* SeymourOne-Regular.ttf in Resources */,
+				7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */,
+				7D90F4D722498CB300200AA0 /* Nosifer-Regular.ttf in Resources */,
+				7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */,
+				7D2AFF3822052D5500C13363 /* LuckiestGuy-Regular.ttf in Resources */,
+				7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		274B9D1593B96F23F0C5850F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Paintera-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B76EF6532825C33B3733356F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paintera/Pods-Paintera-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ColorSlider/ColorSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftySound/SwiftySound.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftySound.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paintera/Pods-Paintera-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7D92ABD02203805500E57FF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D9A15F32210CAB9009915A1 /* DetailsController.swift in Sources */,
+				7D2AFF2122051AD900C13363 /* AppFonts.swift in Sources */,
+				7D9A15C0220F28F7009915A1 /* GalleryCell.swift in Sources */,
+				7D9A15F52210CB26009915A1 /* DetailsView.swift in Sources */,
+				7D4EE3BA2221DA3E005D1F46 /* SavePopupView.swift in Sources */,
+				7D9A15F122107FEA009915A1 /* CorrectCanvasView.swift in Sources */,
+				7D2AFF452206775600C13363 /* CanvasView.swift in Sources */,
+				7D2AFF1D22050E1800C13363 /* UIView+Extension.swift in Sources */,
+				7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */,
+				7D4EE3BC22221015005D1F46 /* UITextField+Extension.swift in Sources */,
+				7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */,
+				7D2AFF192205056800C13363 /* UIColor+Extension.swift in Sources */,
+				7D9A15C5221037BF009915A1 /* UIImage+Extension.swift in Sources */,
+				7D9A15ED22103E3F009915A1 /* CanvasObjectController.swift in Sources */,
+				7D9A15CA22103B3A009915A1 /* Paintera.xcdatamodeld in Sources */,
+				7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */,
+				7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */,
+				7D9A15F72211F6C3009915A1 /* UIViewController+Extension.swift in Sources */,
+				7D4E6408223DCA7A00D3F308 /* UINavigationController+Extension.swift in Sources */,
+				7D4E640A2244386500D3F308 /* SavePopupController.swift in Sources */,
+				7D9A15EF22107C3C009915A1 /* Date+Extension.swift in Sources */,
+				7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */,
+				7DAE569E220903BE003AE323 /* Line.swift in Sources */,
+				7D2AFF432206631C00C13363 /* GalleryController.swift in Sources */,
+				7D90F4DD224C027B00200AA0 /* BounceButton.swift in Sources */,
+				7D2AFF152205044200C13363 /* Constants.swift in Sources */,
+				7D2AFF412206630900C13363 /* GalleryView.swift in Sources */,
+				7D2AFF172205052600C13363 /* AppColors.swift in Sources */,
+				7D2AFF122205003700C13363 /* String+Extension.swift in Sources */,
+				7D2AFF3B22064DBA00C13363 /* Strings.swift in Sources */,
+				7D2AFF0B2204FAF800C13363 /* MainMenuController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D92ABE12203805800E57FF3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7D92ABE42203805800E57FF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		7D92ABE52203805800E57FF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7D92ABE72203805800E57FF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL936GBZY;
+				INFOPLIST_FILE = Paintera/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = seb.Paintera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7D92ABE82203805800E57FF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4SL936GBZY;
+				INFOPLIST_FILE = Paintera/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = seb.Paintera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D92ABCF2203805500E57FF3 /* Build configuration list for PBXProject "Paintera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D92ABE42203805800E57FF3 /* Debug */,
+				7D92ABE52203805800E57FF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D92ABE62203805800E57FF3 /* Build configuration list for PBXNativeTarget "Paintera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D92ABE72203805800E57FF3 /* Debug */,
+				7D92ABE82203805800E57FF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7D9A15C822103B3A009915A1 /* Paintera.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7D9A15C922103B3A009915A1 /* Model.xcdatamodel */,
+			);
+			currentVersion = 7D9A15C922103B3A009915A1 /* Model.xcdatamodel */;
+			path = Paintera.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7D92ABCC2203805500E57FF3 /* Project object */;
+}
