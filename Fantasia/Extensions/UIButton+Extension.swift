@@ -8,16 +8,18 @@
 
 import UIKit
 
-extension UIButton {
+extension BounceButton {
     
     public convenience init(title: String) {
         self.init()
         let attributedString = NSMutableAttributedString(attributedString: NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: AppFonts.BTN_FONT!, .foregroundColor: AppColors.BUTTON_TITLE]))
         self.setAttributedTitle(attributedString, for: .normal)
-        self.layer.cornerRadius = Device.IS_IPHONE ? 20 : 40
+        self.layer.cornerRadius = Device.IS_IPHONE ? 25 : 50
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 2
         self.backgroundColor = AppColors.TRANSPARENT_BLACK
-        self.setAnchor(width: Device.IS_IPHONE ? 180 : 360,
-                       height: Device.IS_IPHONE ? 40 : 80)
+        self.setAnchor(width: Device.IS_IPHONE ? 200 : 400,
+                       height: Device.IS_IPHONE ? 50 : 100)
     }
     
     

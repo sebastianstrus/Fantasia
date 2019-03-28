@@ -91,14 +91,7 @@ class GalleryView: UIView {
     fileprivate func setup() {
         backgroundColor = AppColors.WHITE_GRAY
         addSubview(backgroundImageView)
-        backgroundImageView.setAnchor(top: topAnchor,
-                                      leading: leadingAnchor,
-                                      bottom: bottomAnchor,
-                                      trailing: trailingAnchor,
-                                      paddingTop: 0,
-                                      paddingLeft: 0,
-                                      paddingBottom: 0,
-                                      paddingRight: 0)
+        backgroundImageView.pinToEdges(view: self, safe: false)
         //backgroundImageView.pinToEdges(view: self, safe: false)
         
         /*addSubview(safeAreaBackground)

@@ -7,6 +7,6 @@
 //
 
 struct Strings {
-    static let APP_TITLE = "Fantasia"
-    static let APP_SUBTITLE = "Draw and save"
+    static let APP_TITLE = "Paintera"
+    static let APP_SUBTITLE = "Paint & save"
 }

@@ -27,7 +27,7 @@ class MainMenuView: UIView {
     
     // MARK: - All subviews
     fileprivate var backgroundImageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "blur_background"))
+        let iv = UIImageView(image: UIImage(named: "aurora1"))
         iv.backgroundColor = .white
         iv.contentMode = .scaleAspectFill
         return iv
@@ -63,14 +63,16 @@ class MainMenuView: UIView {
         return label
     }()
     
-    fileprivate let newCanvasButton: UIButton = {
-        let button = UIButton(title: "New canvas".localized)
+    fileprivate var buttonsStackView: UIStackView!
+    
+    fileprivate let newCanvasButton: BounceButton = {
+        let button = BounceButton(title: "New canvas".localized)
         button.addTarget(self, action: #selector(handleNewCanvas), for: .touchUpInside)
         return button
     }()
     
-    fileprivate let galleryButton: UIButton = {
-        let button = UIButton(title: "Gallery".localized)
+    fileprivate let galleryButton: BounceButton = {
+        let button = BounceButton(title: "Gallery".localized)
         button.addTarget(self, action: #selector(handleGallery), for: .touchUpInside)
         return button
     }()
@@ -93,7 +95,7 @@ class MainMenuView: UIView {
                                height: CGFloat(Device.SCREEN_HEIGHT/2))
         
         let titlesStackView = createVerticalStackView(views: [titleLabel, subtitleLabel],
-                                              spacing: Device.IS_IPHONE ? -20 : -40)
+                                              spacing: Device.IS_IPHONE ? 20 : 40)
         topContainer.addSubview(titlesStackView)
         titlesStackView.setAnchor(width: self.frame.width,
                                   height: Device.IS_IPHONE ? 110 : 220)
@@ -114,15 +116,43 @@ class MainMenuView: UIView {
         
         
         
-        let buttonsStackView = createVerticalStackView(views: [newCanvasButton, galleryButton],
-                                               spacing: Device.IS_IPHONE ? 10 : 20)
+        buttonsStackView = createVerticalStackView(views: [newCanvasButton, galleryButton],
+                                               spacing: Device.IS_IPHONE ? 15 : 30)
         bottomContainer.addSubview(buttonsStackView)
-        buttonsStackView.setAnchor(width: Device.IS_IPHONE ? 180 : 360,
-                                   height: Device.IS_IPHONE ? 90 : 180)
+        buttonsStackView.setAnchor(width: Device.IS_IPHONE ? 200 : 400,
+                                   height: Device.IS_IPHONE ? 115 : 230)
         buttonsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         buttonsStackView.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
+        
+        titleLabel.alpha = 0
+        subtitleLabel.alpha = 0
+        buttonsStackView.alpha = 0
+        showTitle()
     }
 
+    func showTitle(){
+        UIView.animate(withDuration: 1, animations: {
+            self.titleLabel.alpha = 1
+        }, completion: { (true) in
+            self.showSubtitle()
+        })
+        
+    }
+    
+    func showSubtitle() {
+        UIView.animate(withDuration: 1, animations: {
+            self.subtitleLabel.alpha = 1
+        }) { (true) in
+            self.showButtons()
+        }
+    }
+    
+    func showButtons() {
+        UIView.animate(withDuration: 1) {
+            self.buttonsStackView.alpha = 1
+        }
+    }
+    
     @objc fileprivate func handleNewCanvas() {
         newCanvasAction?()
     }

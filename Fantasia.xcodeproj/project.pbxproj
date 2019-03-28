@@ -30,6 +30,8 @@
 		7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */; };
 		7D4EE3BA2221DA3E005D1F46 /* SavePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */; };
 		7D4EE3BC22221015005D1F46 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */; };
+		7D90F4D722498CB300200AA0 /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */; };
+		7D90F4DD224C027B00200AA0 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90F4DC224C027B00200AA0 /* BounceButton.swift */; };
 		7D92ABD82203805500E57FF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92ABD72203805500E57FF3 /* AppDelegate.swift */; };
 		7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABDE2203805800E57FF3 /* Assets.xcassets */; };
 		7D92ABE22203805800E57FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D92ABE02203805800E57FF3 /* LaunchScreen.storyboard */; };
@@ -73,6 +75,8 @@
 		7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ColorSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4EE3B92221DA3E005D1F46 /* SavePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePopupView.swift; sourceTree = "<group>"; };
 		7D4EE3BB22221015005D1F46 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nosifer-Regular.ttf"; path = "../../../../../Downloads/Nosifer/Nosifer-Regular.ttf"; sourceTree = "<group>"; };
+		7D90F4DC224C027B00200AA0 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
 		7D92ABD42203805500E57FF3 /* Fantasia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fantasia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D92ABD72203805500E57FF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D92ABDE2203805800E57FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		7D2AFF0D2204FF6B00C13363 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */,
 				7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */,
 				7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */,
 				7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */,
@@ -279,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				7D4E642B2245A5C500D3F308 /* SavePopup */,
+				7D90F4DC224C027B00200AA0 /* BounceButton.swift */,
 			);
 			path = "Custom controls";
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */,
 				7D2AFF3722052D5500C13363 /* SeymourOne-Regular.ttf in Resources */,
 				7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */,
+				7D90F4D722498CB300200AA0 /* Nosifer-Regular.ttf in Resources */,
 				7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */,
 				7D2AFF3822052D5500C13363 /* LuckiestGuy-Regular.ttf in Resources */,
 				7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */,
@@ -450,6 +457,7 @@
 				7D9A15C7221038E7009915A1 /* ImageController.swift in Sources */,
 				7DAE569E220903BE003AE323 /* Line.swift in Sources */,
 				7D2AFF432206631C00C13363 /* GalleryController.swift in Sources */,
+				7D90F4DD224C027B00200AA0 /* BounceButton.swift in Sources */,
 				7D2AFF152205044200C13363 /* Constants.swift in Sources */,
 				7D2AFF412206630900C13363 /* GalleryView.swift in Sources */,
 				7D2AFF172205052600C13363 /* AppColors.swift in Sources */,

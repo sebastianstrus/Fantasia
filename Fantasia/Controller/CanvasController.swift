@@ -74,17 +74,17 @@ class CanvasController: UIViewController, UIImagePickerControllerDelegate, UIPic
         let saveButton: UIButton = {
             let button = UIButton(type: .system)
             button.tintColor = UIColor.white
-            button.setImage(UIImage(named: "button_save"), for: .normal)
+            button.setImage(UIImage(named: "save_icon"), for: .normal)
             button.addTarget(self, action: #selector(handlePopup), for: .touchUpInside)
             return button
         }()
         
         let libraryItem = UIBarButtonItem(customView: libraryButton)
-        libraryItem.customView?.widthAnchor.constraint(equalToConstant: 33).isActive = true//ipad 50
+        libraryItem.customView?.widthAnchor.constraint(equalToConstant: 44).isActive = true//ipad 50
         libraryItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         let saveItem = UIBarButtonItem(customView: saveButton)
-        saveItem.customView?.widthAnchor.constraint(equalToConstant: 33).isActive = true
+        saveItem.customView?.widthAnchor.constraint(equalToConstant: 44).isActive = true
         saveItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
         self.navigationItem.rightBarButtonItems = [saveItem, libraryItem]
     }

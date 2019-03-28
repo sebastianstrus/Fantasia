@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
+
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.barTintColor = AppColors.DODGERBLUE
         navigationController.navigationBar.tintColor = UIColor.white
