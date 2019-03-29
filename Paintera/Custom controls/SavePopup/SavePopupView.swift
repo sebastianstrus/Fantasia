@@ -33,11 +33,8 @@ class SavePopupView: UIView {
         self.title = title
         setup()
     }
-    
-    
-    
-    
 
+    // MARK: - All subviews
     fileprivate let blurView: UIVisualEffectView  = {
         let view = UIVisualEffectView (effect: nil)
         return view
@@ -237,7 +234,7 @@ class SavePopupView: UIView {
     }
     
     // MARK: - Public actions
-    public func animate() {
+    func animate() {
         UIView.animate(withDuration: 0.4) {
             self.blurView.effect = UIBlurEffect(style: .light)
             self.popupView.alpha = 1
@@ -245,11 +242,11 @@ class SavePopupView: UIView {
         }
     }
     
-    public func getKeepPrevious() -> Bool {
+    func getKeepPrevious() -> Bool {
         return switchButton.isOn
     }
     
-    public func handleKeyboardUp() {
+    func handleKeyboardUp() {
         self.yCenterAnchor.isActive = false
         self.yUpAnchor.isActive = true
         UIView.animate(withDuration: 0.4) {
@@ -257,7 +254,7 @@ class SavePopupView: UIView {
         }
     }
     
-    public func handleKeyboardDown() {
+    func handleKeyboardDown() {
         self.yUpAnchor.isActive = false
         self.yCenterAnchor.isActive = true
         UIView.animate(withDuration: 0.4) {
