@@ -18,7 +18,6 @@
 		7D2AFF2122051AD900C13363 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF2022051AD900C13363 /* AppFonts.swift */; };
 		7D2AFF32220526BB00C13363 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF1A22050DD300C13363 /* UIButton+Extension.swift */; };
 		7D2AFF3722052D5500C13363 /* SeymourOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3422052D5500C13363 /* SeymourOne-Regular.ttf */; };
-		7D2AFF3822052D5500C13363 /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */; };
 		7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */; };
 		7D2AFF3B22064DBA00C13363 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3A22064DBA00C13363 /* Strings.swift */; };
 		7D2AFF3F2206591400C13363 /* CanvasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF3E2206591400C13363 /* CanvasController.swift */; };
@@ -47,7 +46,6 @@
 		7D9A15F72211F6C3009915A1 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */; };
 		7D9A15FA22122F21009915A1 /* page_flip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D9A15F922122F21009915A1 /* page_flip.mp3 */; };
 		7DAE569E220903BE003AE323 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAE569D220903BE003AE323 /* Line.swift */; };
-		7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +59,6 @@
 		7D2AFF1C22050E1800C13363 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7D2AFF2022051AD900C13363 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		7D2AFF3422052D5500C13363 /* SeymourOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SeymourOne-Regular.ttf"; sourceTree = "<group>"; };
-		7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
 		7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
 		7D2AFF3A22064DBA00C13363 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		7D2AFF3E2206591400C13363 /* CanvasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasController.swift; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 		7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7D9A15F922122F21009915A1 /* page_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = page_flip.mp3; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaOutline-Regular.ttf"; sourceTree = "<group>"; };
 		9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.release.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.release.xcconfig"; sourceTree = "<group>"; };
 		FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.debug.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,8 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				7D90F4D622498C2700200AA0 /* Nosifer-Regular.ttf */,
-				7DAE569F220B639B003AE323 /* LondrinaOutline-Regular.ttf */,
-				7D2AFF3522052D5500C13363 /* LuckiestGuy-Regular.ttf */,
 				7D2AFF3622052D5500C13363 /* Oswald-Medium.ttf */,
 				7D2AFF3422052D5500C13363 /* SeymourOne-Regular.ttf */,
 				7D2AFF2022051AD900C13363 /* AppFonts.swift */,
@@ -372,8 +366,6 @@
 				7D2AFF3922052D5500C13363 /* Oswald-Medium.ttf in Resources */,
 				7D90F4D722498CB300200AA0 /* Nosifer-Regular.ttf in Resources */,
 				7D92ABDF2203805800E57FF3 /* Assets.xcassets in Resources */,
-				7D2AFF3822052D5500C13363 /* LuckiestGuy-Regular.ttf in Resources */,
-				7DAE56A0220B639B003AE323 /* LondrinaOutline-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
