@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3416D08296937D13A608FE7C /* Pods_Paintera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44E2B1A8E0D18593EC7FA3 /* Pods_Paintera.framework */; };
+		19386053CBDE71304ED4CFDF /* Pods_Paintera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 366340F4410163F92281924D /* Pods_Paintera.framework */; };
 		7D2AFF092204FAD600C13363 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF082204FAD600C13363 /* MainMenuView.swift */; };
 		7D2AFF0B2204FAF800C13363 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */; };
 		7D2AFF122205003700C13363 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2AFF112205003700C13363 /* String+Extension.swift */; };
@@ -49,6 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12B167B301F2E1691834AA97 /* Pods-Paintera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.release.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.release.xcconfig"; sourceTree = "<group>"; };
+		366340F4410163F92281924D /* Pods_Paintera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paintera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F60353EC3823F56A7D9CCE5 /* Pods-Paintera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.debug.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2AFF082204FAD600C13363 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		7D2AFF0A2204FAF800C13363 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		7D2AFF112205003700C13363 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		7D2AFF402206630900C13363 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		7D2AFF422206631C00C13363 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
 		7D2AFF442206775600C13363 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
-		7D44E2B1A8E0D18593EC7FA3 /* Pods_Paintera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paintera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4E6407223DCA7A00D3F308 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		7D4E64092244386500D3F308 /* SavePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePopupController.swift; sourceTree = "<group>"; };
 		7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ColorSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +92,6 @@
 		7D9A15F62211F6C3009915A1 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7D9A15F922122F21009915A1 /* page_flip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = page_flip.mp3; sourceTree = "<group>"; };
 		7DAE569D220903BE003AE323 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.release.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.release.xcconfig"; sourceTree = "<group>"; };
-		FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paintera.debug.xcconfig"; path = "Target Support Files/Pods-Paintera/Pods-Paintera.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D4EE3B6221F6753005D1F46 /* ColorSlider.framework in Frameworks */,
-				3416D08296937D13A608FE7C /* Pods_Paintera.framework in Frameworks */,
+				19386053CBDE71304ED4CFDF /* Pods_Paintera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				7D4EE3B5221F6753005D1F46 /* ColorSlider.framework */,
-				7D44E2B1A8E0D18593EC7FA3 /* Pods_Paintera.framework */,
+				366340F4410163F92281924D /* Pods_Paintera.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -294,8 +294,8 @@
 		E7C0B54E06DC57FDD3798D28 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */,
-				9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */,
+				6F60353EC3823F56A7D9CCE5 /* Pods-Paintera.debug.xcconfig */,
+				12B167B301F2E1691834AA97 /* Pods-Paintera.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -307,11 +307,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D92ABE62203805800E57FF3 /* Build configuration list for PBXNativeTarget "Paintera" */;
 			buildPhases = (
-				274B9D1593B96F23F0C5850F /* [CP] Check Pods Manifest.lock */,
+				CCC9311BD3426920026D810A /* [CP] Check Pods Manifest.lock */,
 				7D92ABD02203805500E57FF3 /* Sources */,
 				7D92ABD12203805500E57FF3 /* Frameworks */,
 				7D92ABD22203805500E57FF3 /* Resources */,
-				B76EF6532825C33B3733356F /* [CP] Embed Pods Frameworks */,
+				B0906E795EBBBDE7490F39D6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -338,7 +338,7 @@
 				};
 			};
 			buildConfigurationList = 7D92ABCF2203805500E57FF3 /* Build configuration list for PBXProject "Paintera" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -372,29 +372,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		274B9D1593B96F23F0C5850F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Paintera-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B76EF6532825C33B3733356F /* [CP] Embed Pods Frameworks */ = {
+		B0906E795EBBBDE7490F39D6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -416,6 +394,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paintera/Pods-Paintera-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCC9311BD3426920026D810A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Paintera-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -593,19 +593,21 @@
 		};
 		7D92ABE72203805800E57FF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA1DA0F1DCC5D2D641B1AA01 /* Pods-Paintera.debug.xcconfig */;
+			baseConfigurationReference = 6F60353EC3823F56A7D9CCE5 /* Pods-Paintera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SL936GBZY;
 				INFOPLIST_FILE = Paintera/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = seb.Paintera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -613,19 +615,21 @@
 		};
 		7D92ABE82203805800E57FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B508169A3DDCE0569BACDE4 /* Pods-Paintera.release.xcconfig */;
+			baseConfigurationReference = 12B167B301F2E1691834AA97 /* Pods-Paintera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SL936GBZY;
 				INFOPLIST_FILE = Paintera/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = seb.Paintera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
